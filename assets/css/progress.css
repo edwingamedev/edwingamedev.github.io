@@ -3,7 +3,7 @@
     display: block;
     margin-bottom: 15px;
     width: 100%;
-    background: #eee;
+    background: #8bac0f;
     height: 28px;
     border-radius: 3px;
     -moz-border-radius: 3px;
@@ -26,11 +26,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 201px;
+    width: 203px;
     font-weight: bold;
     font-size: 13px;
     color: #ffffff;
-    background: #6adcfa;
+    background: #3a4242;
     -webkit-border-top-left-radius: 3px;
     -webkit-border-bottom-left-radius: 4px;
     -moz-border-radius-topleft: 3px;
@@ -57,19 +57,9 @@
 .skillbar-bar {
     height: 28px;
     width: 0px;
-    background: #6adcfa;
+    left: 201px;
+    background: #306230;
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
-}
-
-.skill-bar-percent {
-    position: absolute;
-    right: 10px;
-    top: 0;
-    font-size: 1rem;
-    height: 28px;
-    line-height: 28px;
-    color: #ffffff;
-    color: rgba(0, 0, 0, 0.4);
 }

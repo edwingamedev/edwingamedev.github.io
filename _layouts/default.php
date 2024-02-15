@@ -12,6 +12,7 @@
         include "_includes/projects.php";
         include "_includes/contact.php";
         include "_includes/footer.php";
+        include "_includes/scripts.html";
     ?>
 </body>
 </html>

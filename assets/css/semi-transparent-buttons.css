@@ -46,19 +46,14 @@
 }
 
 .white-button {
-    color: #222;
-    border: 1px solid #222;
+    color: #fff;
+    border: 1px solid #fff;
     min-width: 110px;
 }
 
 .white-button:hover {
-    color: #fff;
-    background: #222;
-    cursor: pointer;
-}
-
-.white-button-hover {
-    color: #fff;
-    background: #222;
+    color: #222;
+    background: #ffa600;
+    border: 1px solid;
     cursor: pointer;
 }

@@ -1,6 +1,11 @@
 <body>
     <div class="section-wrapper">
         <section class="section about" id="about">
+        <div class="about-grid">
+            <div class="profile-pic-div animated">
+                <a href="#about" class="self-link"><img src="<?php echo $configs['self'];?>" class="self-pic"/></a>
+            </div>
+
             <div id="about-text">
                 <div class="section-heading">About</div>
                 <p class="paragraph-text justify-text">
@@ -13,6 +18,7 @@
                 I can adapt to any type of code base, I have a lot of experience with git, unity, C#, design patterns. Also, I developed and published several projects for both ios and android.
                 </p>
             </div>
+        </div>
         </section>
     </div>
 </body>

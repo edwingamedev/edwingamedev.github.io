@@ -7,6 +7,8 @@ return array(
     'linkedin' => 'https://www.linkedin.com/in/edwinjonesholanda',
     'mail' => 'edwinjonesholanda@gmail.com',
     'profile-pic' => '/assets/images/profile-pic.png',
+    'self' => '/assets/images/self.jpg',
+    'card' => '/assets/images/card.png',
     'favicon' => 'favicon.ico'
 );
 ?>
