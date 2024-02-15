@@ -281,7 +281,7 @@ img {
   -ms-flex-align: center;
   align-items: center;
   min-height: 35px;
-  color: #fff;
+  color: white;
   font-family: 'PT Sans', Arial, Helvetica, sans-serif;
 
   background: url(../images/background.png);
@@ -291,6 +291,10 @@ img {
 
 .footer-text a {
   color: inherit;
+}
+
+#date {
+  color: #ffc400;
 }
 
 .technologies-grid-item {
@@ -371,7 +375,7 @@ img {
   font-size: 0.9rem;
 }
 
-.extra {
+.contact {
   margin-bottom: 0px;
 }
 
@@ -433,7 +437,7 @@ a {
   color: #222;
 }
 
-.extra-links {
+.contact-links {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
