@@ -5,14 +5,13 @@
             <div class="skills-grid">
                 <div class="what-i-do">
                     <p class="paragraph-text center-align">
-                        I'm a game developer which have a serious passion for pixel art and software engineering.
+                        I'm a game developer with a serious passion for pixel art and software engineering.
                     </p>
 
                     <div class="profile-pic-div animated">
                         <a class="self-link"><img src="<?php echo $configs['card'];?>" class="card-pic"/></a>
                     </div>
                 </div>
-
                 <div class="technical-skills">
                     <h3 class="center-align skills-subsection">Technical</h3>
                     <div class="progress-bars">

@@ -18,7 +18,7 @@
     -ms-transition-property: width, background-color;
     -o-transition-property: width, background-color;
     transition-property: width, background-color;
-    font-family: 'PT Sans', sans-serif;
+    font-family: inherit;
     box-shadow: -4px 8px 16px 0 rgba(0, 0, 0, 0.24);
 }
 
@@ -26,10 +26,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 203px;
+    width: 205px;
     font-weight: bold;
-    font-size: 13px;
-    color: #ffffff;
+    color: #fff;
     background: #3a4242;
     -webkit-border-top-left-radius: 3px;
     -webkit-border-bottom-left-radius: 4px;
