@@ -26,7 +26,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 206px;
+    width: 195px;
     font-weight: bold;
     color: var(--progress-title-color);
     background: var(--progress-title-background-color);
@@ -36,13 +36,13 @@
     -moz-border-radius-bottomleft: 3px;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
-    font-size: 1.1rem;
+    font-size: 0.96rem;
 }
 
 .skillbar-title span {
     display: block;
     background: rgba(0, 0, 0, 0.1);
-    padding: 0 20px;
+    padding: 0 15px;
     height: 28px;
     line-height: 28px;
     -webkit-border-top-left-radius: 3px;
