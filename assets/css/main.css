@@ -1,9 +1,20 @@
+:root {
+  --background-color: #222;
+  --text-color: #ffc400;
+  --text-color2: #fff;
+
+  --progress-color: #8bac0f;
+  --progress-background-color: #306230;
+  --progress-title-color: #fff;
+  --progress-title-background-color: #3a4242;
+}
+
 body {
   min-width: 360px;
   font-family: 'Roboto';
   font-size: 16px;
-  background-color: #222;
-  color: #ffc400;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 img {
@@ -12,7 +23,7 @@ img {
 }
 
 .head {
-  color: white;
+  color: var(--text-color2);
 
   min-height: 100vh;
 
@@ -27,7 +38,6 @@ img {
   -ms-flex-pack: center;
   justify-content: center;
   position: relative;
-
   background: transparent;
 }
 
@@ -83,7 +93,7 @@ img {
 
 .head-punchline {
   text-align: center;
-  color: #fff;
+  color: var(--text-color2);
   margin-top: 10px;
   font-size: 20px;
   font-size: 1.25rem;
@@ -219,22 +229,22 @@ img {
 }
 
 .section-wrapper:nth-child(odd) .section-heading {
-  color: #fff;
+  color: var(--text-color2);
 }
 
 .section-wrapper:nth-child(odd) .skills-subsection {
-  color: #fff;
+  color: var(--text-color2);
 }
 
 .section-wrapper:nth-child(odd) .paragraph-text {
-  color: #fff;
+  color: var(--text-color2);
 }
 
 .paragraph-text {
   font-size: 20.8px;
   font-size: 1.3rem;
   margin: 30px auto;
-  color: #ffc400;
+  color: var(--text-color);
 }
 
 .skill-grid-item {
@@ -266,7 +276,7 @@ img {
 }
 
 .footer {
-  background-color: #444;
+
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -277,11 +287,11 @@ img {
   -ms-flex-align: center;
   align-items: center;
   min-height: 35px;
-  color: white;
+  color: var(--text-color2);
 
+  background-color: var(--background-color);
   background: url(../images/floor.png);
   background-repeat: repeat;
-
   background-attachment: fixed;
 }
 
@@ -290,20 +300,20 @@ img {
 }
 
 #date {
-  color: #ffc400;
+  color: var(--text-color);
 }
 
 .technologies-grid-item {
   width: 96.6666px;
   height: 96.6666px;
-  background-color: #fff;
+  background-color: var(--text-color2);
 }
 
 .project-card {
   padding: 10px;
   -webkit-transition: all ease-in-out 0.3s;
   transition: all ease-in-out 0.3s;
-  color: #fff;
+  color: var(--text-color2);
 }
 
 .project-title {
@@ -335,10 +345,10 @@ img {
 }
 
 .project-tag-item {
-  background-color: #444;
+  background-color: var(--background-color);
   border-radius: 3px;
   padding: 5px;
-  color: #fff;
+  color: var(--text-color2);
 }
 
 .post-date {
@@ -440,7 +450,7 @@ img {
 }
 
 a {
-  color: #ffc400;
+  color: var(--text-color);
 }
 
 .contact-links {
@@ -610,7 +620,7 @@ a {
   background-repeat: no-repeat;
   padding: 20px;
   cursor: pointer;
-  color: #fff;
+  color: var(--text-color2);
   font-size: 20px;
   background-size: cover;
 }

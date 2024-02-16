@@ -14,3 +14,8 @@ profile_picture: assets/images/profile-pic.png
 self_pic: assets/images/self.jpg
 card: assets/images/card.png
 favicon: favicon.ico
+
+# pallete
+color_text: "#ffc400"
+color_head: "222"
+color_head: ffc400
