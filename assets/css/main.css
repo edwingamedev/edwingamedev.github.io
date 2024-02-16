@@ -532,6 +532,13 @@ a {
     text-align: center;
   }
 
+  .about-grid {
+    -ms-grid-columns: 100%;
+    grid-template-columns: 100%;
+    -ms-grid-rows: auto auto;
+    grid-template-rows: auto auto;
+  }
+
   .skills-grid {
     -ms-grid-columns: 100%;
     grid-template-columns: 100%;
