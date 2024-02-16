@@ -12,4 +12,6 @@
             <a class="semi-transparent-button with-border nav-links" href="#contact">CONTACT</a>
         </div>
     </div>
+    <button onclick="topFunction()" id="topButton"></button>
 </section>
+
