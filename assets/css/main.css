@@ -5,8 +5,9 @@
 
   --progress-color: #8bac0f;
   --progress-background-color: #306230;
-  --progress-title-color: #fff;
+  --progress-title-color: #ffffff;
   --progress-title-background-color: #3a4242;
+  --progress-bar-background-color: #57546f;
 }
 
 body {
@@ -141,6 +142,8 @@ img {
 
 .progress-bars {
   margin-top: 30px;
+  display: grid;
+  place-items: center;
 }
 
 .about-grid {
