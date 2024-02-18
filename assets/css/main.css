@@ -141,6 +141,7 @@ img {
 }
 
 .progress-bars {
+  width: 100%;
   margin-top: 30px;
   display: grid;
   place-items: center;

@@ -1,74 +1,7 @@
-.skillbar {
-    position: relative;
-    display: block;
-    margin-bottom: 15px;
-    width: 100%;
-    background: var(--progress-color);
-    height: 28px;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -webkit-transition: 0.4s linear;
-    -moz-transition: 0.4s linear;
-    -ms-transition: 0.4s linear;
-    -o-transition: 0.4s linear;
-    transition: 0.4s linear;
-    -webkit-transition-property: width, background-color;
-    -moz-transition-property: width, background-color;
-    -ms-transition-property: width, background-color;
-    -o-transition-property: width, background-color;
-    transition-property: width, background-color;
-    font-family: inherit;
-    box-shadow: -4px 8px 16px 0 rgba(0, 0, 0, 0.24);
-}
-
-.skillbar-title {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 195px;
-    font-weight: bold;
-    color: var(--progress-title-color);
-    background: var(--progress-title-background-color);
-    -webkit-border-top-left-radius: 3px;
-    -webkit-border-bottom-left-radius: 4px;
-    -moz-border-radius-topleft: 3px;
-    -moz-border-radius-bottomleft: 3px;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-    font-size: 0.96rem;
-}
-
-.skillbar-title span {
-    display: block;
-    padding: 0 15px;
-    height: 28px;
-    line-height: 28px;
-    -webkit-border-top-left-radius: 3px;
-    -webkit-border-bottom-left-radius: 3px;
-    -moz-border-radius-topleft: 3px;
-    -moz-border-radius-bottomleft: 3px;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-}
-
-.skillbar-bar {
-    height: 28px;
-    width: 0px;
-    left: 201px;
-    background: var(--progress-background-color);
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-}
-
 .progressbar {
-    position: relative;
-    display: block;
-    margin-bottom: 15px;
-    width: 75%;
-    background: var(--progress-bar-background-color);
-    height: 28px;
+    height: 50px;
+    width: auto;
+    padding: 5px 0px;
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -77,6 +10,8 @@
     -ms-transition: 0.4s linear;
     -o-transition: 0.4s linear;
     transition: 0.4s linear;
+
+
     -webkit-transition-property: width, background-color;
     -moz-transition-property: width, background-color;
     -ms-transition-property: width, background-color;
@@ -86,11 +21,15 @@
 }
 
 .progressbar-title {
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: inline-flex;
+    position: relative;
     width: 195px;
+
+    background: var(--progress-title-background-color);
+
     font-weight: bold;
+    font-size: 1.1rem;
+
     color: var(--progress-title-color);
     -webkit-border-top-left-radius: 3px;
     -webkit-border-bottom-left-radius: 4px;
@@ -98,15 +37,16 @@
     -moz-border-radius-bottomleft: 3px;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
-    font-size: 0.96rem;
-    background: var(--progress-title-background-color);
 }
 
 .progressbar-title span {
-    display: block;
-    padding: 0 15px;
-    height: 28px;
-    line-height: 28px;
+    display: inline-flex;
+    height: 30px;
+    line-height: 100%;
+    padding: 10px;
+
+    align-items: center;
+
     -webkit-border-top-left-radius: 3px;
     -webkit-border-bottom-left-radius: 3px;
     -moz-border-radius-topleft: 3px;
@@ -116,10 +56,11 @@
 }
 
 .progressbar-bar {
+    position: relative;
+    float: right;
+
     width: var(--progressbar-width);
     height: var(--progressbar-height);
-    left: 190px;
-    position: relative;
 
     background: url(../images/progressBar.png);
     background-position: center;
@@ -159,7 +100,7 @@
 
 :root {
     --progressbar-full-width: 1890px;
-    --progressbar-height: 100%;
+    --progressbar-height: 50px;
     --progressbar-width: calc(var(--progressbar-full-width) / 15);
 
     --progressbar-duration: calc(0.05s * var(--progressbar-fill-frames));
