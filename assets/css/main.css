@@ -8,6 +8,7 @@
   --progress-title-color: #ffffff;
   --progress-title-background-color: #3a4242;
   --progress-bar-background-color: #57546f;
+  --card-pic: '/assets/images/card.png'
 }
 
 body {
