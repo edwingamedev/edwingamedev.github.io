@@ -12,7 +12,7 @@ gamejolt: https://gamejolt.com/@edwingamedev
 email: edwinjonesholanda@gmail.com
 
 # absolute or relative
-profile_picture: /assets/images/profile-pic.png
+logo: /assets/images/logo.png
 self_pic: /assets/images/self.jpg
 card: /assets/images/card.png
 gamejolt_pic: /assets/images/gamejolt.png
