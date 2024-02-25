@@ -32,6 +32,10 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
+
+	font-family: inherit;
+	font-weight: bold;
+	font-size: 1.1rem;
 }
 
 .card__padding {
