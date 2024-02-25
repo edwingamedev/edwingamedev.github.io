@@ -61,8 +61,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: stretch;
-
-	background-color: #23213de0;
 }
 
 .card__image img {
