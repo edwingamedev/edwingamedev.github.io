@@ -11,7 +11,7 @@ let render_projects = (slug) => {
 
     let projects_obj = [
         {
-            image: '/assets/images/self.jpg',
+            image: '/assets/images/projects/cgt.png',
             link: 'https://gamejolt.com/games/ChromaticGorilkaTypo/335315',
             title: 'Chromatic Gorilka Typo',
             demo: 'https://gamejolt.com/games/ChromaticGorilkaTypo/335315',
@@ -36,6 +36,69 @@ let render_projects = (slug) => {
             technologies: ['Unity', 'Pixel Art', 'C#'],
             description: "",
             categories: ['featured', 'games', 'art']
+        },
+        {
+            image: '/assets/images/projects/day3.png',
+            link: 'https://gamejolt.com/games/day-3/361194',
+            title: 'Day 3',
+            demo: 'https://gamejolt.com/games/day-3/361194',
+            technologies: ['Unity', 'Pixel Art', 'C#'],
+            description: "",
+            categories: ['featured', 'games']
+        },
+        {
+            image: '/assets/images/projects/flying_alone.png',
+            link: 'https://www.youtube.com/watch?v=KMdc9wNq53U',
+            title: 'Flying Alone',
+            demo: 'https://www.youtube.com/watch?v=KMdc9wNq53U',
+            technologies: ['Unity', 'Pixel Art', 'C#'],
+            description: "",
+            categories: ['featured', 'games', 'art']
+        },
+        {
+            image: '/assets/images/projects/end_of_your_life.png',
+            link: 'https://gamejolt.com/games/endofyourlife/314984',
+            title: 'End of your Life',
+            demo: 'https://gamejolt.com/games/endofyourlife/314984',
+            technologies: ['Unity', 'Pixel Art', 'C#'],
+            description: "",
+            categories: ['featured', 'games', 'art']
+        },
+        {
+            image: '/assets/images/projects/space_power_defender.png',
+            link: 'https://gamejolt.com/games/space-power-defender/283201',
+            title: 'Space Power Defender',
+            demo: 'https://gamejolt.com/games/space-power-defender/283201',
+            technologies: ['Unity', 'Pixel Art', 'C#'],
+            description: "",
+            categories: ['featured', 'games', 'art']
+        },
+        {
+            image: '/assets/images/projects/war_mech_defense.jpg',
+            link: 'https://play.google.com/store/apps/details?id=br.com.ideas.farm.warmechdefense',
+            title: 'War Mech Defense',
+            demo: 'https://play.google.com/store/apps/details?id=br.com.ideas.farm.warmechdefense',
+            technologies: ['Unity', 'Pixel Art', 'C#'],
+            description: "",
+            categories: ['games', 'AR']
+        },
+        {
+            image: '/assets/images/projects/dig_dig_joy.png',
+            link: 'https://gamejolt.com/games/digdigjoy/705969',
+            title: 'Dig Dig Joy',
+            demo: 'https://gamejolt.com/games/digdigjoy/705969',
+            technologies: ['Unity', 'Pixel Art', 'C#'],
+            description: "",
+            categories: ['featured', 'games', 'art']
+        },
+        {
+            image: '/assets/images/projects/aes_city_builder.png',
+            link: '',
+            title: 'AES City Builder',
+            demo: '',
+            technologies: ['Unity', 'Pixel Art', 'C#'],
+            description: "",
+            categories: ['games',]
         }
     ]
 
