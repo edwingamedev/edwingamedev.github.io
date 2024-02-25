@@ -4,11 +4,6 @@
 	padding-right: 1em;
 }
 
-.border-tlr-radius {
-	border-top-left-radius: 2px;
-	border-top-right-radius: 2px;
-}
-
 .text-center {
 	text-align: center;
 }
@@ -61,17 +56,18 @@
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: stretch;
 
-	background-color: #0000002a;
+	background-color: #23213de0;
 }
 
 .card__image img {
-	flex-shrink: 0;
-	min-width: 100%;
 	min-height: 100%;
 	width: auto;
 	height: auto;
+
+	display: block;
+	margin: auto;
 }
 
 .card__meta {

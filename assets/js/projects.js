@@ -11,67 +11,76 @@ let render_projects = (slug) => {
 
     let projects_obj = [
         {
-            image: '/assets/images/projects/cgt.png',
+            image: '/assets/images/projects/cgt.gif',
             link: 'https://gamejolt.com/games/ChromaticGorilkaTypo/335315',
             title: 'Chromatic Gorilka Typo',
             demo: 'https://gamejolt.com/games/ChromaticGorilkaTypo/335315',
             technologies: ['Unity', 'Pixel Art', 'C#'],
-            description: "Chromatic Gorilka Typo is a tower defense typing game where chromatic gorilkas, annoyed by your blue-switches mechanical keyboard sound, attack your house to unplug your USB cable. You must type HARDER and LOUDER to defend your home. But this will probably tease them even more.",
-            categories: ['featured', 'games', 'art']
+            description: "Tower defense typing game where chromatic gorilkas, annoyed by your blue-switches mechanical keyboard sound, attack your house to unplug your USB cable. You must type HARDER and LOUDER to defend your home. But this will probably tease them even more.",
+            categories: ['featured', 'games', 'Jam']
         },
         {
-            image: '/assets/images/projects/not_today_satan.png',
+            image: '/assets/images/projects/ddj.gif',
+            link: 'https://gamejolt.com/games/digdigjoy/705969',
+            title: 'Dig Dig Joy',
+            demo: 'https://gamejolt.com/games/digdigjoy/705969',
+            technologies: ['Unity', 'Pixel Art', 'C#'],
+            description: "Fast-paced game where you have to mine downwards to reach the bottom. Choose between several power ups when you level up, reach the bottom of the map faster to score higher.",
+            categories: ['featured', 'games', 'game jam']
+        },
+        {
+            image: '/assets/images/projects/nts.gif',
             link: 'https://gamejolt.com/games/not-today-satan/383033',
             title: 'Not Today Satan',
             demo: 'https://gamejolt.com/games/not-today-satan/383033',
             technologies: ['Unity', 'Pixel Art', 'C#'],
-            description: "",
-            categories: ['featured', 'games', 'art']
+            description: "Platformer where you have to reach the end of the map, you can hunt people casting fireballs, that cost your life, to recover it you should eat your victims.",
+            categories: ['games', 'game jam']
         },
         {
-            image: '/assets/images/projects/10_seconds_dungeon.png',
+            image: '/assets/images/projects/tsd.gif',
             link: 'https://gamejolt.com/games/10-seconds-dungeon/282443',
             title: '10 Seconds Dungeon',
             demo: 'https://gamejolt.com/games/10-seconds-dungeon/282443',
             technologies: ['Unity', 'Pixel Art', 'C#'],
-            description: "",
-            categories: ['featured', 'games', 'art']
+            description: "You are a cat in a dungeon where you should survive the waves, new enemies come every 10 seconds, find bullets and power ups to live longer.",
+            categories: ['games', 'game jam']
         },
         {
-            image: '/assets/images/projects/day3.png',
+            image: '/assets/images/projects/dt.gif',
             link: 'https://gamejolt.com/games/day-3/361194',
             title: 'Day 3',
             demo: 'https://gamejolt.com/games/day-3/361194',
             technologies: ['Unity', 'Pixel Art', 'C#'],
-            description: "",
-            categories: ['featured', 'games']
+            description: "- Day 1 Plant seeds and collect water in the river to water your plants.<br>- Day 2 meet the Dog Dealer at the gate and trade the leaves you harvested for new seeds. Don't forget to keep watering your plants!<br>- Day 3 hide yourself from the Crop Pooper inside your house and hope your plants protect you from the invader!",
+            categories: ['games', 'game jam']
         },
         {
             image: '/assets/images/projects/flying_alone.png',
             link: 'https://www.youtube.com/watch?v=KMdc9wNq53U',
             title: 'Flying Alone',
             demo: 'https://www.youtube.com/watch?v=KMdc9wNq53U',
-            technologies: ['Unity', 'Pixel Art', 'C#'],
-            description: "",
-            categories: ['featured', 'games', 'art']
+            technologies: ['Unity', 'C#'],
+            description: "Flying endless runner where you should manage your fuel level and avoid hitting the ground or getting hit by the missiles. Go through the rings to recharge your fuel.",
+            categories: ['featured', 'games']
         },
         {
-            image: '/assets/images/projects/end_of_your_life.png',
+            image: '/assets/images/projects/eoyl.gif',
             link: 'https://gamejolt.com/games/endofyourlife/314984',
             title: 'End of your Life',
             demo: 'https://gamejolt.com/games/endofyourlife/314984',
             technologies: ['Unity', 'Pixel Art', 'C#'],
-            description: "",
-            categories: ['featured', 'games', 'art']
+            description: "- You are cursed to the death!</br>- Find another body to possess.</br>- There's no time to rest.</br>- Throw your sould really fast.</br>- To survive death!",
+            categories: ['featured', 'games', 'game jam']
         },
         {
-            image: '/assets/images/projects/space_power_defender.png',
+            image: '/assets/images/projects/spd.gif',
             link: 'https://gamejolt.com/games/space-power-defender/283201',
             title: 'Space Power Defender',
             demo: 'https://gamejolt.com/games/space-power-defender/283201',
             technologies: ['Unity', 'Pixel Art', 'C#'],
-            description: "",
-            categories: ['featured', 'games', 'art']
+            description: "Space shooter where you should use your spaceship to defend your power orbs from enemy waves. Each orb is responsible for one power (speed, shield, side bullets, regeneration) on your spaceship.",
+            categories: ['featured', 'games', 'game jam']
         },
         {
             image: '/assets/images/projects/war_mech_defense.jpg',
@@ -79,26 +88,17 @@ let render_projects = (slug) => {
             title: 'War Mech Defense',
             demo: 'https://play.google.com/store/apps/details?id=br.com.ideas.farm.warmechdefense',
             technologies: ['Unity', 'Pixel Art', 'C#'],
-            description: "",
+            description: "Defense game in augmented reality where you have to survive the waves. Every target destroyed gives you experience, upon level up you can choose what to improve on your turret.",
             categories: ['games', 'AR']
         },
         {
-            image: '/assets/images/projects/dig_dig_joy.png',
-            link: 'https://gamejolt.com/games/digdigjoy/705969',
-            title: 'Dig Dig Joy',
-            demo: 'https://gamejolt.com/games/digdigjoy/705969',
-            technologies: ['Unity', 'Pixel Art', 'C#'],
-            description: "",
-            categories: ['featured', 'games', 'art']
-        },
-        {
             image: '/assets/images/projects/aes_city_builder.png',
-            link: '',
+            link: 'https://www.instagram.com/edwingamedev/reel/BSzQ0f6Db6V',
             title: 'AES City Builder',
-            demo: '',
+            demo: 'https://www.instagram.com/edwingamedev/reel/BSzQ0f6Db6V',
             technologies: ['Unity', 'Pixel Art', 'C#'],
-            description: "",
-            categories: ['games',]
+            description: "City builder where you have to ride a real bike to power up you city, with more energy you attract more citizens, making your city to grow bigger and unlocking new buildings. There are several achievements on the game. The login was done through face recognition.",
+            categories: ['games']
         }
     ]
 
