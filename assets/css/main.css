@@ -488,21 +488,6 @@ a {
   width: 100%;
 }
 
-.project-technology {
-  border: 1px solid #222;
-  border-radius: 2px;
-  margin: 0 5px;
-  padding: 3px 5px;
-}
-
-.project-technology:first-child {
-  margin-left: 0px;
-}
-
-.project-technology:last-child {
-  margin-right: 0px;
-}
-
 /* Here follow all the media queries */
 @media screen and (max-width: 850px) {
 

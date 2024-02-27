@@ -1,7 +1,7 @@
 .wrapper {
-	max-width: 400px;
 	padding-left: 1em;
 	padding-right: 1em;
+	margin-bottom: 1.6rem;
 }
 
 .text-center {
@@ -9,12 +9,9 @@
 }
 
 .radius {
-	border-radius: 10px;
+	border-radius: 40px;
 }
 
-.shadowDepth0 {
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-}
 
 .shadowDepth1 {
 	box-shadow:
@@ -23,11 +20,12 @@
 }
 
 .card {
-	height: 500px;
-	margin-bottom: 1.6rem;
-	box-shadow: -4px 8px 16px 0 #e770ff3d;
+	height: 460px;
+	width: 335px;
+	box-shadow: 0px 0px 16px 0 #e770ff3d;
 
-	background: url(/assets/images/magicard.jpg);
+	background: url(/assets/images/project_card.png);
+	background-color: #ffffff00;
 
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -43,24 +41,28 @@
 	margin-right: 1.9rem;
 }
 
+.card__header {
+	padding-top: 4.95rem;
+}
+
 .card__title {
-	padding-top: 1.7rem;
-	padding-bottom: 0.5rem;
+	margin-top: 1.7rem;
+	text-align: center;
 	font-size: 1.3rem;
+	text-shadow: #000;
 }
 
 .card__image {
-	min-height: 220px;
-	max-height: 220px;
-	width: 85%;
+	min-height: 235px;
+	max-height: 239px;
 
-	margin-left: 1.67rem;
-	margin-right: 1.67rem;
+	margin-left: 3rem;
+	margin-right: 3rem;
 
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
-	align-items: stretch;
+
 }
 
 .card__image img {
@@ -73,8 +75,26 @@
 }
 
 .card__meta {
-	margin-top: 0.5rem;
+	margin-top: 2rem;
 	margin-bottom: 0.5rem;
+}
+
+.card-technology {
+	border: 2px solid #ead6ed;
+	border-radius: 1px;
+	background-color: #a884f3;
+	color: #fff;
+	margin: 0 4px;
+	padding: 3px 5px;
+	border-radius: 5px;
+}
+
+.card-technology:first-child {
+	margin-left: 0px;
+}
+
+.card-technology:last-child {
+	margin-right: 0px;
 }
 
 .card__article {
@@ -82,8 +102,8 @@
 	margin-bottom: 0.6rem;
 	margin-left: 1.8rem;
 	margin-right: 1.8rem;
+
 	font-size: 0.9rem;
-	/*height: 132px;*/
 	height: 8.2rem;
 }
 
@@ -91,37 +111,14 @@
 	position: relative;
 }
 
-.demo {
-	margin-top: 0.8rem;
-	margin-bottom: 0.8rem;
-
-	font-size: 1rem;
-	font-family: inherit;
-	color: #000;
-}
-
 .card__title a {
-	text-decoration: wavy;
-	color: #000;
+	text-decoration: none;
+	color: #ffffff;
 	transition: all 0.5s ease;
 }
 
 .card__title a:hover {
-	color: #2980b9;
-}
-
-.paragraph-text-normal {
-	color: #000;
-}
-
-.demo a {
-	display: inline-block;
-	color: #000000;
-}
-
-.demo a:hover {
-	color: #2980b9;
-	transform: scale(1.1);
+	color: #ffc400;
 }
 
 #project-image {
