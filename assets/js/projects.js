@@ -115,6 +115,7 @@ let project_mapper = project => {
             let cardHtml = html
                 .replace('{{image}}', image)
                 .replace('{{link}}', project.link)
+                .replace('{{link}}', project.link)
                 .replace('{{title}}', project.title)
                 .replace('{{technologies}}', technologies);
 
