@@ -11,9 +11,14 @@
   --card-pic: '/assets/images/card.png'
 }
 
+@font-face {
+  font-family: "cubicfive";
+  src: url(/assets/fonts/cubicfive10.ttf);
+}
+
 body {
   min-width: 360px;
-  font-family: 'Roboto';
+  font-family: 'cubicfive';
   font-size: 16px;
   background-color: var(--background-color);
   color: var(--text-color);
@@ -188,7 +193,7 @@ img {
 
 .section {
   max-width: 768px;
-  margin: 60px auto;
+  margin: auto auto;
   padding: 20px 0;
   min-height: 100vh;
 
@@ -247,9 +252,13 @@ img {
 
 .paragraph-text {
   font-size: 20.8px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin: 30px auto;
   color: var(--text-color);
+}
+
+.contact-text {
+  font-size: 1.1rem;
 }
 
 .skill-grid-item {
