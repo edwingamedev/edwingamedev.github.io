@@ -37,8 +37,8 @@
 }
 
 .card__padding {
-	margin-left: 1.9rem;
-	margin-right: 1.9rem;
+	margin-left: 2.5rem;
+	margin-right: 2.5rem;
 }
 
 .card__header {
@@ -46,7 +46,7 @@
 }
 
 .card__title {
-	margin-top: 1.4rem;
+	margin-top: 2.4rem;
 	text-align: center;
 	font-size: 1.1rem;
 }
@@ -74,18 +74,18 @@
 }
 
 .card__meta {
-	margin-top: 2rem;
-	margin-bottom: 0.5rem;
+	margin-top: 1.6rem;
+	font-size: 0.9rem;
+	display: flex;
+	justify-content: left;
 }
 
 .card-technology {
-	border: 2px solid #ead6ed;
-	border-radius: 1px;
-	background-color: #a884f3;
-	color: #fff;
+	border-radius: 4px;
+	background-color: #905ea9;
+	color: #ead6ed;
 	margin: 0 4px;
 	padding: 3px 5px;
-	border-radius: 5px;
 }
 
 .card-technology:first-child {
