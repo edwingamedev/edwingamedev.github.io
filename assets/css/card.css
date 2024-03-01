@@ -43,7 +43,7 @@
 }
 
 .card__title {
-	margin-top: 2.4rem;
+	margin-top: 2.6rem;
 	text-align: center;
 	font-size: 1.1rem;
 }
@@ -70,8 +70,8 @@
 	margin: auto;
 }
 
-.card__meta {
-	margin-top: 1.6rem;
+.card__tech {
+	margin-top: 1.7rem;
 	font-size: 0.9rem;
 	display: flex;
 	justify-content: left;
