@@ -78,7 +78,7 @@ let render_projects = (slug) => {
             image: '/assets/images/projects/war_mech_defense.jpg',
             link: 'https://play.google.com/store/apps/details?id=br.com.ideas.farm.warmechdefense',
             title: 'War Mech Defense',
-            technologies: ['Unity', 'Pixel Art'],
+            technologies: ['Unity'],
             description: "Defense game in augmented reality where you have to survive the waves. Every target destroyed gives you experience, upon level up you can choose what to improve on your turret.",
             categories: ['games', 'AR']
         },
