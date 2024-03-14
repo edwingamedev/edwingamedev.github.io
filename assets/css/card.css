@@ -9,7 +9,7 @@
 }
 
 .radius {
-	border-radius: 40px;
+	border-radius: 20px;
 }
 
 .card__content {
@@ -17,7 +17,7 @@
 }
 
 .card {
-	height: 450px;
+	height: 410px;
 	width: 325px;
 	box-shadow: 0px 0px 16px 0 #0b8a8f;
 
@@ -34,31 +34,36 @@
 }
 
 .card__padding {
-	margin-left: 2.5rem;
-	margin-right: 2.5rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
 }
 
 .card__header {
-	padding-top: 4.7rem;
+	padding-top: 1rem;
 }
 
 .card__title {
-	margin-top: 2.5rem;
+	margin-top: 1.4rem;
 	text-align: center;
 	font-size: 1.1rem;
 }
 
 .card__image {
-	min-height: 235px;
-	max-height: 235px;
+	min-height: 270px;
+	max-height: 270px;
 
-	margin-left: 2.8rem;
-	margin-right: 2.8rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
 
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
 
+	background-color: #2e222f;
+
+	border: 2px solid #30e1b9;
+	box-shadow: 0px 0px 0 3px #2e222f;
+	border-radius: 5px;
 }
 
 .card__image img {
@@ -71,7 +76,7 @@
 }
 
 .card__tech {
-	margin-top: 1.7rem;
+	margin-top: 1.9rem;
 	font-size: 0.9rem;
 	display: flex;
 	justify-content: left;
