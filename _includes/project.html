@@ -1,0 +1,50 @@
+<div class="section-wrapper">
+    <section class="section project" id="project">
+        <div class="full-width">
+
+            <header class="section-heading" id="featured-projects-text">
+                {{ page.title }}
+            </header>
+
+            <div class="card__padding center-align">
+                {% for image in page.images %}
+
+                <img src={{image}} alt="image" id="project-image">
+
+                {% endfor %}
+            </div>
+
+            </br>
+
+            <div class="paragraph-text-normal card__padding">
+                {{ page.description }}
+            </div>
+
+
+            {% if page.play_now %}
+            </br>
+            </br>
+            <div class="center-align card__padding">
+                <iframe src={{page.play_now}} frameborder="0" width="600" height="245"></iframe>
+            </div>
+            </br>
+            {% endif %}
+
+
+            <div class="card__tech card__padding">
+                {% for tech in page.technologies %}
+                <span class="card-technology paragraph-text-normal">{{ tech }}</span>
+                {% endfor %}
+            </div>
+
+            </br>
+
+            <div class="card__padding">
+                <a href="/projects/">
+                    Back to projects
+                </a>
+            </div>
+
+        </div>
+    </section>
+</div>
