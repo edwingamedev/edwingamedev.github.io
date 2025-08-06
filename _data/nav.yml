@@ -3,6 +3,8 @@ default_nav:
     href: "/"
 
 home_nav:
+  - title: "HOME"
+    href: "#front"
   - title: "ABOUT"
     href: "#about"
   - title: "SKILLS"

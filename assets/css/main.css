@@ -1,7 +1,9 @@
 :root {
   --background-color: #222;
+  --nav-bar-color: #2b2929;
   --text-color: #ffc400;
   --text-color2: #fff;
+  --button-color: #ffa600;
 
   --progress-color: #8bac0f;
   --progress-background-color: #306230;
@@ -9,6 +11,10 @@
   --progress-title-background-color: #3a4242;
   --progress-bar-background-color: #57546f;
   --card-pic: '/assets/images/card.png'
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @font-face {
@@ -231,26 +237,16 @@ img {
   font-weight: bold;
 }
 
-.nav-links {
-  font-weight: bold;
-}
-
-.section-wrapper:nth-child(odd) {
+.space-background {
   background: url(../images/space.png);
 
   background-attachment: fixed;
   background-repeat: repeat;
 }
 
-.section-wrapper:nth-child(odd) .section-heading {
-  color: var(--text-color2);
-}
-
-.section-wrapper:nth-child(odd) .skills-subsection {
-  color: var(--text-color2);
-}
-
-.section-wrapper:nth-child(odd) .paragraph-text {
+.space-background .section-heading,
+.space-background .skills-subsection,
+.space-background .paragraph-text {
   color: var(--text-color2);
 }
 
@@ -408,13 +404,6 @@ img {
   font-weight: bold;
 }
 
-.profile-pic {
-  border-radius: 50%;
-  width: 170px;
-  height: 170px;
-  border: solid 2px white;
-}
-
 .self-pic {
   border-radius: 10%;
 }
@@ -422,6 +411,13 @@ img {
 .card-pic {
   border-radius: 5%;
   height: 400px;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 170px;
+  height: 170px;
+  border: solid 2px white;
 }
 
 .profile-pic:hover {

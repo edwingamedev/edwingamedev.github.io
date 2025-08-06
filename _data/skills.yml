@@ -1,0 +1,23 @@
+
+- name: Game development
+  level: 10
+- name: Unity
+  level: 10
+- name: C#
+  level: 10
+- name: Software engineering
+  level: 9
+- name: Mobile development
+  level: 8
+- name: Augmented reality
+  level: 8
+- name: Virtual reality
+  level: 8
+- name: Git
+  level: 7
+- name: Pixel art
+  level: 7
+- name: Lua
+  level: 6
+- name: HTML + CSS
+  level: 6
