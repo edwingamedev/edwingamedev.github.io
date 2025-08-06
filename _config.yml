@@ -20,5 +20,5 @@ favicon: /assets/images/favicon.ico
 
 collections:
   projects:
-    output: true        # so project pages get generated as HTML
+    output: true
     permalink: /projects/:name/

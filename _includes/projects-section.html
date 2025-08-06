@@ -1,45 +1,27 @@
 <div class="section-wrapper">
-    <section class="section projects" id="projects">
-        <div class="full-width">
+    <section class="miniature-grid-section" id="projects">
 
-            <header class="section-heading" id="featured-projects-text">
-                Projects
-            </header>
+        <div class="section-heading" id="featured-projects-text">Projects</div>
+        <div class="miniature-grid">
 
-            <div class="projects-wrapper">
-                {% for project in site.projects %}
-                {% if project.categories contains "featured" %}
-                <div class="wrapper">
-                    <div class="card radius card__content">
+            {% for project in site.projects %}
+            {% if project.categories contains "featured" %}
 
-                        <div class="card__header">
-                        </div>
+            <a class="miniature-card" href="{{ project.url }}">
+                <div class="miniature-image" style="background-image: url('{{ project.images }}')"></div>
+                <div class="miniature-info">
 
-                        <div class="card__image">
-                            <a href={{project.url}}>
-                                <img src={{project.images}} alt="image" id="project-image">
-                            </a>
-                        </div>
+                    <h3 class="miniature-title">{{ project.title }}</h3>
 
-                        <div class="card__title">
-                            <a href={{project.link}}>
-                                {{project.title}}
-                            </a>
-                        </div>
-
-                        <div class="card__tech card__padding">
-                            {% for tech in project.technologies %}
-                            <span class="card-technology paragraph-text-normal">{{ tech }}</span>
-                            {% endfor %}
-                        </div>
-                    </div>
                 </div>
-                {% endif %}
+            </a>
 
-                {% endfor %}
-            </div>
+            {% endif %}
+            {% endfor %}
 
-            <a class="nav-button with-border nav-links" href="/projects/">See more..</a>
+            <a class="miniature-more" href="/projects/">
+                <p class=" nav-links">And more...</p>
+            </a>
 
         </div>
     </section>
