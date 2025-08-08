@@ -13,7 +13,6 @@
     scroll-margin-top: var(--nav-bar-height);
 }
 
-
 .miniature-grid {
     display: grid;
     width: 100%;

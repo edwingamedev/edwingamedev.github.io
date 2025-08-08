@@ -315,48 +315,6 @@ img {
   background-color: var(--text-color2);
 }
 
-/* .project-card {
-  padding: 10px;
-  -webkit-transition: all ease-in-out 0.3s;
-  transition: all ease-in-out 0.3s;
-  color: var(--text-color2);
-} */
-
-/* .project-title {
-  font-weight: bold;
-  font-size: 20px;
-  font-size: 1.25rem;
-  margin: 10px 0 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-} */
-
-/* .project-link {
-  margin: 10px 0;
-  float: right;
-  font-weight: 500;
-  font-size: 16px;
-  font-size: 1rem;
-}
-
-.project-tags {
-  margin: 20px 0;
-}
-
-.project-tag-item {
-  background-color: var(--background-color);
-  border-radius: 3px;
-  padding: 5px;
-  color: var(--text-color2);
-} */
-
 .post-date {
   float: right;
 }
@@ -475,17 +433,6 @@ a {
 .bottom-link {
   margin: 0 5px;
 }
-
-/* .project-technologies {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (minmax(120px, 1fr))[auto-fill];
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  margin: 20px 0;
-  grid-gap: 5px;
-  grid-row-gap: 10px;
-  width: 100%;
-} */
 
 /* Here follow all the media queries */
 @media screen and (max-width: 850px) {

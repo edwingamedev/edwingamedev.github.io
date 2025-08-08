@@ -1,31 +1,3 @@
-<!-- <div class="section-wrapper">
-    <section class="miniature-grid-section" id="projects">
-
-        <div class="section-heading" id="featured-projects-text">Projects</div>
-        <div class="miniature-grid">
-
-            {% for project in site.projects %}
-            {% if project.categories contains "featured" %}
-
-            <a class="miniature-card" href="{{ project.url }}">
-                <div class="miniature-image" style="background-image: url('{{ project.images }}')"></div>
-                <div class="miniature-info">
-
-                    <h3 class="miniature-title">{{ project.title }}</h3>
-
-                </div>
-            </a>
-
-            {% endif %}
-            {% endfor %}
-
-            <a class="miniature-more" href="/projects/">
-                <p class=" nav-links">And more...</p>
-            </a>
-
-        </div>
-    </section>
-</div> -->
 <div class="section-wrapper">
     <section class="miniature-grid-section" id="projects">
 
@@ -35,7 +7,7 @@
             {% for project in site.projects %}
 
             <a class="miniature-card" href="{{ project.url }}">
-                <div class="miniature-image" style="background-image: url('{{ project.images }}')"></div>
+                <div class="miniature-image" style="background-image: url('{{ project.thumbnail }}')"></div>
                 <div class="miniature-info">
 
                     <h3 class="miniature-title">{{ project.title }}</h3>
