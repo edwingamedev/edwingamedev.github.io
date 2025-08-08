@@ -1,14 +1,21 @@
 :root {
   --background-color: #222;
+  --nav-bar-color: #2b2929;
   --text-color: #ffc400;
   --text-color2: #fff;
+  --button-color: #ffa600;
 
   --progress-color: #8bac0f;
   --progress-background-color: #306230;
   --progress-title-color: #ffffff;
   --progress-title-background-color: #3a4242;
   --progress-bar-background-color: #57546f;
-  --card-pic: '/assets/images/card.png'
+  --card-pic: '/assets/images/card.png';
+  --nav-bar-height: 40px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @font-face {
@@ -46,6 +53,7 @@ img {
   justify-content: center;
   position: relative;
   background: transparent;
+  scroll-margin-top: var(--nav-bar-height);
 }
 
 .head-title {
@@ -185,7 +193,7 @@ img {
 .projects-wrapper {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 50% 50%;
+  -ms-grid-columns: 30% 30%;
   grid-template-columns: 50% 50%;
   grid-gap: 10px;
 }
@@ -202,7 +210,6 @@ img {
   min-height: 100vh;
 
   display: -webkit-box;
-
   display: -ms-flexbox;
 
   display: flex;
@@ -212,6 +219,7 @@ img {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  scroll-margin-top: var(--nav-bar-height);
 }
 
 .section.skills>div {
@@ -231,26 +239,20 @@ img {
   font-weight: bold;
 }
 
-.nav-links {
-  font-weight: bold;
+.space-bg-color {
+  background-color: #23213d;
 }
 
-.section-wrapper:nth-child(odd) {
+.space-background {
   background: url(../images/space.png);
 
   background-attachment: fixed;
   background-repeat: repeat;
 }
 
-.section-wrapper:nth-child(odd) .section-heading {
-  color: var(--text-color2);
-}
-
-.section-wrapper:nth-child(odd) .skills-subsection {
-  color: var(--text-color2);
-}
-
-.section-wrapper:nth-child(odd) .paragraph-text {
+.space-background .section-heading,
+.space-background .skills-subsection,
+.space-background .paragraph-text {
   color: var(--text-color2);
 }
 
@@ -277,20 +279,6 @@ img {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-}
-
-
-.projects-grid {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto auto;
-  grid-template-columns: auto auto;
-  grid-auto-rows: auto;
-  grid-row-gap: 20px;
-  grid-column-gap: 10px;
-  -webkit-box-pack: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
 }
 
 .footer {
@@ -325,48 +313,6 @@ img {
   width: 96.6666px;
   height: 96.6666px;
   background-color: var(--text-color2);
-}
-
-.project-card {
-  padding: 10px;
-  -webkit-transition: all ease-in-out 0.3s;
-  transition: all ease-in-out 0.3s;
-  color: var(--text-color2);
-}
-
-.project-title {
-  font-weight: bold;
-  font-size: 20px;
-  font-size: 1.25rem;
-  margin: 10px 0 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.project-link {
-  margin: 10px 0;
-  float: right;
-  font-weight: 500;
-  font-size: 16px;
-  font-size: 1rem;
-}
-
-.project-tags {
-  margin: 20px 0;
-}
-
-.project-tag-item {
-  background-color: var(--background-color);
-  border-radius: 3px;
-  padding: 5px;
-  color: var(--text-color2);
 }
 
 .post-date {
@@ -408,13 +354,6 @@ img {
   font-weight: bold;
 }
 
-.profile-pic {
-  border-radius: 50%;
-  width: 170px;
-  height: 170px;
-  border: solid 2px white;
-}
-
 .self-pic {
   border-radius: 10%;
 }
@@ -422,6 +361,13 @@ img {
 .card-pic {
   border-radius: 5%;
   height: 400px;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 170px;
+  height: 170px;
+  border: solid 2px white;
 }
 
 .profile-pic:hover {
@@ -460,7 +406,7 @@ img {
   font-size: 1.1rem;
 }
 
-#nav {
+#front {
   background: url(../images/dawn-lake.png);
 
   background-position-y: 20%;
@@ -484,21 +430,8 @@ a {
   margin-top: 80px;
 }
 
-.head-inner-wrap {}
-
 .bottom-link {
   margin: 0 5px;
-}
-
-.project-technologies {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (minmax(120px, 1fr))[auto-fill];
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  margin: 20px 0;
-  grid-gap: 5px;
-  grid-row-gap: 10px;
-  width: 100%;
 }
 
 /* Here follow all the media queries */
@@ -568,10 +501,6 @@ a {
     top: 3rem;
   }
 
-  .projects-grid {
-    -ms-grid-columns: auto;
-    grid-template-columns: auto;
-  }
 
   .projects-wrapper {
     display: -ms-grid;

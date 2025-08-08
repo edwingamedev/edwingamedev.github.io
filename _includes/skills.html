@@ -1,10 +1,10 @@
-<div class="section-wrapper">
+<div class="section-wrapper space-background">
     <section class="section skills" id="skills">
         <div>
             <div class="section-heading" id="skills-text">Skills</div>
             <div class="skills-grid">
                 <div class="what-i-do">
-                    <p class="paragraph-text center-align">
+                    <p class="paragraph-text center-align space-bg-color">
                         I'm a game developer with a serious passion for pixel art and software engineering.
                     </p>
 
@@ -15,60 +15,13 @@
                 <div class="technical-skills">
                     <h3 class="center-align skills-subsection">Technical</h3>
                     <div class="progress-bars">
-                        <div class="progressbar">
-                            <div class="progressbar-title"><span>Game development</span></div>
-                            <div class="progressbar-bar  progressbar-bar-10"></div>
-                        </div> <!-- End Skill Bar -->
 
+                        {% for skill in site.data.skills %}
                         <div class="progressbar">
-                            <div class="progressbar-title"><span>Unity</span></div>
-                            <div class="progressbar-bar progressbar-bar-10"></div>
+                            <div class="progressbar-title"><span>{{skill.name}}</span></div>
+                            <div class="progressbar-bar  progressbar-bar-{{skill.level}}"></div>
                         </div> <!-- End Skill Bar -->
-
-                        <div class="progressbar">
-                            <div class="progressbar-title"><span>C#</span></div>
-                            <div class="progressbar-bar progressbar-bar-10"></div>
-                        </div> <!-- End Skill Bar -->
-
-                        <div class="progressbar">
-                            <div class="progressbar-title"><span>Software engineering</span></div>
-                            <div class="progressbar-bar progressbar-bar-9"></div>
-                        </div> <!-- End Skill Bar -->
-
-                        <div class="progressbar">
-                            <div class="progressbar-title"><span>Mobile development</span></div>
-                            <div class="progressbar-bar progressbar-bar-8"></div>
-                        </div> <!-- End Skill Bar -->
-
-                        <div class="progressbar">
-                            <div class="progressbar-title"><span>Augmented reality</span></div>
-                            <div class="progressbar-bar progressbar-bar-8"></div>
-                        </div> <!-- End Skill Bar -->
-
-                        <div class="progressbar">
-                            <div class="progressbar-title"><span>Virtual reality</span></div>
-                            <div class="progressbar-bar progressbar-bar-8"></div>
-                        </div> <!-- End Skill Bar -->
-
-                        <div class="progressbar">
-                            <div class="progressbar-title"><span>Git</span></div>
-                            <div class="progressbar-bar progressbar-bar-7"></div>
-                        </div> <!-- End Skill Bar -->
-
-                        <div class="progressbar">
-                            <div class="progressbar-title"><span>Pixel art</span></div>
-                            <div class="progressbar-bar progressbar-bar-7"></div>
-                        </div> <!-- End Skill Bar -->
-
-                        <div class="progressbar">
-                            <div class="progressbar-title"><span>Lua</span></div>
-                            <div class="progressbar-bar progressbar-bar-6"></div>
-                        </div> <!-- End Skill Bar -->
-
-                        <div class="progressbar">
-                            <div class="progressbar-title"><span>HTML + CSS</span></div>
-                            <div class="progressbar-bar progressbar-bar-6"></div>
-                        </div> <!-- End Skill Bar -->
+                        {% endfor %}
 
                     </div>
                 </div>

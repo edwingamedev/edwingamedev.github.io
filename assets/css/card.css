@@ -85,7 +85,7 @@
 .card-technology {
 	border-radius: 4px;
 	background-color: #0b8a8f;
-	color: #30e1b9;
+	color: #8ef3e2;
 	margin: 0 4px;
 	padding: 3px 5px;
 }
@@ -123,9 +123,40 @@
 	transition: all .5s;
 }
 
-#project-image:focus,
-#project-image:hover {
-	transform: scale(1.1);
+.video-wrapper {
+	position: relative;
+	border-radius: 15px;
+	padding-bottom: 56.25%;
+
+	height: 0;
+	overflow: hidden;
+	max-width: 100%;
+	box-shadow: 0px 0px 20px 0 #0b8a8f;
+}
+
+.video-wrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	justify-self: auto;
+}
+
+.insta {
+	position: relative;
+	overflow: hidden;
+
+	border: 0;
+	box-shadow: 0px 0px 20px 0 #0b8a8f;
+
+	margin: 1px;
+	padding-bottom: 56.25%;
+	max-width: 100%;
+
+	width: 98%;
+	width: -webkit-calc(100% - 2px);
+	width: calc(100% - 2px);
 }
 
 #demo {

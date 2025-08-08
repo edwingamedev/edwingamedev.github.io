@@ -1,0 +1,25 @@
+<div class="navbar" id="navbar">
+    <div class="navbar-left">
+        <a class="nav-logo-button" href="/">
+            <img src="{{ site.logo }}" alt="Logo" class="logo" />
+            <span class="site-title">
+                {{ site.title }}
+            </span>
+        </a>
+    </div>
+
+    <!-- Hamburger for mobile -->
+    <button class="nav-toggle with-border" id="navToggle" aria-label="Toggle navigation">
+        ☰
+    </button>
+
+    <div class="navbar-right" id="navLinks">
+        {% assign nav_key = page.nav_type | default: 'default_nav' %}
+        {% for item in site.data.nav[nav_key] %}
+        <a class="nav-button nav-links" href="{{ item.href }}">
+            {{ item.title }}
+        </a>
+        {% endfor %}
+        <button onclick="topFunction()" id="topButton"></button>
+    </div>
+</div>

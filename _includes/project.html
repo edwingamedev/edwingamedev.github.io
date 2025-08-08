@@ -1,0 +1,65 @@
+<div class="section-wrapper">
+    <section class="section project" id="project">
+        <div class="full-width">
+
+            <header class="section-heading" id="featured-projects-text">
+                {{ page.title }}
+            </header>
+
+            <div class="card__tech card__padding">
+                {% for tech in page.technologies %}
+                <span class="card-technology paragraph-text-normal">{{ tech }}</span>
+                {% endfor %}
+            </div>
+            </br>
+
+            <div class="card__padding center-align">
+
+                <img src={{page.header}} alt="image" id="project-image">
+
+                </br>
+                </br>
+            </div>
+
+            <div class="paragraph-text-normal card__padding">
+                {{ page.description }}
+            </div>
+            </br>
+
+            <div class="card__padding center-align">
+                {% for image in page.images %}
+
+                <img src={{image}} alt="image" id="project-image">
+
+                </br>
+                </br>
+                {% endfor %}
+            </div>
+
+            {% if page.youtube %}
+            <div class="video-wrapper">
+                <iframe src="{{ page.youtube }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            </br>
+            {% endif %}
+
+            {% if page.instagram %}
+            {% for posts in page.instagram %}
+            <blockquote class="instagram-media insta"
+                data-instgrm-permalink="https://www.instagram.com/p/{{ posts }}/?utm_source=ig_embed"
+                data-instgrm-version="14">
+            </blockquote>
+            <script async src="//www.instagram.com/embed.js"></script>
+            </br>
+            {% endfor %}
+            {% endif %}
+
+            {% if page.play_now %}
+            <div class="center-align card__padding">
+                <iframe src={{page.play_now}} frameborder="0" width="600" height="245"></iframe>
+            </div>
+            {% endif %}
+
+        </div>
+    </section>
+</div>

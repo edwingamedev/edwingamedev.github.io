@@ -1,23 +1,21 @@
 <div class="section-wrapper">
-    <section class="section projects" id="projects">
-        <div class="full-width">
+    <section class="miniature-grid-section" id="projects">
 
-            <header class="section-heading" id="featured-projects-text">
-                Projects
-            </header>
+        <div class="section-heading" id="featured-projects-text">Projects</div>
+        <div class="miniature-grid">
 
-            <div class="project-technologies">
-                <a id="featured" class="semi-transparent-button with-border white-button"
-                    onclick="selected('featured')">
-                    Featured
-                </a>
-                <a id="all" class="semi-transparent-button with-border white-button" onclick="selected('all')">
-                    All
-                </a>
-            </div>
+            {% for project in site.projects %}
 
-            <div class="projects-wrapper">
-            </div>
+            <a class="miniature-card" href="{{ project.url }}">
+                <div class="miniature-image" style="background-image: url('{{ project.thumbnail }}')"></div>
+                <div class="miniature-info">
+
+                    <h3 class="miniature-title">{{ project.title }}</h3>
+
+                </div>
+            </a>
+
+            {% endfor %}
 
         </div>
     </section>

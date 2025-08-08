@@ -17,3 +17,8 @@ self_pic: /assets/images/self.jpg
 card: /assets/images/card.png
 gamejolt_pic: /assets/images/gamejolt.png
 favicon: /assets/images/favicon.ico
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
