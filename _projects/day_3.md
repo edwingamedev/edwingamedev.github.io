@@ -12,7 +12,7 @@ play_now: 'https://widgets.gamejolt.com/package/v1?key=dj86HSHm'
 youtube: "https://www.youtube.com/embed/ad3l1-6K_ms?si=QwpqdOQbY9WMAUMF"
 
 technologies: ['Unity', 'Pixel Art']
-categories: ['featured', 'game jam', 'games']
+categories: ['game jam', 'games']
 
 layout: project
 nav_type: project_page_nav

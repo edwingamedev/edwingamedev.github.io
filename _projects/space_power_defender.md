@@ -13,7 +13,7 @@ link: 'https://gamejolt.com/games/space-power-defender/283201'
 play_now: 'https://widgets.gamejolt.com/package/v1?key=kwnJArAq'
 
 technologies: ['Unity', 'Pixel Art']
-categories: ['featured', 'game jam', 'games']
+categories: ['game jam', 'games']
 
 layout: project
 nav_type: project_page_nav

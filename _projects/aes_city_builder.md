@@ -15,7 +15,7 @@ instagram: ['BSzRaxrj4ww',
             
 
 technologies: ['Unity', 'C#','PHP', 'MYSQL']
-categories: ['games']
+categories: ['featured', 'games']
 
 layout: project
 nav_type: project_page_nav

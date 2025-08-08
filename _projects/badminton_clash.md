@@ -1,6 +1,6 @@
 ---
 title: 'Badminton Clash 3D'
-description: "A online 1v1 badminton game with real-time, physics-based gameplay. Several unlockable characters, gears and power-up abilities. Include in-game purchases,  gacha items, season pass, shop, daily login rewards, video ads, and more. Available on Google play and App store"
+description: "A online 1v1 badminton game with real-time, physics-based gameplay. Several unlockable characters, gears and power-up abilities. Include in-game purchases,  gacha items, season pass, shop, daily login rewards, video ads, and more. Available on Google play and App store."
 
 header: '/assets/images/projects/bdt/header.png'
 thumbnail: '/assets/images/projects/bdt/header.png'

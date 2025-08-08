@@ -1,6 +1,6 @@
 ---
 title: 'Horse Hero Racing'
-description: "Horse Racing game where you can train your horse, place them on a race and/or bet on horses, cheer for them using gems, collect prizes, rank on leaderboards, collect different types of horses. Several horses, jockeys and gears are unlockable through the shop."
+description: "Horse Racing game where you can train your horse, place them on a race and/or bet on horses, cheer for them using gems, collect prizes, rank on leaderboards, collect different types of horses. Several horses, jockeys and gears are unlockable through the shop. Available on Google play and App store."
 
 header: '/assets/images/projects/hhr/header.png'
 thumbnail: '/assets/images/projects/hhr/header.png'
