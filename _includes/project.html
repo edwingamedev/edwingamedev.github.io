@@ -24,8 +24,8 @@
             <div class="paragraph-text-normal card__padding">
                 {{ page.description }}
             </div>
-            </br>
 
+            </br>
             <div class="card__padding center-align">
                 {% for image in page.images %}
 
@@ -57,6 +57,12 @@
             {% if page.play_now %}
             <div class="center-align card__padding">
                 <iframe src={{page.play_now}} frameborder="0" width="600" height="245"></iframe>
+            </div>
+            {% endif %}
+
+            {% if page.link %}
+            <div class="center-align card__padding">
+                <a href={{page.link}}> Check it out!</a>
             </div>
             {% endif %}
 

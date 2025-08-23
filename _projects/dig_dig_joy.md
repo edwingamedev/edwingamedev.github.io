@@ -11,7 +11,7 @@ images:
     "/assets/images/projects/ddj/03.gif",
     "/assets/images/projects/ddj/04.gif",
   ]
-link: "https://gamejolt.com/games/digdigjoy/705969"
+
 play_now: "https://widgets.gamejolt.com/package/v1?key=atvR8Pd7"
 
 technologies: ["Unity", "Pixel Art"]
