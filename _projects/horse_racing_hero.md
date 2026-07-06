@@ -11,7 +11,7 @@ images:
     "/assets/images/projects/hhr/03.png",
     "/assets/images/projects/hhr/04.png",
   ]
-youtube: "https://www.youtube.com/watch?v=D6QlZCDXhmk"
+youtube: "https://www.youtube.com/embed/D6QlZCDXhmk"
 
 technologies: ["Unity", "3D"]
 categories: ["games"]
