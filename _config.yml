@@ -1,5 +1,7 @@
 title: Edwin Game Dev
-description: Senior Game Developer
+description: Senior Game Developer specializing in Unity, gameplay systems, tools and mobile development.
+url: "https://edwingamedev.github.io"
+baseurl: ""
 
 # Build settings
 exclude: [vendor/ruby]
