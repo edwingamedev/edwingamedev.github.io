@@ -4,33 +4,44 @@ set -e
 
 HOME_FILE="_site/index.html"
 
+normalize_html() {
+    tr '\n\r\t' '   ' < "$1" | tr -s ' '
+}
+
+strip_tags() {
+    sed 's/<[^>]*>/ /g' | tr -s ' '
+}
+
+HOME_HTML=$(normalize_html "$HOME_FILE")
+HOME_TEXT=$(printf '%s\n' "$HOME_HTML" | strip_tags)
+
 echo "Testing Contact section..."
 
 echo "Checking Contact section exists..."
-grep -q 'id="contact"' "$HOME_FILE"
-grep -q 'Contact' "$HOME_FILE"
+echo "$HOME_HTML" | grep -q 'id="contact"'
+echo "$HOME_TEXT" | grep -q 'Contact'
 
 echo "Checking updated Contact content..."
-grep -q "I'm open to opportunities, collaborations and conversations about game development." "$HOME_FILE"
-grep -q 'The best way to reach me is by email.' "$HOME_FILE"
-grep -q 'GitHub' "$HOME_FILE"
-grep -q 'LinkedIn' "$HOME_FILE"
-grep -q 'Game Jolt' "$HOME_FILE"
+echo "$HOME_TEXT" | grep -q "I'm open to opportunities, collaborations and conversations about game development."
+echo "$HOME_TEXT" | grep -q 'The best way to reach me is by email.'
+echo "$HOME_TEXT" | grep -q 'GitHub'
+echo "$HOME_TEXT" | grep -q 'LinkedIn'
+echo "$HOME_TEXT" | grep -q 'Game Jolt'
 
 echo "Checking contact methods..."
-grep -q 'mailto:' "$HOME_FILE"
-grep -q 'aria-label="GitHub"' "$HOME_FILE"
-grep -q 'aria-label="LinkedIn"' "$HOME_FILE"
-grep -q 'aria-label="Game Jolt"' "$HOME_FILE"
+echo "$HOME_HTML" | grep -q 'mailto:'
+echo "$HOME_HTML" | grep -q 'aria-label="GitHub"'
+echo "$HOME_HTML" | grep -q 'aria-label="LinkedIn"'
+echo "$HOME_HTML" | grep -q 'aria-label="Game Jolt"'
 
 echo "Checking removed social links..."
 
-if grep -q 'aria-label="Instagram"' "$HOME_FILE"; then
+if echo "$HOME_HTML" | grep -q 'aria-label="Instagram"'; then
     echo "ERROR: Instagram link is still present"
     exit 1
 fi
 
-if grep -q 'aria-label="Twitter"' "$HOME_FILE"; then
+if echo "$HOME_HTML" | grep -q 'aria-label="Twitter"'; then
     echo "ERROR: Twitter link is still present"
     exit 1
 fi
@@ -51,38 +62,13 @@ CONTACT_BLOCK=$(awk '
     }
 ' "$HOME_FILE")
 
-UNSAFE_LINKS=$(printf '%s\n' "$CONTACT_BLOCK" | awk '
-    /<a[[:space:]>]/ {
-        collecting = 1
-        tag = $0
+CONTACT_HTML=$(printf '%s\n' "$CONTACT_BLOCK" \
+    | tr '\n\r\t' '   ' \
+    | tr -s ' ')
 
-        if ($0 ~ />/) {
-            if (tag ~ /target[[:space:]]*=[[:space:]]*"_blank"/ &&
-                tag !~ /rel[[:space:]]*=[[:space:]]*"noopener noreferrer"/) {
-                print tag
-            }
-
-            collecting = 0
-            tag = ""
-        }
-
-        next
-    }
-
-    collecting {
-        tag = tag " " $0
-
-        if ($0 ~ />/) {
-            if (tag ~ /target[[:space:]]*=[[:space:]]*"_blank"/ &&
-                tag !~ /rel[[:space:]]*=[[:space:]]*"noopener noreferrer"/) {
-                print tag
-            }
-
-            collecting = 0
-            tag = ""
-        }
-    }
-')
+UNSAFE_LINKS=$(printf '%s\n' "$CONTACT_HTML" \
+    | grep -o '<a[^>]*target="_blank"[^>]*>' \
+    | grep -v 'rel="noopener noreferrer"' || true)
 
 if [ -n "$UNSAFE_LINKS" ]; then
     echo "$UNSAFE_LINKS"
