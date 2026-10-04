@@ -19,12 +19,8 @@
   --font-body: "Archivo", sans-serif;
   --font-pixel: "cubicfive", monospace;
 
-  --font-size-base: 20px;
-
   --font-size-small: 1rem;
   --font-size-body: 1.2rem;
-  --font-size-body-large: 1.35rem;
-
   --font-size-subheading: 1.55rem;
   --font-size-section-heading: 3rem;
   --font-size-hero: 4rem;
@@ -475,11 +471,15 @@ a {
 }
 
 /* =========================================================
-   SKILLS / WHAT I DO
+   SKILLS
    ========================================================= */
 
 .section.skills {
   max-width: var(--content-width-wide);
+}
+
+.skills .section-heading {
+  color: var(--text-color);
 }
 
 .section.skills > div {
@@ -488,97 +488,94 @@ a {
 
 .skills-content {
   width: 100%;
-}
-
-.skills-intro {
-  max-width: 760px;
-
-  margin: 0 auto var(--space-2xl);
-
-  text-align: center;
-
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-relaxed);
+  max-width: 920px;
+  margin: 0 auto;
 }
 
 .skills-core {
-  margin-bottom: var(--space-2xl);
-
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
 
-.skills-core-title {
-  margin: 0 0 var(--space-md);
-
+.skills-core-label {
   color: var(--text-color);
-
   font-size: var(--font-size-subheading);
+  font-weight: 700;
 }
 
 .skills-core-items {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-
-  gap: var(--space-sm);
+  gap: 12px;
 }
 
 .skills-core-items span {
-  padding: 10px 18px;
-
-  border: 2px solid var(--text-color);
-  border-radius: var(--border-radius-small);
-
+  padding: 8px 14px;
   color: var(--text-color2);
-
-  font-size: 1.1rem;
+  font-size: var(--font-size-body);
+  font-weight: 700;
+  border: 1px solid rgba(255, 196, 0, 0.35);
+  border-radius: var(--border-radius-small);
 }
 
-.skills-categories {
+.skills-grid {
   display: grid;
-
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-
-  gap: var(--space-lg);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 64px;
+  row-gap: 40px;
+  margin-top: 40px;
 }
 
 .skills-group {
-  padding: var(--space-lg);
-
-  background-color: var(--surface-color-transparent);
-
-  border-radius: var(--border-radius-medium);
+  min-width: 0;
+  text-align: center;
 }
 
 .skills-subsection {
-  margin: 0 0 18px;
-
-  text-align: left;
-
+  margin: 0 0 16px;
   color: var(--text-color);
-
   font-size: var(--font-size-subheading);
-  line-height: 1.35;
+  font-weight: 700;
 }
 
 .skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 12px;
   margin: 0;
   padding: 0;
-
   list-style: none;
 }
 
 .skills-list li {
-  margin-bottom: var(--space-sm);
-
   color: var(--text-color2);
-
-  font-size: 1.1rem;
-  line-height: 1.5;
+  font-size: var(--font-size-body);
+  font-weight: 500;
+  line-height: var(--line-height-relaxed);
 }
 
-.skills-list li:last-child {
-  margin-bottom: 0;
+.skills-list li:not(:last-child)::after {
+  content: "•";
+  margin-left: 12px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+@media screen and (max-width: 700px) {
+  .skills-core {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 }
 
 /* =========================================================
@@ -626,6 +623,7 @@ a {
   font-size: var(--font-size-body);
   font-weight: 500;
   line-height: var(--line-height-relaxed);
+  text-align: center;
 }
 
 .contact-text a {
