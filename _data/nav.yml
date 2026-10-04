@@ -24,7 +24,7 @@ home_nav:
 
 project_page_nav:
   - title: "WORK"
-    href: "/work/"
+    href: "/#work"
   - title: "EXPERIENCE"
     href: "/#experience"
   - title: "SKILLS"
@@ -36,7 +36,7 @@ project_page_nav:
 
 projects_nav:
   - title: "WORK"
-    href: "#work"
+    href: "/#work"
   - title: "EXPERIENCE"
     href: "/#experience"
   - title: "SKILLS"

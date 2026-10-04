@@ -1,22 +1,46 @@
 <div class="section-wrapper">
-    <section class="miniature-grid-section" id="projects">
+  <section class="miniature-grid-section projects-page" id="projects">
+    <header class="projects-page-header">
+      <h1 class="section-heading" id="projects-title">Projects</h1>
 
-        <div class="section-heading" id="featured-projects-text">Projects</div>
-        <div class="miniature-grid">
+      <p class="projects-page-description">
+        Games, prototypes and technical projects I've worked on over the years.
+      </p>
+    </header>
 
-            {% for project in site.projects %}
+    <div class="miniature-grid">
+      {% for project in site.projects %}
 
-            <a class="miniature-card" href="{{ project.url }}">
-                <div class="miniature-image" style="background-image: url('{{ project.thumbnail }}')"></div>
-                <div class="miniature-info">
+      <a
+        class="miniature-card"
+        href="{{ project.url }}"
+        aria-label="View project: {{ project.title }}"
+      >
+        <div
+          class="miniature-image"
+          style="background-image: url('{{ project.thumbnail }}')"
+          role="img"
+          aria-label="{{ project.title }} project thumbnail"
+        ></div>
 
-                    <h3 class="miniature-title">{{ project.title }}</h3>
+        <div class="miniature-info">
+          {% if project.project_type %}
+          <span class="miniature-type"> {{ project.project_type }} </span>
+          {% endif %}
 
-                </div>
-            </a>
+          <h2 class="miniature-title">{{ project.title }}</h2>
 
+          {% if project.focus %}
+          <div class="miniature-focus">
+            {% for item in project.focus limit: 3 %}
+            <span>{{ item }}</span>
             {% endfor %}
-
+          </div>
+          {% endif %}
         </div>
-    </section>
+      </a>
+
+      {% endfor %}
+    </div>
+  </section>
 </div>
