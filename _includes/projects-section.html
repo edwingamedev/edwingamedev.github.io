@@ -1,31 +1,105 @@
 <div class="section-wrapper">
-  <section class="miniature-grid-section work" id="work">
-    <h2 class="section-heading" id="work-title">Work</h2>
+  <section class="section projects" id="projects">
+    <div class="projects-content">
 
-    <div class="miniature-grid">
-      {% for project in site.projects %} {% if project.categories contains
-      "featured" %}
+      <h2 class="section-heading" id="projects-title">
+        Selected Projects
+      </h2>
 
-      <a
-        class="miniature-card"
-        href="{{ project.url }}"
-        aria-label="View project: {{ project.title }}"
-      >
-        <div
-          class="miniature-image"
-          style="background-image: url('{{ project.thumbnail }}')"
-          role="img"
-          aria-label="{{ project.title }} project thumbnail"
-        ></div>
+      {% assign featured_projects = site.projects
+        | where_exp: "project", "project.categories contains 'featured'"
+        | sort: "featured_order"
+      %}
 
-        <div class="miniature-info">
-          <h3 class="miniature-title">{{ project.title }}</h3>
-        </div>
-      </a>
+      <div class="projects-grid">
 
-      {% endif %} {% endfor %}
+        {% for project in featured_projects %}
 
-      <a class="miniature-more nav-links" href="/projects/"> And more... </a>
+          <a
+            class="project-card"
+            href="{{ project.url }}"
+            aria-label="View project: {{ project.title }}"
+          >
+            <div
+              class="project-card-image"
+              style="background-image: url('{{ project.thumbnail }}')"
+              role="img"
+              aria-label="{{ project.title }} project thumbnail"
+            ></div>
+
+            <div class="project-card-content">
+
+              <div class="project-card-main">
+
+                <h3 class="project-card-title">
+                  {{ project.title }}
+                </h3>
+
+                <div class="project-card-meta">
+
+                  {% if project.project_type %}
+                    <span class="project-card-type">
+                      {{ project.project_type }}
+                    </span>
+                  {% endif %}
+
+                  {% if project.project_type and project.company %}
+                    <span
+                      class="project-card-separator"
+                      aria-hidden="true"
+                    >
+                      •
+                    </span>
+                  {% endif %}
+
+                  {% if project.company %}
+                    <span class="project-card-company">
+                      {{ project.company }}
+                    </span>
+                  {% endif %}
+
+                </div>
+              </div>
+
+              {% if project.focus %}
+                <div class="project-card-focus">
+
+                  {% for item in project.focus limit: 3 %}
+
+                    <span class="project-card-focus-item">
+                      {{ item }}
+                    </span>
+
+                    {% unless forloop.last %}
+                      <span
+                        class="project-card-separator"
+                        aria-hidden="true"
+                      >
+                        •
+                      </span>
+                    {% endunless %}
+
+                  {% endfor %}
+
+                </div>
+              {% endif %}
+
+            </div>
+          </a>
+
+        {% endfor %}
+
+      </div>
+
+      <div class="projects-more">
+        <a
+          class="projects-more-link"
+          href="/projects/"
+        >
+          View all projects
+        </a>
+      </div>
+
     </div>
   </section>
 </div>

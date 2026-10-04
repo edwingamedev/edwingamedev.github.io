@@ -30,6 +30,8 @@ technologies:
   - Unity
   - C#
 
+featured_order: 1
+
 categories:
   - featured
   - games

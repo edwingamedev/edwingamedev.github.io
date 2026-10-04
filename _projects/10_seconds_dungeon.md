@@ -28,6 +28,8 @@ technologies:
   - C#
   - Pixel Art
 
+featured_order: 4
+
 categories:
   - featured
   - game jam

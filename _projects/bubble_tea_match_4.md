@@ -27,6 +27,8 @@ technologies:
   - C#
   - Pixel Art
 
+featured_order: 5
+
 categories:
   - featured
   - games

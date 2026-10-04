@@ -13,7 +13,7 @@ grep -q 'href="#skills"' "$HOME_FILE"
 grep -q 'href="#about"' "$HOME_FILE"
 grep -q 'href="#contact"' "$HOME_FILE"
 
-grep -q 'WORK' "$HOME_FILE"
+grep -q 'PROJECTS' "$HOME_FILE"
 grep -q 'SKILLS' "$HOME_FILE"
 grep -q 'ABOUT' "$HOME_FILE"
 grep -q 'CONTACT' "$HOME_FILE"
@@ -65,7 +65,7 @@ if [ -z "$PROJECTS_LINE" ] || [ -z "$SKILLS_LINE" ] || [ -z "$ABOUT_LINE" ] || [
 fi
 
 if [ "$PROJECTS_LINE" -ge "$SKILLS_LINE" ]; then
-    echo "ERROR: WORK must appear before SKILLS"
+    echo "ERROR: PROJECTS must appear before SKILLS"
     exit 1
 fi
 

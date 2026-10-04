@@ -27,6 +27,8 @@ technologies:
   - Unity
   - Pixel Art
 
+featured_order: 3
+
 categories:
   - featured
   - game jam

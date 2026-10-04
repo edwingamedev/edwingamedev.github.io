@@ -50,7 +50,7 @@ if [ -z "$PROJECTS_LINE" ] || \
 fi
 
 if [ "$PROJECTS_LINE" -ge "$EXPERIENCE_LINE" ]; then
-    echo "ERROR: WORK must appear before EXPERIENCE"
+    echo "ERROR: PROJECTS must appear before EXPERIENCE"
     exit 1
 fi
 

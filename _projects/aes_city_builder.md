@@ -28,6 +28,8 @@ technologies:
   - PHP
   - MySQL
 
+featured_order: 2
+
 categories:
   - featured
   - games
