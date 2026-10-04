@@ -18,6 +18,10 @@ echo "Running navigation tests..."
 bash _tests/test-navigation.sh
 
 echo
+echo "Running Hero tests..."
+bash _tests/test-hero.sh
+
+echo
 echo "Running Experience tests..."
 bash _tests/test-experience.sh
 

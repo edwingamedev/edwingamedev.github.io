@@ -1,21 +1,46 @@
 <section class="head" id="front">
-    <div class="head-inner-wrap">
-        <div class="profile-pic-div animated">
-            <a href="/" class="profile-pic-link" aria-label="Go to homepage">
+    <div class="head-inner-wrap hero-layout">
+
+        <div class="hero-content">
+            <p class="hero-eyebrow">
+                Senior Game Developer
+            </p>
+
+            <h1 class="head-name head-title animated" id="head-name">
+                Edwin Holanda
+            </h1>
+
+            <p class="head-punchline animated">
+                I build gameplay systems, tools and mobile features with Unity and C#.
+            </p>
+
+            <div class="hero-actions">
+                <a
+                    class="hero-button hero-button-primary"
+                    href="#projects"
+                >
+                    View Work
+                </a>
+
+                <a
+                    class="hero-button hero-button-secondary"
+                    href="#contact"
+                >
+                    Contact
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="profile-pic-div animated">
                 <img
                     src="{{ site.logo }}"
                     class="profile-pic"
-                    alt="Edwin Holanda"
+                    alt=""
+                    aria-hidden="true"
                 >
-            </a>
+            </div>
         </div>
 
-        <h1 class="head-name head-title animated" id="head-name">
-            {{ site.title }}
-        </h1>
-
-        <p class="head-punchline animated">
-            {{ site.description }}
-        </p>
     </div>
 </section>
