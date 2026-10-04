@@ -8,7 +8,11 @@ echo "Testing Skills section..."
 
 echo "Checking section exists..."
 grep -q 'id="skills"' "$HOME_FILE"
+
 HOME_HTML=$(tr '\n\r\t' '   ' < "$HOME_FILE" | tr -s ' ')
+
+echo "$HOME_HTML" | grep -q 'id="skills"'
+echo "$HOME_HTML" | grep -q '>Skills<'
 
 echo "Checking core stack..."
 grep -q 'Unity' "$HOME_FILE"
