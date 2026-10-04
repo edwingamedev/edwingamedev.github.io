@@ -30,4 +30,8 @@ echo "Running Skills tests..."
 bash _tests/test-skills.sh
 
 echo
+echo "Running Contact tests..."
+bash _tests/test-contact.sh
+
+echo
 echo "All tests passed"
