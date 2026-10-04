@@ -14,4 +14,8 @@ echo "Running HTML semantics tests..."
 bash _tests/test-html.sh
 
 echo
+echo "Running navigation tests..."
+bash _tests/test-navigation.sh
+
+echo
 echo "All tests passed"

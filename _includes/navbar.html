@@ -1,8 +1,14 @@
+{% if page.nav_type == "home_nav" %}
+    {% assign home_href = "#front" %}
+{% else %}
+    {% assign home_href = "/" %}
+{% endif %}
+
 <nav class="navbar" id="navbar" aria-label="Primary navigation">
     <div class="navbar-left">
         <a
             class="nav-logo-button"
-            href="/"
+            href="{{ home_href }}"
             aria-label="Go to homepage"
         >
             <img
