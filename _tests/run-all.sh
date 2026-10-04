@@ -18,4 +18,8 @@ echo "Running navigation tests..."
 bash _tests/test-navigation.sh
 
 echo
+echo "Running About tests..."
+bash _tests/test-about.sh
+
+echo
 echo "All tests passed"
