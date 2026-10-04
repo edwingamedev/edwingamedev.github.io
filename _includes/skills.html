@@ -1,0 +1,31 @@
+<div class="section-wrapper space-background">
+    <section class="section skills" id="skills">
+        <div>
+            <div class="section-heading" id="skills-text">Skills</div>
+            <div class="skills-grid">
+                <div class="what-i-do">
+                    <p class="paragraph-text justify-text space-bg-color">
+                        I'm a game developer with a serious passion for pixel art and software engineering.
+                    </p>
+
+                    <div class="profile-pic-div animated">
+                        <a class="card-pic"><img src="{{ site.card }}" class="card-pic" /></a>
+                    </div>
+                </div>
+                <div class="technical-skills">
+                    <h3 class="center-align skills-subsection">Technical</h3>
+                    <div class="progress-bars">
+
+                        {% for skill in site.data.skills %}
+                        <div class="progressbar">
+                            <div class="progressbar-title"><span>{{skill.name}}</span></div>
+                            <div class="progressbar-bar  progressbar-bar-{{skill.level}}"></div>
+                        </div> <!-- End Skill Bar -->
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

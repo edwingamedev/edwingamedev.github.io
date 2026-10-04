@@ -1,0 +1,25 @@
+title: Edwin Game Dev
+description: Senior Game Developer
+
+# Build settings
+exclude: [vendor/ruby]
+
+# Personalization
+instagram: https://www.instagram.com/edwingamedev
+linkedin: https://www.linkedin.com/in/edwinjonesholanda
+twitter: https://twitter.com/edwingamedev
+gamejolt: https://gamejolt.com/@edwingamedev
+github: https://github.com/edwingamedev
+email: edwinjonesholanda@gmail.com
+
+# absolute or relative
+logo: /assets/images/logo.png
+self_pic: /assets/images/self.jpg
+card: /assets/images/card.png
+gamejolt_pic: /assets/images/gamejolt.png
+favicon: /assets/images/favicon.ico
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/

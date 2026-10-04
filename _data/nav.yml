@@ -1,0 +1,39 @@
+default_nav:
+  - title: "HOME"
+    href: "/"
+
+home_nav:
+  - title: "HOME"
+    href: "#front"
+  - title: "ABOUT"
+    href: "#about"
+  - title: "SKILLS"
+    href: "#skills"
+  - title: "PROJECTS"
+    href: "#projects"
+  - title: "CONTACT"
+    href: "#contact"
+
+project_page_nav:
+  - title: "HOME"
+    href: "/"
+  - title: "PROJECTS"
+    href: "/projects"
+  - title: "CONTACT"
+    href: "#contact"
+
+projects_nav:
+  - title: "HOME"
+    href: "/"
+  - title: "PROJECTS"
+    href: "#projects"
+  - title: "CONTACT"
+    href: "#contact"
+
+privacy_policy_nav:
+  - title: "HOME"
+    href: "/"
+  - title: "PRIVACY"
+    href: "#PRIVACY"
+  - title: "CONTACT"
+    href: "#contact"
