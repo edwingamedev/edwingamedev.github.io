@@ -22,4 +22,8 @@ echo "Running About tests..."
 bash _tests/test-about.sh
 
 echo
+echo "Running Skills tests..."
+bash _tests/test-skills.sh
+
+echo
 echo "All tests passed"

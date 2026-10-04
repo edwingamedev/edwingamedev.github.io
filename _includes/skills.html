@@ -2,13 +2,13 @@
     <section class="section skills" id="skills">
         <div>
             <h2 class="section-heading" id="skills-text">
-                Skills
+                What I Do
             </h2>
 
             <div class="skills-grid">
                 <div class="what-i-do">
                     <p class="paragraph-text justify-text space-bg-color">
-                        I'm a game developer with a serious passion for pixel art and software engineering.
+                        I build gameplay systems, tools and mobile features with Unity and C#, focusing on maintainable code, performance and practical solutions for production.
                     </p>
 
                     <div class="profile-pic-div animated">
@@ -22,31 +22,36 @@
                 </div>
 
                 <div class="technical-skills">
-                    <h3 class="center-align skills-subsection">
-                        Technical
-                    </h3>
+                    <section class="skills-group skills-core">
+                        <h3 class="center-align skills-subsection">
+                            Core
+                        </h3>
 
-                    <div class="progress-bars">
-                        {% for skill in site.data.skills %}
-                            <div
-                                class="progressbar"
-                                role="progressbar"
-                                aria-label="{{ skill.name }}"
-                                aria-valuemin="0"
-                                aria-valuemax="10"
-                                aria-valuenow="{{ skill.level }}"
-                            >
-                                <div class="progressbar-title">
-                                    <span>{{ skill.name }}</span>
-                                </div>
+                        <ul class="skills-list">
+                            <li class="paragraph-text-normal">
+                                Unity
+                            </li>
+                            <li class="paragraph-text-normal">
+                                C#
+                            </li>
+                        </ul>
+                    </section>
 
-                                <div
-                                    class="progressbar-bar progressbar-bar-{{ skill.level }}"
-                                    aria-hidden="true"
-                                ></div>
-                            </div>
-                        {% endfor %}
-                    </div>
+                    {% for group in site.data.skills %}
+                        <section class="skills-group">
+                            <h3 class="center-align skills-subsection">
+                                {{ group.category }}
+                            </h3>
+
+                            <ul class="skills-list">
+                                {% for item in group.items %}
+                                    <li class="paragraph-text-normal">
+                                        {{ item }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </section>
+                    {% endfor %}
                 </div>
             </div>
         </div>

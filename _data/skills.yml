@@ -1,23 +1,47 @@
+- category: Gameplay
+  items:
+    - Gameplay Systems
+    - Physics
+    - AI
+    - UI Systems
+    - Progression Systems
 
-- name: Game development
-  level: 10
-- name: Unity
-  level: 10
-- name: C#
-  level: 10
-- name: Software engineering
-  level: 9
-- name: Mobile development
-  level: 8
-- name: Augmented reality
-  level: 8
-- name: Virtual reality
-  level: 8
-- name: Git
-  level: 7
-- name: Pixel art
-  level: 7
-- name: Lua
-  level: 6
-- name: HTML + CSS
-  level: 6
+- category: Engineering
+  items:
+    - Software Architecture
+    - Design Patterns
+    - Dependency Injection
+    - Async Programming
+    - Performance Optimization
+    - Refactoring
+
+- category: LiveOps
+  items:
+    - Rewards Systems
+    - Season Passes
+    - Economy & Progression
+    - Remote Configuration
+    - Live Feature Development
+
+- category: Tools
+  items:
+    - Unity Editor Tools
+    - Build Pipelines
+    - CI/CD
+    - Git
+    - Internal Development Tools
+
+- category: SDK & Integration
+  items:
+    - SDK Integration
+    - REST APIs
+    - Backend Integration
+    - Analytics & Telemetry
+    - Native Android / iOS Integration
+
+- category: Platforms
+  items:
+    - Android
+    - iOS
+    - PC
+    - WebGL
