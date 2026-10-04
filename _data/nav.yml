@@ -1,6 +1,8 @@
 default_nav:
   - title: "WORK"
     href: "/#projects"
+  - title: "EXPERIENCE"
+    href: "/#experience"
   - title: "SKILLS"
     href: "/#skills"
   - title: "ABOUT"
@@ -11,6 +13,8 @@ default_nav:
 home_nav:
   - title: "WORK"
     href: "#projects"
+  - title: "EXPERIENCE"
+    href: "#experience"
   - title: "SKILLS"
     href: "#skills"
   - title: "ABOUT"
@@ -21,6 +25,8 @@ home_nav:
 project_page_nav:
   - title: "WORK"
     href: "/projects/"
+  - title: "EXPERIENCE"
+    href: "/#experience"
   - title: "SKILLS"
     href: "/#skills"
   - title: "ABOUT"
@@ -31,6 +37,8 @@ project_page_nav:
 projects_nav:
   - title: "WORK"
     href: "#projects"
+  - title: "EXPERIENCE"
+    href: "/#experience"
   - title: "SKILLS"
     href: "/#skills"
   - title: "ABOUT"
@@ -39,11 +47,5 @@ projects_nav:
     href: "/#contact"
 
 privacy_policy_nav:
-  - title: "WORK"
-    href: "/#projects"
-  - title: "SKILLS"
-    href: "/#skills"
-  - title: "ABOUT"
-    href: "/#about"
   - title: "CONTACT"
     href: "/#contact"

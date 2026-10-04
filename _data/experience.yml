@@ -1,0 +1,32 @@
+- company: Miniclip
+  role: Senior Unity Developer
+  period: 2022–2024
+  highlights:
+    - Gameplay and LiveOps systems
+    - Reusable features shared across multiple projects
+    - Internal tools and mobile production workflows
+
+- company: Marmalade Game Studio
+  role: Senior Game Programmer
+  period: 2026
+  highlights:
+    - Worked on Ticket to Ride
+    - Investigated and Fix console errors and visual issues
+    - Implemented a retry system for server requests
+
+- company: Edwin Game Dev
+  role: Independent Game Developer
+  period: 2017–2022
+  highlights:
+    - Gameplay programming and systems development
+    - Mobile and interactive projects
+    - Full project ownership from implementation to delivery
+
+- company: Ideas Farm
+  role: Senior Unity Developer
+  period: 2016–2020
+  highlights:
+    - Delivered 20+ B2B projects across games, interactive applications and immersive experiences
+    - Worked on architecture, code quality, scalability and performance
+    - Built reusable systems and backend-integrated applications
+    - Mentored junior developers on software architecture and design patterns
