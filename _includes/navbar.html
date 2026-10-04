@@ -1,7 +1,17 @@
-<div class="navbar" id="navbar">
+<nav class="navbar" id="navbar" aria-label="Primary navigation">
     <div class="navbar-left">
-        <a class="nav-logo-button" href="/">
-            <img src="{{ site.logo }}" alt="Logo" class="logo" />
+        <a
+            class="nav-logo-button"
+            href="/"
+            aria-label="Go to homepage"
+        >
+            <img
+                src="{{ site.logo }}"
+                alt=""
+                class="logo"
+                aria-hidden="true"
+            >
+
             <span class="site-title">
                 {{ site.title }}
             </span>
@@ -9,17 +19,34 @@
     </div>
 
     <!-- Hamburger for mobile -->
-    <button class="nav-toggle with-border" id="navToggle" aria-label="Toggle navigation">
+    <button
+        class="nav-toggle with-border"
+        id="navToggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-controls="navLinks"
+        aria-expanded="false"
+    >
         ☰
     </button>
 
     <div class="navbar-right" id="navLinks">
         {% assign nav_key = page.nav_type | default: 'default_nav' %}
+
         {% for item in site.data.nav[nav_key] %}
-        <a class="nav-button nav-links" href="{{ item.href }}">
-            {{ item.title }}
-        </a>
+            <a
+                class="nav-button nav-links"
+                href="{{ item.href }}"
+            >
+                {{ item.title }}
+            </a>
         {% endfor %}
-        <button onclick="topFunction()" id="topButton"></button>
+
+        <button
+            onclick="topFunction()"
+            id="topButton"
+            type="button"
+            aria-label="Back to top"
+        ></button>
     </div>
-</div>
+</nav>

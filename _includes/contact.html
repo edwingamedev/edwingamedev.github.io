@@ -2,57 +2,86 @@
     <section class="section contact" id="contact">
         <div>
 
-            <div class="section-heading space-bg-color" id="chat-text">Contact</div>
+            <h2 class="section-heading space-bg-color" id="chat-text">
+                Contact
+            </h2>
+
             <p class="paragraph-text justify-text space-bg-color">
                 I'd love to hear from you! Interesting work opportunity? Hit me up. Just want to talk about pixel art?
                 Awesome.
             </p>
+
             <p class="paragraph-text contact-text justify-text space-bg-color">
-                Please feel free to write to me for anything: <a href="mailto:{{ site.email }}">{{ site.email }}</a>. It
-                might take me a day to get back, but rest assured, you'll hear from me.
+                Please feel free to write to me for anything:
+                <a href="mailto:{{ site.email }}">
+                    {{ site.email }}
+                </a>.
+                It might take me a day to get back, but rest assured, you'll hear from me.
             </p>
 
             <div class="contact-links space-bg-color">
 
-                <span class="hint--bottom bottom-link" aria-label="email">
-                    <a href="mailto:{{ site.email }}">
-                        <i class="head-icon fas fa-envelope"></i>
+                <span class="hint--bottom bottom-link" aria-label="Email">
+                    <a
+                        href="mailto:{{ site.email }}"
+                        aria-label="Send me an email"
+                    >
+                        <i class="head-icon fas fa-envelope" aria-hidden="true"></i>
                     </a>
                 </span>
 
-                <span class="hint--bottom bottom-link" aria-label="github">
-                    <a href="{{ site.github }}">
-                        <i class="head-icon fab fa-github"></i>
+                <span class="hint--bottom bottom-link" aria-label="GitHub">
+                    <a
+                        href="{{ site.github }}"
+                        aria-label="GitHub"
+                    >
+                        <i class="head-icon fab fa-github" aria-hidden="true"></i>
                     </a>
                 </span>
 
-                <span class="hint--bottom bottom-link" aria-label="linkedIn">
-                    <a href="{{ site.linkedin }}">
-                        <i class="head-icon fab fa-linkedin"></i>
+                <span class="hint--bottom bottom-link" aria-label="LinkedIn">
+                    <a
+                        href="{{ site.linkedin }}"
+                        aria-label="LinkedIn"
+                    >
+                        <i class="head-icon fab fa-linkedin" aria-hidden="true"></i>
                     </a>
                 </span>
 
-                <span class="hint--bottom bottom-link" aria-label="instagram">
-                    <a href="{{ site.instagram }}">
-                        <i class="head-icon fab fa-instagram"></i>
+                <span class="hint--bottom bottom-link" aria-label="Instagram">
+                    <a
+                        href="{{ site.instagram }}"
+                        aria-label="Instagram"
+                    >
+                        <i class="head-icon fab fa-instagram" aria-hidden="true"></i>
                     </a>
                 </span>
 
-                <span class="hint--bottom bottom-link" aria-label="twitter">
-                    <a href="{{ site.twitter }}">
-                        <i class="head-icon fab fa-twitter"></i>
+                <span class="hint--bottom bottom-link" aria-label="Twitter">
+                    <a
+                        href="{{ site.twitter }}"
+                        aria-label="Twitter"
+                    >
+                        <i class="head-icon fab fa-twitter" aria-hidden="true"></i>
                     </a>
                 </span>
 
-                <!--filter: brightness(0) saturate(100%) invert(69%) sepia(77%) saturate(610%) hue-rotate(358deg) brightness(100%) contrast(105%); -->
-
-                <span>
-                    <a href="{{ site.gamejolt }}">
-                        <img class="head-icon" src="{{ site.gamejolt_pic }}"
-                            style="vertical-align:bottom; "
-                            width="30" />
+                <span class="hint--bottom bottom-link" aria-label="Game Jolt">
+                    <a
+                        href="{{ site.gamejolt }}"
+                        aria-label="Game Jolt"
+                    >
+                        <img
+                            class="head-icon"
+                            src="{{ site.gamejolt_pic }}"
+                            alt=""
+                            aria-hidden="true"
+                            style="vertical-align: bottom;"
+                            width="30"
+                        >
                     </a>
                 </span>
+
             </div>
 
         </div>

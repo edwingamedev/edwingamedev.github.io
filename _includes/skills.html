@@ -1,7 +1,10 @@
 <div class="section-wrapper space-background">
     <section class="section skills" id="skills">
         <div>
-            <div class="section-heading" id="skills-text">Skills</div>
+            <h2 class="section-heading" id="skills-text">
+                Skills
+            </h2>
+
             <div class="skills-grid">
                 <div class="what-i-do">
                     <p class="paragraph-text justify-text space-bg-color">
@@ -9,20 +12,40 @@
                     </p>
 
                     <div class="profile-pic-div animated">
-                        <a class="card-pic"><img src="{{ site.card }}" class="card-pic" /></a>
+                        <img
+                            src="{{ site.card }}"
+                            class="card-pic"
+                            alt=""
+                            aria-hidden="true"
+                        >
                     </div>
                 </div>
+
                 <div class="technical-skills">
-                    <h3 class="center-align skills-subsection">Technical</h3>
+                    <h3 class="center-align skills-subsection">
+                        Technical
+                    </h3>
+
                     <div class="progress-bars">
-
                         {% for skill in site.data.skills %}
-                        <div class="progressbar">
-                            <div class="progressbar-title"><span>{{skill.name}}</span></div>
-                            <div class="progressbar-bar  progressbar-bar-{{skill.level}}"></div>
-                        </div> <!-- End Skill Bar -->
-                        {% endfor %}
+                            <div
+                                class="progressbar"
+                                role="progressbar"
+                                aria-label="{{ skill.name }}"
+                                aria-valuemin="0"
+                                aria-valuemax="10"
+                                aria-valuenow="{{ skill.level }}"
+                            >
+                                <div class="progressbar-title">
+                                    <span>{{ skill.name }}</span>
+                                </div>
 
+                                <div
+                                    class="progressbar-bar progressbar-bar-{{ skill.level }}"
+                                    aria-hidden="true"
+                                ></div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

@@ -1,2 +1,10 @@
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/navigationToggle.js"></script>
+
+<script>
+    const dateElement = document.getElementById("date");
+
+    if (dateElement) {
+        dateElement.textContent = new Date().getFullYear();
+    }
+</script>
