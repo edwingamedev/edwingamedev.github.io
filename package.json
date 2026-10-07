@@ -6,7 +6,9 @@
     "lint:js": "eslint .",
     "lint:css": "stylelint \"assets/css/**/*.css\"",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test": "bash _tests/run-all.sh",
+    "check": "npm run lint && npm test"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
