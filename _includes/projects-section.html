@@ -1,19 +1,17 @@
 <div class="section-wrapper">
   <section class="section projects" id="projects">
     <div class="projects-content">
-
-      <h2 class="section-heading" id="projects-title">
-        Selected Projects
-      </h2>
+      <h2 class="section-heading" id="projects-title">Selected Projects</h2>
 
       {% assign featured_projects = site.projects
-        | where_exp: "project", "project.categories contains 'featured'"
-        | sort: "featured_order"
+        | where_exp: 'project', "project.categories contains 'featured'"
+        | sort: 'featured_order'
       %}
 
       <div class="projects-grid">
         {% for project in featured_projects %}
-          {% include project-card.html
+          {%
+            include project-card.html
             project=project
             show_summary=false
           %}
@@ -21,11 +19,8 @@
       </div>
 
       <div class="projects-more">
-        <a class="projects-more-link" href="/projects/">
-          View all projects
-        </a>
+        <a class="projects-more-link" href="/projects/"> View all projects </a>
       </div>
-
     </div>
   </section>
 </div>

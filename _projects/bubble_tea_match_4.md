@@ -36,8 +36,7 @@ categories:
 header: "/assets/images/projects/btm4/header.png"
 thumbnail: "/assets/images/projects/btm4/thumb.png"
 
-images:
-  ["/assets/images/projects/btm4/01.gif", "/assets/images/projects/btm4/02.gif"]
+images: ["/assets/images/projects/btm4/01.gif", "/assets/images/projects/btm4/02.gif"]
 
 play_now: "https://widgets.gamejolt.com/package/v1?key=Rs4Gj7y2"
 

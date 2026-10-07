@@ -1,58 +1,53 @@
-{% if page.nav_type == "home_nav" %}
-    {% assign home_href = "#front" %}
+{% if page.nav_type == 'home_nav' %}
+  {% assign home_href = '#front' %}
 {% else %}
-    {% assign home_href = "/" %}
+  {% assign home_href = '/' %}
 {% endif %}
 
 <nav class="navbar" id="navbar" aria-label="Primary navigation">
-    <div class="navbar-left">
-        <a
-            class="nav-logo-button"
-            href="{{ home_href }}"
-            aria-label="Go to homepage"
-        >
-            <img
-                src="{{ site.logo }}"
-                alt=""
-                class="logo"
-                aria-hidden="true"
-            >
-
-            <span class="site-title">
-                {{ site.title }}
-            </span>
-        </a>
-    </div>
-
-    <!-- Hamburger for mobile -->
-    <button
-        class="nav-toggle with-border"
-        id="navToggle"
-        type="button"
-        aria-label="Toggle navigation"
-        aria-controls="navLinks"
-        aria-expanded="false"
+  <div class="navbar-left">
+    <a
+      class="nav-logo-button"
+      href="{{ home_href }}"
+      aria-label="Go to homepage"
     >
-        ☰
-    </button>
+      <img
+        src="{{ site.logo }}"
+        alt=""
+        class="logo"
+        aria-hidden="true"
+      >
 
-    <div class="navbar-right" id="navLinks">
-        {% assign nav_key = page.nav_type | default: 'default_nav' %}
+      <span class="site-title">
+        {{ site.title }}
+      </span>
+    </a>
+  </div>
 
-        {% for item in site.data.nav[nav_key] %}
-            <a
-                class="nav-button nav-links"
-                href="{{ item.href }}"
-            >
-                {{ item.title }}
-            </a>
-        {% endfor %}
+  <!-- Hamburger for mobile -->
+  <button
+    class="nav-toggle with-border"
+    id="navToggle"
+    type="button"
+    aria-label="Toggle navigation"
+    aria-controls="navLinks"
+    aria-expanded="false"
+  >
+    ☰
+  </button>
 
-        <button
-            onclick="topFunction()"
-            id="topButton"
-            type="button"
-            aria-label="Back to top"
-        ></button>
-    </div>
+  <div class="navbar-right" id="navLinks">
+    {% assign nav_key = page.nav_type | default: 'default_nav' %}
+
+    {% for item in site.data.nav[nav_key] %}
+      <a
+        class="nav-button nav-links"
+        href="{{ item.href }}"
+      >
+        {{ item.title }}
+      </a>
+    {% endfor %}
+
+    <button id="topButton" type="button" aria-label="Back to top"></button>
+  </div>
 </nav>

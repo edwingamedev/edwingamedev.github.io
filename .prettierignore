@@ -1,0 +1,9 @@
+_site
+node_modules
+vendor
+.bundle
+.jekyll-cache
+.sass-cache
+coverage
+
+assets/css/normalize.css

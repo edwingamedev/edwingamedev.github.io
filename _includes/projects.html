@@ -1,11 +1,8 @@
 <div class="section-wrapper">
   <section class="section projects projects-page" id="projects">
     <div class="projects-content">
-
       <header class="projects-page-header">
-        <h1 class="section-heading" id="projects-title">
-          Projects
-        </h1>
+        <h1 class="section-heading" id="projects-title">Projects</h1>
 
         <p class="projects-page-description">
           Games, prototypes and technical projects I've worked on over the years.
@@ -14,13 +11,13 @@
 
       <div class="projects-grid">
         {% for project in site.projects %}
-          {% include project-card.html
+          {%
+            include project-card.html
             project=project
             show_summary=true
           %}
         {% endfor %}
       </div>
-
     </div>
   </section>
 </div>

@@ -14,15 +14,15 @@
 
       <div class="skills-grid">
         {% for group in site.data.skills %}
-        <section class="skills-group">
-          <h3 class="skills-subsection space-bg-color">{{ group.category }}</h3>
+          <section class="skills-group">
+            <h3 class="skills-subsection space-bg-color">{{ group.category }}</h3>
 
-          <ul class="skills-list space-bg-color">
-            {% for item in group.items %}
-            <li>{{ item }}</li>
-            {% endfor %}
-          </ul>
-        </section>
+            <ul class="skills-list space-bg-color">
+              {% for item in group.items %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          </section>
         {% endfor %}
       </div>
     </div>
