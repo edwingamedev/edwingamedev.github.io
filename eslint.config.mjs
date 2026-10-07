@@ -4,13 +4,7 @@ import eslintConfigPrettier from "eslint-config-prettier";
 
 export default [
   {
-    ignores: [
-      "_site/**",
-      "node_modules/**",
-      "vendor/**",
-      ".jekyll-cache/**",
-      "coverage/**",
-    ],
+    ignores: ["_site/**", "node_modules/**", "vendor/**", ".jekyll-cache/**", "coverage/**"],
   },
 
   js.configs.recommended,
@@ -38,8 +32,8 @@ export default [
 
       "no-console": "warn",
       "no-debugger": "warn",
-      "eqeqeq": ["error", "always"],
-      "curly": ["error", "all"],
+      eqeqeq: ["error", "always"],
+      curly: ["error", "all"],
     },
   },
 

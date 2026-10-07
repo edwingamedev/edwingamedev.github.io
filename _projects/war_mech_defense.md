@@ -4,11 +4,7 @@ description: "Defense game in augmented reality (also released a VR version) whe
 
 header: "/assets/images/projects/wmd/header.jpg"
 thumbnail: "/assets/images/projects/wmd/header.jpg"
-images:
-  [
-    "/assets/images/projects/wmd/01.png",
-    "/assets/images/projects/wmd/tutorial.png",
-  ]
+images: ["/assets/images/projects/wmd/01.png", "/assets/images/projects/wmd/tutorial.png"]
 
 instagram: ["BN0BCeNg_cn", "BOAUYoOAmxb"]
 

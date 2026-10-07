@@ -812,8 +812,8 @@ a {
 .contact-links a:hover {
   transform: translateY(-2px);
 
-  filter: brightness(0) saturate(100%) invert(69%) sepia(77%) saturate(610%)
-    hue-rotate(358deg) brightness(100%) contrast(105%);
+  filter: brightness(0) saturate(100%) invert(69%) sepia(77%) saturate(610%) hue-rotate(358deg)
+    brightness(100%) contrast(105%);
 }
 
 .bottom-link {

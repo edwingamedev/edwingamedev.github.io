@@ -4,6 +4,8 @@ set -e
 
 HOME_FILE="_site/index.html"
 
+NORMALIZED_HOME=$(tr '\n' ' ' < "$HOME_FILE" | sed 's/[[:space:]]\+/ /g')
+
 echo "Testing About section..."
 
 echo "Checking About section exists..."
@@ -11,9 +13,9 @@ grep -q 'id="about"' "$HOME_FILE"
 grep -q 'About' "$HOME_FILE"
 
 echo "Checking updated About content..."
-grep -q 'Senior Game Developer' "$HOME_FILE"
-grep -q 'over 13 years of professional experience' "$HOME_FILE"
-grep -q 'gameplay systems, tools, mobile development and game architecture' "$HOME_FILE"
+grep -q "Senior Game Developer" <<< "$NORMALIZED_HOME"
+grep -q "over 13 years of professional experience" <<< "$NORMALIZED_HOME"
+grep -q "gameplay systems, tools, mobile development and game architecture" <<< "$NORMALIZED_HOME"
 grep -q 'shipped games' "$HOME_FILE"
 grep -q 'LiveOps systems' "$HOME_FILE"
 grep -q 'independently' "$HOME_FILE"

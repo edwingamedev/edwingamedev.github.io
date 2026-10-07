@@ -12,13 +12,11 @@
 
   <div class="project-card-content">
     <div class="project-card-main">
-
       <h3 class="project-card-title">
         {{ include.project.title }}
       </h3>
 
       <div class="project-card-meta">
-
         {% if include.project.project_type %}
           <span class="project-card-type">
             {{ include.project.project_type }}
@@ -26,9 +24,7 @@
         {% endif %}
 
         {% if include.project.project_type and include.project.company %}
-          <span class="project-card-separator" aria-hidden="true">
-            •
-          </span>
+          <span class="project-card-separator" aria-hidden="true"> • </span>
         {% endif %}
 
         {% if include.project.company %}
@@ -36,9 +32,7 @@
             {{ include.project.company }}
           </span>
         {% endif %}
-
       </div>
-
     </div>
 
     {% if include.show_summary and include.project.summary %}
@@ -49,21 +43,16 @@
 
     {% if include.project.focus %}
       <div class="project-card-focus">
-
         {% for item in include.project.focus limit: 3 %}
           <span class="project-card-focus-item">
             {{ item }}
           </span>
 
           {% unless forloop.last %}
-            <span class="project-card-separator" aria-hidden="true">
-              •
-            </span>
+            <span class="project-card-separator" aria-hidden="true"> • </span>
           {% endunless %}
         {% endfor %}
-
       </div>
     {% endif %}
-
   </div>
 </a>

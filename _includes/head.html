@@ -1,12 +1,27 @@
-{% if page.url == "/" %} {% assign seo_title = "Edwin Holanda | Senior Game
-Developer" %} {% elsif page.title %} {% capture seo_title %}{{ page.title }} |
-Edwin Holanda{% endcapture %} {% else %} {% assign seo_title = "Edwin Holanda |
-Senior Game Developer" %} {% endif %} {% if page.description %} {% assign
-seo_description = page.description %} {% elsif page.summary %} {% assign
-seo_description = page.summary %} {% else %} {% assign seo_description =
-site.description %} {% endif %} {% if page.og_image %} {% assign seo_image =
-page.og_image %} {% elsif page.header %} {% assign seo_image = page.header %} {%
-else %} {% assign seo_image = site.logo %} {% endif %}
+{% if page.url == '/' %}
+  {% assign seo_title = 'Edwin Holanda | Senior Game
+Developer' %}
+{% elsif page.title %}
+  {% capture seo_title %}{{ page.title }} |
+Edwin Holanda{% endcapture %}
+{% else %}
+  {% assign seo_title = 'Edwin Holanda |
+Senior Game Developer' %}
+{% endif %}
+{% if page.description %}
+  {% assign seo_description = page.description %}
+{% elsif page.summary %}
+  {% assign seo_description = page.summary %}
+{% else %}
+  {% assign seo_description = site.description %}
+{% endif %}
+{% if page.og_image %}
+  {% assign seo_image = page.og_image %}
+{% elsif page.header %}
+  {% assign seo_image = page.header %}
+{% else %}
+  {% assign seo_image = site.logo %}
+{% endif %}
 
 <head>
   <meta charset="UTF-8" />
