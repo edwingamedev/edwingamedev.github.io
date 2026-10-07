@@ -1,4 +1,4 @@
-/* Navigation bar*/
+/* Navigation */
 
 .navbar {
     display: flex;
@@ -80,11 +80,7 @@
 }
 
 .logo-div {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
     margin-bottom: 20px;
 }
