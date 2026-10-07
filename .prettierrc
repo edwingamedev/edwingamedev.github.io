@@ -1,0 +1,19 @@
+{
+  "plugins": ["@shopify/prettier-plugin-liquid"],
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": false,
+  "trailingComma": "es5",
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": ["*.html", "_includes/**/*.html", "_layouts/**/*.html"],
+      "options": {
+        "parser": "liquid-html"
+      }
+    }
+  ]
+}
