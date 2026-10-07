@@ -2,6 +2,8 @@
 
 set -e
 
+printf '>>> Initializing TESTS... <<<\n\n'
+
 echo "Building site..."
 bundle exec jekyll build
 
