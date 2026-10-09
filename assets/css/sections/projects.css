@@ -12,7 +12,7 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 360px));
+  grid-template-columns: repeat(3, 280px);
   justify-content: center;
   gap: 28px;
   margin-top: 32px;

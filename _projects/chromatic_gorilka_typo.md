@@ -5,7 +5,7 @@ summary: "A tower defense typing game started during Ludum Dare and developed fu
 
 description: "A tower defense typing game where chromatic gorillas, annoyed by the sound of your mechanical keyboard, attack your house and try to unplug your USB cable. Defend yourself by typing harder and louder while the attacks become increasingly chaotic."
 
-project_type: "Game Jam / Collaborative Project"
+project_type: "Collaborative Project"
 role: "Pixel Artist / Game Developer"
 company: "Sawce Games"
 
