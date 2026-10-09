@@ -1,0 +1,227 @@
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.head {
+  min-height: 560px;
+
+  padding: 96px 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  color: var(--text-color2);
+
+  background: transparent;
+
+  box-sizing: border-box;
+
+  scroll-margin-top: var(--nav-bar-height);
+}
+
+.head-inner-wrap {
+  width: 100%;
+  max-width: var(--content-width-wide);
+
+  margin: 0 auto;
+}
+
+.hero-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 3fr)
+    minmax(240px, 2fr);
+
+  align-items: center;
+
+  gap: var(--space-3xl);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-eyebrow {
+  margin: 0 0 var(--space-md);
+
+  color: var(--text-color);
+
+  font-size: 1.2rem;
+}
+
+.head-title {
+  display: block;
+
+  margin: 0;
+
+  color: var(--text-color2);
+
+  font-size: var(--font-size-hero);
+  font-weight: bold;
+  line-height: 1.1;
+
+  transition: color var(--transition-normal);
+}
+
+.head-punchline {
+  max-width: 620px;
+
+  margin: var(--space-lg) 0 0;
+
+  text-align: left;
+
+  color: var(--text-color2);
+
+  font-size: 1.4rem;
+  line-height: 1.65;
+}
+
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: var(--space-md);
+
+  margin-top: var(--space-xl);
+}
+
+.hero-button {
+  min-height: 44px;
+
+  padding: 12px 20px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border: 2px solid var(--text-color);
+
+  text-decoration: none;
+
+  transition:
+    transform var(--transition-fast),
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
+}
+
+.hero-button-primary {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+.hero-button-secondary {
+  background-color: transparent;
+  color: var(--text-color);
+}
+
+.profile-pic-div {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  margin: 0;
+}
+
+.profile-pic {
+  width: min(280px, 100%);
+  height: auto;
+
+  border: 2px solid white;
+  border-radius: 5%;
+
+  transition:
+    box-shadow var(--transition-normal),
+    transform var(--transition-normal);
+}
+
+.profile-pic:hover {
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.5);
+}
+
+#front {
+  background: url("../../images/dawn-lake.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 600px) {
+  .head {
+    min-height: auto;
+    padding: 72px 20px 56px;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    text-align: center;
+  }
+
+  .head-title {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .head-punchline {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    order: 2;
+  }
+
+  .profile-pic {
+    width: min(220px, 70vw);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .head {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .head-title {
+    font-size: 2.3rem;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-button {
+    flex: 1;
+  }
+}

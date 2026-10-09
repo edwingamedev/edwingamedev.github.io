@@ -1,0 +1,12 @@
+.justify-text {
+  text-align: justify;
+}
+
+.center-align {
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+  max-width: 100%;
+}

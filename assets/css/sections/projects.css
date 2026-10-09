@@ -1,0 +1,52 @@
+/* =========================================================
+   PROJECTS SECTION
+   ========================================================= */
+
+.section.projects {
+  max-width: var(--content-width-wide);
+}
+
+.projects-content {
+  width: 100%;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 360px));
+  justify-content: center;
+  gap: 28px;
+  margin-top: 32px;
+}
+
+.projects-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.projects-more-link {
+  color: var(--text-color);
+  font-size: var(--font-size-body);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.projects-more-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 1180px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 360px));
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .projects-grid {
+    grid-template-columns: minmax(0, 360px);
+    gap: 24px;
+  }
+}

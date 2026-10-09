@@ -1,0 +1,89 @@
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact {
+  margin-bottom: 0;
+}
+
+.contact .section-heading {
+  color: var(--text-color);
+}
+
+.contact-text {
+  max-width: 760px;
+
+  color: var(--text-color2);
+
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  font-weight: 500;
+  line-height: var(--line-height-relaxed);
+  text-align: center;
+}
+
+.contact-text a {
+  color: var(--text-color);
+  font-weight: 600;
+
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.contact-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+
+  margin-top: 48px;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--text-color2);
+  text-decoration: none;
+
+  transition:
+    transform var(--transition-fast),
+    filter var(--transition-fast);
+}
+
+.contact-links .head-icon {
+  margin: 0;
+
+  color: var(--text-color2);
+
+  font-size: 2rem;
+
+  transition: filter var(--transition-fast);
+}
+
+.contact-links a:hover {
+  transform: translateY(-2px);
+
+  filter: brightness(0) saturate(100%) invert(69%) sepia(77%) saturate(610%) hue-rotate(358deg)
+    brightness(100%) contrast(105%);
+}
+
+.bottom-link {
+  margin: 0 5px;
+}
+
+.head-icon {
+  margin: 0 5px;
+
+  color: #fff;
+
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .contact-text {
+    font-size: 1.05rem;
+  }
+}

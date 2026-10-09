@@ -1,0 +1,123 @@
+/* =========================================================
+   SKILLS
+   ========================================================= */
+
+.section.skills {
+  max-width: var(--content-width-wide);
+}
+
+.skills .section-heading {
+  color: var(--text-color);
+}
+
+.section.skills > div {
+  width: 100%;
+}
+
+.skills-content {
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.skills-core {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.skills-core-label {
+  color: var(--text-color);
+  font-size: var(--font-size-subheading);
+  font-weight: 700;
+}
+
+.skills-core-items {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.skills-core-items span {
+  padding: 8px 14px;
+  color: var(--text-color2);
+  font-size: var(--font-size-body);
+  font-weight: 700;
+  border: 1px solid rgba(255, 196, 0, 0.35);
+  border-radius: var(--border-radius-small);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 64px;
+  row-gap: 40px;
+  margin-top: 40px;
+}
+
+.skills-group {
+  min-width: 0;
+  text-align: center;
+}
+
+.skills-subsection {
+  margin: 0 0 16px;
+  color: var(--text-color);
+  font-size: var(--font-size-subheading);
+  font-weight: 700;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skills-list li {
+  color: var(--text-color2);
+  font-size: var(--font-size-body);
+  font-weight: 500;
+  line-height: var(--line-height-relaxed);
+}
+
+.skills-list li:not(:last-child)::after {
+  content: "•";
+  margin-left: 12px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+@media screen and (max-width: 700px) {
+  .skills-core {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .skills-group {
+    padding: 20px;
+  }
+
+  .skills-subsection {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .skills-group {
+    padding: 18px;
+  }
+}

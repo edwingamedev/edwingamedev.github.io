@@ -1,0 +1,56 @@
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+  /* Colors */
+  --background-color: #222;
+  --nav-bar-color: #2b2929;
+
+  --surface-color: #23213d;
+  --surface-color-transparent: rgba(35, 33, 61, 0.9);
+
+  --text-color: #ffc400;
+  --text-color2: #fff;
+
+  --button-color: #ffa600;
+
+  /* Typography */
+  --font-body: "Archivo", sans-serif;
+  --font-pixel: "cubicfive", monospace;
+
+  --font-size-small: 1rem;
+  --font-size-body: 1.2rem;
+  --font-size-subheading: 1.55rem;
+  --font-size-section-heading: 3rem;
+  --font-size-hero: 4rem;
+
+  --line-height-body: 1.65;
+  --line-height-relaxed: 1.75;
+
+  /* Layout */
+  --nav-bar-height: 40px;
+
+  --content-width: 768px;
+  --content-width-wide: 1100px;
+
+  --section-padding-x: 24px;
+  --section-padding-y: 64px;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 40px;
+  --space-3xl: 64px;
+
+  /* Borders */
+  --border-radius-small: 6px;
+  --border-radius-medium: 8px;
+
+  /* Animation */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}

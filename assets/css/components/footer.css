@@ -1,0 +1,26 @@
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+  min-height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--text-color2);
+
+  background: var(--background-color) url("../../images/floor.png");
+
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+.footer-text a {
+  color: inherit;
+}
+
+#date {
+  color: var(--text-color);
+}

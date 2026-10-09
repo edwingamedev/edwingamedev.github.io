@@ -1,0 +1,30 @@
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-grid {
+  display: grid;
+
+  grid-template-columns: 40% 60%;
+
+  gap: 50px;
+}
+
+.about .section-heading {
+  color: var(--text-color);
+}
+
+.about .paragraph-text {
+  color: var(--text-color2);
+}
+
+.self-pic {
+  border-radius: 10%;
+}
+
+@media screen and (max-width: 600px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}
