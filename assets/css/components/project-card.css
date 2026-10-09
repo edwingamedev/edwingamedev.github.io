@@ -3,15 +3,14 @@
    ========================================================= */
 
 .project-card {
+  /* Colors */
   --cartridge-body: #302d40;
   --cartridge-border: #504b60;
   --cartridge-groove: #201e2b;
   --cartridge-label: #1b1929;
   --cartridge-label-border: #161421;
-  --cartridge-detail-color: #777384;
-}
 
-.project-card {
+  /* Layout */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -28,7 +27,6 @@
 
   background: var(--cartridge-body);
   border: 2px solid var(--cartridge-border);
-
   border-radius: 16px 16px 6px 6px;
 
   transition:
@@ -101,7 +99,7 @@
 .project-card-main {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .project-card-title {
@@ -130,8 +128,8 @@
   flex-wrap: wrap;
   align-items: center;
 
-  margin-top: 12px;
-  padding-top: 0px;
+  margin-top: 8px;
+  padding-top: 0;
 
   border-top: none;
 }
@@ -157,8 +155,6 @@
 
 .project-card-separator {
   margin: 0 5px;
-  color: var(--text-color-muted);
-  font-size: 0.78rem;
   line-height: 1;
 }
 
@@ -166,7 +162,7 @@
 .project-card-company,
 .project-card-focus-item,
 .project-card-separator {
-  font-size: 0.78rem;
+  font-size: 0.74rem;
 }
 
 /* Cartridge label */
