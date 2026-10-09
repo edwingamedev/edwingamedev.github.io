@@ -31,17 +31,13 @@
       </div>
 
       {% if include.project.focus %}
-        <div class="project-card-focus">
+        <ul class="project-card-focus">
           {% for item in include.project.focus limit: 3 %}
-            <span class="project-card-focus-item">
+            <li class="project-card-focus-item">
               {{ item }}
-            </span>
-
-            {% unless forloop.last %}
-              <span class="project-card-separator" aria-hidden="true"> • </span>
-            {% endunless %}
+            </li>
           {% endfor %}
-        </div>
+        </ul>
       {% endif %}
     </div>
   </div>
