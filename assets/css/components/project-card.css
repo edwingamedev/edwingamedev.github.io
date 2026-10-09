@@ -3,114 +3,185 @@
    ========================================================= */
 
 .project-card {
+  --cartridge-body: #302d40;
+  --cartridge-border: #504b60;
+  --cartridge-groove: #201e2b;
+  --cartridge-label: #1b1929;
+  --cartridge-label-border: #161421;
+  --cartridge-detail-color: #777384;
+}
+
+.project-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 0;
-  padding: 14px;
+  box-sizing: border-box;
+
+  width: 280px;
+  height: 360px;
+  flex-shrink: 0;
+
+  padding: 28px 14px;
+
   color: var(--text-color2);
   text-decoration: none;
-  background: var(--surface-color);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px 14px 8px 8px;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 8px 18px rgba(0, 0, 0, 0.18);
+
+  background: var(--cartridge-body);
+  border: 2px solid var(--cartridge-border);
+
+  border-radius: 16px 16px 6px 6px;
+
   transition:
     transform var(--transition-fast),
-    filter var(--transition-fast);
+    border-color var(--transition-fast);
 }
 
 .project-card::before {
   content: "";
   position: absolute;
-  top: 7px;
+  top: 12px;
   left: 50%;
-  width: 34%;
+
+  width: 38%;
   height: 4px;
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 999px;
+
   transform: translateX(-50%);
+
+  background: var(--cartridge-groove);
+
+  border-radius: 0 0 3px 3px;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  bottom: 9px;
+  left: 50%;
+
+  width: 0;
+  height: 0;
+
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--cartridge-groove);
+
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  filter: brightness(1.08);
+  transform: translateY(-4px);
+  border-color: var(--text-color);
 }
 
 .project-card-image {
+  flex-shrink: 0;
+
   width: 100%;
-  margin-top: 4px;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 16 / 10;
+
+  background-color: var(--cartridge-label);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 6px 6px 3px 3px;
+
+  border: none;
+  border-radius: 3px;
 }
 
 .project-card-content {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  padding: 14px 8px 8px;
+
+  min-height: 0;
+  padding: 12px 0 16px;
 }
 
 .project-card-main {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 12px;
 }
 
 .project-card-title {
   margin: 0;
   color: var(--text-color2);
-  font-size: var(--font-size-subheading);
-  font-weight: 700;
-  line-height: 1.1;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.15;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 
-.project-card-meta,
+.project-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+}
+
 .project-card-focus {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+
+  margin-top: 12px;
+  padding-top: 0px;
+
+  border-top: none;
 }
 
-.project-card-meta {
-  margin: 0;
+.project-card-type,
+.project-card-company {
+  color: var(--text-color);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.project-card-separator,
+.project-card-focus-item {
+  color: var(--text-color-muted);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.project-card-company,
+.project-card-focus-item {
+  opacity: 1;
+}
+
+.project-card-separator {
+  margin: 0 5px;
+  color: var(--text-color-muted);
+  font-size: 0.78rem;
+  line-height: 1;
 }
 
 .project-card-type,
 .project-card-company,
-.project-card-focus-item {
-  color: var(--text-color2);
-  font-size: 0.82rem;
-  line-height: 1.4;
-}
-
-.project-card-type {
-  color: var(--text-color);
-  font-weight: 600;
-}
-
-.project-card-company {
-  font-weight: 600;
-  opacity: 0.65;
-}
-
-.project-card-focus {
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.project-card-focus-item {
-  font-weight: 500;
-  opacity: 0.7;
-}
-
+.project-card-focus-item,
 .project-card-separator {
-  margin: 0 2px;
-  color: rgba(160, 160, 160, 0.65);
-  font-size: 0.82rem;
-  line-height: 1;
+  font-size: 0.78rem;
+}
+
+/* Cartridge label */
+
+.project-card-label {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  min-height: 0;
+  padding: 6px;
+
+  overflow: hidden;
+
+  background: var(--cartridge-label);
+  border: 2px solid var(--cartridge-label-border);
+  border-radius: 5px;
 }
