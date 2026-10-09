@@ -14,6 +14,7 @@
   display: grid;
   grid-template-columns: repeat(3, 280px);
   justify-content: center;
+  justify-items: center;
   gap: 28px;
   margin-top: 32px;
 }
