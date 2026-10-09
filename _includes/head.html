@@ -1,30 +1,9 @@
-{% if page.url == '/' %}
-  {% assign seo_title = 'Edwin Holanda | Senior Game
-Developer' %}
-{% elsif page.title %}
-  {% capture seo_title %}{{ page.title }} |
-Edwin Holanda{% endcapture %}
-{% else %}
-  {% assign seo_title = 'Edwin Holanda |
-Senior Game Developer' %}
-{% endif %}
-{% if page.description %}
-  {% assign seo_description = page.description %}
-{% elsif page.summary %}
-  {% assign seo_description = page.summary %}
-{% else %}
-  {% assign seo_description = site.description %}
-{% endif %}
-{% if page.og_image %}
-  {% assign seo_image = page.og_image %}
-{% elsif page.header %}
-  {% assign seo_image = page.header %}
-{% else %}
-  {% assign seo_image = site.logo %}
-{% endif %}
-
 <head>
+  <!-- Document -->
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {% include seo.html %}
 
   <title>{{ seo_title | strip | escape }}</title>
 
@@ -33,51 +12,32 @@ Senior Game Developer' %}
     content="{{ seo_description | strip_html | strip_newlines | escape }}"
   />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <link rel="canonical" href="{{ page.url | absolute_url }}" />
 
   <!-- Open Graph -->
-  <meta
-    property="og:image"
-    content="{% if seo_image contains '://' %}{{ seo_image }}{% else %}{{ seo_image | absolute_url }}{% endif %}"
-  />
-
   <meta property="og:title" content="{{ seo_title | strip | escape }}" />
-
-  <meta property="og:type" content="website" />
-
-  <meta property="og:url" content="{{ page.url | absolute_url }}" />
-
-  <meta property="og:site_name" content="Edwin Holanda" />
-
   <meta
     property="og:description"
     content="{{ seo_description | strip_html | strip_newlines | escape }}"
   />
+  <meta property="og:image" content="{{ seo_image_url }}" />
+  <meta property="og:url" content="{{ page.url | absolute_url }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Edwin Holanda" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-
   <meta name="twitter:title" content="{{ seo_title | strip | escape }}" />
-
   <meta
     name="twitter:description"
     content="{{ seo_description | strip_html | strip_newlines | escape }}"
   />
+  <meta name="twitter:image" content="{{ seo_image_url }}" />
 
-  <meta
-    name="twitter:image"
-    content="{% if seo_image contains '://' %}{{ seo_image }}{% else %}{{ seo_image | absolute_url }}{% endif %}"
-  />
+  <!-- Icons -->
+  <link rel="icon" type="image/x-icon" href="{{ site.favicon | relative_url }}" />
 
-  <link rel="icon" type="image/x-icon" href="{{ site.favicon }}" />
-
-  <link rel="stylesheet" href="/assets/css/normalize.css" />
-  <link rel="stylesheet" href="/assets/css/navigation-bar.css" />
-  <link rel="stylesheet" href="/assets/css/main.css" />
-  <link rel="stylesheet" href="/assets/css/card.css" />
-
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -86,6 +46,39 @@ Senior Game Developer' %}
     rel="stylesheet"
   />
 
+  <!-- Base styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/normalize.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/base/variables.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/base/fonts.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/base/global.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/base/typography.css' | relative_url }}" />
+
+  <!-- Layout -->
+  <link rel="stylesheet" href="{{ '/assets/css/layout/sections.css' | relative_url }}" />
+
+  <!-- Utilities -->
+  <link rel="stylesheet" href="{{ '/assets/css/utilities/helpers.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/utilities/animations.css' | relative_url }}" />
+
+  <!-- Components -->
+  <link rel="stylesheet" href="{{ '/assets/css/components/project-card.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/components/footer.css' | relative_url }}" />
+
+  <!-- Sections -->
+  <link rel="stylesheet" href="{{ '/assets/css/sections/hero.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/sections/projects.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/sections/experience.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/sections/skills.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/sections/about.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/sections/contact.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/sections/privacy.css' | relative_url }}" />
+
+  <!-- Legacy styles pending migration -->
+  <link rel="stylesheet" href="{{ '/assets/css/navigation-bar.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/card.css' | relative_url }}" />
+
+  <!-- External scripts -->
   <script
     src="https://kit.fontawesome.com/a1a0fb88b4.js"
     crossorigin="anonymous"
