@@ -6,4 +6,4 @@ vendor
 .sass-cache
 coverage
 
-assets/css/normalize.css
+assets/css/vendor/

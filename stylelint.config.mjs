@@ -6,7 +6,7 @@ export default {
     "node_modules/**",
     "vendor/**",
     ".jekyll-cache/**",
-    "assets/css/normalize.css",
+    "assets/css/vendor/**/*.css",
   ],
 
   rules: {
