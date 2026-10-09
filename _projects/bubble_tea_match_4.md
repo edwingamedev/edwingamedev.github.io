@@ -5,8 +5,8 @@ summary: "A solo bubble-matching puzzle game with multiple game modes, combo mec
 
 description: "A bubble tea themed puzzle game inspired by Puyo Puyo, with solo, versus and self-challenge modes. Match and chain colored bubbles to create combos, clear the board and send blocking pieces to your opponent or even to your own field."
 
-project_type: "Solo Project"
-role: "Solo Developer"
+project_type: "Personal Project"
+role: "Solo Game Developer"
 
 focus:
   - Union-Find Match Detection
@@ -25,7 +25,7 @@ technical_highlights:
 technologies:
   - Unity
   - C#
-  - Pixel Art
+  - Aseprite
 
 featured_order: 5
 

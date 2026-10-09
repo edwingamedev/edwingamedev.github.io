@@ -7,7 +7,7 @@ description: "A B2B 3D city builder, where players ride a real bike to generate 
 
 project_type: "Professional"
 role: "Senior Unity Developer"
-company: "Ideas Farm"
+company: "Ideas.Farm"
 
 focus:
   - Procedural Generation
