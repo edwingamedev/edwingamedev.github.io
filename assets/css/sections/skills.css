@@ -33,7 +33,7 @@
 .skills-core-label {
   color: var(--text-color);
   font-size: var(--font-size-subheading);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .skills-core-items {
@@ -46,7 +46,7 @@
   padding: 8px 14px;
   color: var(--text-color2);
   font-size: var(--font-size-body);
-  font-weight: 700;
+  font-weight: 500;
   border: 1px solid rgba(255, 196, 0, 0.35);
   border-radius: var(--border-radius-small);
 }
@@ -68,7 +68,7 @@
   margin: 0 0 16px;
   color: var(--text-color);
   font-size: var(--font-size-subheading);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .skills-list {
