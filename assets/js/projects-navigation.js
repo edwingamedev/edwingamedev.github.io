@@ -2,13 +2,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const section = document.querySelector(".projects-console");
   if (!section) return;
 
+  const featured = section.querySelector(".projects-featured");
   const track = section.querySelector(".projects-carousel-track");
   const previous = section.querySelector('[data-direction="previous"]');
   const next = section.querySelector('[data-direction="next"]');
   const indicators = [...section.querySelectorAll(".projects-carousel-indicator")];
   const counter = section.querySelector(".projects-carousel-count");
 
-  if (!track || !previous || !next) return;
+  if (!featured || !track || !previous || !next) return;
 
   const originals = [...track.querySelectorAll(".projects-carousel-slide")];
   const count = originals.length;
@@ -20,13 +21,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const DURATION = 300;
+  const AUTOPLAY_INTERVAL = 5000;
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   let currentIndex = 0;
   let physicalIndex = 0;
   let animationFrame = null;
+  let autoplayTimer = null;
   let isAnimating = false;
   let isSettling = false;
+  let isHovered = false;
+  let hasFocus = false;
 
   const wrap = (index) => ((index % count) + count) % count;
 
@@ -122,10 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const needsReposition = normalizedIndex !== physicalIndex;
 
     if (needsReposition) {
-      /*
-       * Disable image transitions before changing the
-       * selected slide from a clone to its original.
-       */
       track.classList.add("is-repositioning");
 
       physicalIndex = normalizedIndex;
@@ -134,11 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
       updateUI();
       jumpTo(physicalIndex);
 
-      /*
-       * Commit the new visual state without transitions.
-       * The class is removed after the browser has had
-       * an opportunity to render the repositioned state.
-       */
+      // Apply the position without visual transitions.
       void track.offsetWidth;
     } else {
       currentIndex = wrap(physicalIndex - firstOriginal);
@@ -224,6 +221,70 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /* =======================================================
+     AUTOPLAY
+     ======================================================= */
+
+  const stopAutoplay = () => {
+    if (autoplayTimer !== null) {
+      clearTimeout(autoplayTimer);
+      autoplayTimer = null;
+    }
+  };
+
+  const canAutoplay = () =>
+    count > 1 && !reducedMotion.matches && !document.hidden && !isHovered && !hasFocus;
+
+  const scheduleAutoplay = () => {
+    stopAutoplay();
+
+    if (!canAutoplay()) return;
+
+    autoplayTimer = setTimeout(() => {
+      autoplayTimer = null;
+
+      if (!canAutoplay()) return;
+
+      if (isAnimating || isSettling) {
+        scheduleAutoplay();
+        return;
+      }
+
+      moveTo(physicalIndex + 1);
+      scheduleAutoplay();
+    }, AUTOPLAY_INTERVAL);
+  };
+
+  /* =======================================================
+     AUTOPLAY PAUSE / RESUME
+     ======================================================= */
+
+  featured.addEventListener("mouseenter", () => {
+    isHovered = true;
+    stopAutoplay();
+  });
+
+  featured.addEventListener("mouseleave", () => {
+    isHovered = false;
+    scheduleAutoplay();
+  });
+
+  featured.addEventListener("focusin", () => {
+    hasFocus = true;
+    stopAutoplay();
+  });
+
+  featured.addEventListener("focusout", (event) => {
+    if (featured.contains(event.relatedTarget)) return;
+
+    hasFocus = false;
+    scheduleAutoplay();
+  });
+
+  document.addEventListener("visibilitychange", scheduleAutoplay);
+
+  reducedMotion.addEventListener("change", scheduleAutoplay);
+
+  /* =======================================================
      NAVIGATION
      ======================================================= */
 
@@ -231,16 +292,20 @@ document.addEventListener("DOMContentLoaded", () => {
   next.disabled = count < 2;
 
   previous.addEventListener("click", () => {
+    scheduleAutoplay();
     moveTo(physicalIndex - 1);
   });
 
   next.addEventListener("click", () => {
+    scheduleAutoplay();
     moveTo(physicalIndex + 1);
   });
 
   indicators.forEach((indicator, index) => {
     indicator.addEventListener("click", () => {
       if (isAnimating || isSettling || index === currentIndex) return;
+
+      scheduleAutoplay();
 
       const forward = wrap(index - currentIndex);
       const backward = wrap(currentIndex - index);
@@ -267,6 +332,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const repositioned = normalize();
     settle(repositioned);
+
+    scheduleAutoplay();
   });
 
   /* =======================================================
@@ -292,6 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
     void track.offsetWidth;
 
     settle(true);
+    scheduleAutoplay();
   });
 
   /* =======================================================
@@ -306,4 +374,5 @@ document.addEventListener("DOMContentLoaded", () => {
   void track.offsetWidth;
 
   settle(true);
+  scheduleAutoplay();
 });
