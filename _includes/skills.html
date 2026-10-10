@@ -1,4 +1,4 @@
-<div class="section-wrapper space-background">
+<div class="section-wrapper">
   <section class="section skills" id="skills">
     <div class="skills-content">
       <h2 class="section-heading" id="skills-title">Skills</h2>
@@ -6,7 +6,7 @@
       <div class="skills-core">
         <span class="skills-core-label">Core</span>
 
-        <div class="skills-core-items space-bg-color">
+        <div class="skills-core-items ">
           <span>Unity</span>
           <span>C#</span>
         </div>
@@ -15,9 +15,9 @@
       <div class="skills-grid">
         {% for group in site.data.skills %}
           <section class="skills-group">
-            <h3 class="skills-subsection space-bg-color">{{ group.category }}</h3>
+            <h3 class="skills-subsection ">{{ group.category }}</h3>
 
-            <ul class="skills-list space-bg-color">
+            <ul class="skills-list ">
               {% for item in group.items %}
                 <li>{{ item }}</li>
               {% endfor %}
