@@ -1,25 +1,105 @@
-<div class="section-wrapper">
-  <section class="section projects" id="projects">
+<div class="section-wrapper projects-console-wrapper">
+  <section class="section projects projects-console" id="projects">
     <div class="projects-content">
-      <h2 class="section-heading" id="projects-title">Featured Projects</h2>
+      <h2 class="section-heading" id="projects-title">Projects</h2>
 
       {% assign featured_projects = site.projects
         | where_exp: 'project', "project.categories contains 'featured'"
         | sort: 'featured_order'
       %}
 
-      <div class="projects-grid">
-        {% for project in featured_projects %}
-          {%
-            include project-card.html
-            project=project
-          %}
-        {% endfor %}
-      </div>
+      <section class="projects-featured" aria-labelledby="featured-title">
+        <header class="projects-group-header">
+          <h3 id="featured-title">Featured Projects</h3>
+          <span class="projects-carousel-count" aria-live="off"></span>
+        </header>
 
-      <div class="projects-more">
-        <a class="projects-more-link" href="/projects/"> All projects </a>
-      </div>
+        <div class="projects-carousel">
+          <div
+            class="projects-carousel-track"
+            aria-label="Featured projects carousel"
+          >
+            {% for project in featured_projects %}
+              <div class="projects-carousel-slide">
+                <a
+                  class="featured-game"
+                  href="{{ project.url | relative_url }}"
+                  aria-label="View project: {{ project.title | escape }}"
+                >
+                  <div class="featured-game-image">
+                    <img
+                      src="{{ project.thumbnail | relative_url }}"
+                      alt=""
+                      loading="lazy"
+                    >
+                  </div>
+
+                  <div class="featured-game-info">
+                    <h4>{{ project.title }}</h4>
+
+                    {% if project.company %}
+                      <span>{{ project.company }}</span>
+                    {% elsif project.project_type %}
+                      <span>{{ project.project_type }}</span>
+                    {% endif %}
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+
+          <button
+            class="projects-carousel-button projects-carousel-previous"
+            type="button"
+            data-direction="previous"
+            aria-label="Previous featured project"
+          >
+            &#10094;
+          </button>
+
+          <button
+            class="projects-carousel-button projects-carousel-next"
+            type="button"
+            data-direction="next"
+            aria-label="Next featured project"
+          >
+            &#10095;
+          </button>
+        </div>
+
+        <div
+          class="projects-carousel-indicators"
+          role="group"
+          aria-label="Choose featured project"
+        >
+          {% for project in featured_projects %}
+            <button
+              class="projects-carousel-indicator"
+              type="button"
+              data-index="{{ forloop.index0 }}"
+              aria-label="Select {{ project.title | escape }}"
+              {% if forloop.first %}
+                aria-current="true"
+              {% endif %}
+            ></button>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="projects-collection" aria-labelledby="all-projects-title">
+        <header class="projects-group-header">
+          <h3 id="all-projects-title">All Projects</h3>
+        </header>
+
+        <div class="projects-grid">
+          {% for project in site.projects %}
+            {%
+              include project-card.html
+              project=project
+            %}
+          {% endfor %}
+        </div>
+      </section>
     </div>
   </section>
 </div>
