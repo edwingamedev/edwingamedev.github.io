@@ -21,6 +21,7 @@
   --font-body: "Archivo", sans-serif;
   --font-pixel: "cubicfive", monospace;
 
+  /* Current typography */
   --font-size-small: 1rem;
   --font-size-body: 1.2rem;
   --font-size-subheading: 1.55rem;
@@ -29,6 +30,36 @@
 
   --line-height-body: 1.65;
   --line-height-relaxed: 1.75;
+
+  /* New typography scale - TBD */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+
+  /* Console */
+  --console-shell-bg: #35313f;
+  --console-screen-bg: #101019;
+  --console-screen-border: #211e2b;
+
+  /* Console navigation */
+  --console-key-bg: #302c39;
+  --console-key-active-bg: #25222f;
+  --console-key-edge: #1d1b26;
+  --console-key-hover-bg: #45404f;
+
+  /* Scrollbar */
+  --scrollbar-track: var(--console-screen-bg);
+  --scrollbar-thumb: #504b60;
+  --scrollbar-thumb-hover: var(--text-color);
 
   /* Layout */
   --nav-bar-height: 40px;

@@ -3,17 +3,26 @@
   {% include head.html %}
 
   <body>
-    {% include navbar.html %}
+    <div class="console-shell">
+      <header class="console-header">
+        {% include navbar.html %}
+      </header>
 
-    <main>
-      {% include front.html %}
-      {% include projects-section.html %}
-      {% include skills.html %}
-      {% include about.html %}
-      {% include contact.html %}
-    </main>
+      <div class="console-screen">
+        <main>
+          {% include front.html %}
+          {% include projects-section.html %}
+          {% include skills.html %}
+          {% include about.html %}
+          {% include contact.html %}
+        </main>
+      </div>
 
-    {% include footer.html %}
+      <div class="console-footer">
+        {% include footer.html %}
+      </div>
+    </div>
+
     {% include scripts.html %}
   </body>
 </html>
