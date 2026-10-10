@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const pages = [...container.querySelectorAll(".console-page")];
   const links = [...document.querySelectorAll(".nav-button")];
+
+  const navigationLinks = [...document.querySelectorAll('a[href^="#console-"]')];
   const indicators = [...document.querySelectorAll(".page-indicator")];
 
   if (pages.length === 0) return;
@@ -129,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     animationFrame = requestAnimationFrame(tick);
   };
 
-  links.forEach((link) => {
+  navigationLinks.forEach((link) => {
     const page = pages.find((item) => `#${item.id}` === link.getAttribute("href"));
 
     if (!page) return;

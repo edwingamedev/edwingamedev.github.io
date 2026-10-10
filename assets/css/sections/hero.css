@@ -3,41 +3,36 @@
    ========================================================= */
 
 .head {
-  min-height: 560px;
-
-  padding: 96px 32px;
+  position: relative;
+  box-sizing: border-box;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  position: relative;
+  width: 100%;
+  min-height: 100%;
+
+  padding: 32px;
 
   color: var(--text-color2);
-
   background: transparent;
-
-  box-sizing: border-box;
-
-  scroll-margin-top: var(--nav-bar-height);
 }
 
 .head-inner-wrap {
   width: 100%;
   max-width: var(--content-width-wide);
-
   margin: 0 auto;
 }
 
+/* =========================================================
+   HERO LAYOUT
+   ========================================================= */
+
 .hero-layout {
   display: grid;
-
-  grid-template-columns:
-    minmax(0, 3fr)
-    minmax(240px, 2fr);
-
+  grid-template-columns: minmax(0, 3fr) minmax(200px, 2fr);
   align-items: center;
-
   gap: var(--space-3xl);
 }
 
@@ -45,23 +40,31 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  min-width: 0;
 }
+
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
 
 .hero-eyebrow {
   margin: 0 0 var(--space-md);
-
   color: var(--text-color);
-
   font-size: 1.2rem;
 }
 
 .head-title {
   display: block;
-
   margin: 0;
 
   color: var(--text-color2);
-
   font-size: var(--font-size-hero);
   font-weight: bold;
   line-height: 1.1;
@@ -71,45 +74,36 @@
 
 .head-punchline {
   max-width: 620px;
-
   margin: var(--space-lg) 0 0;
 
-  text-align: left;
-
   color: var(--text-color2);
-
   font-size: 1.4rem;
   line-height: 1.65;
+  text-align: left;
 }
 
-.hero-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* =========================================================
+   ACTIONS
+   ========================================================= */
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-
   gap: var(--space-md);
 
   margin-top: var(--space-xl);
 }
 
 .hero-button {
-  min-height: 44px;
-
-  padding: 12px 20px;
-
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  box-sizing: border-box;
+  min-height: 44px;
+  padding: 12px 20px;
 
   border: 2px solid var(--text-color);
-
   text-decoration: none;
 
   transition:
@@ -122,30 +116,40 @@
   transform: translateY(-2px);
 }
 
+.hero-button:focus-visible {
+  outline: 2px solid var(--text-color2);
+  outline-offset: 3px;
+}
+
 .hero-button-primary {
-  background-color: var(--text-color);
   color: var(--background-color);
+  background-color: var(--text-color);
 }
 
 .hero-button-secondary {
-  background-color: transparent;
   color: var(--text-color);
+  background-color: transparent;
 }
 
-.profile-pic-div {
-  width: 100%;
+/* =========================================================
+   PROFILE IMAGE
+   ========================================================= */
 
+.profile-pic-div {
   display: flex;
   justify-content: center;
 
+  width: 100%;
   margin: 0;
 }
 
 .profile-pic {
+  display: block;
+
   width: min(280px, 100%);
   height: auto;
 
-  border: 2px solid white;
+  border: 2px solid var(--text-color2);
   border-radius: 5%;
 
   transition:
@@ -157,16 +161,46 @@
   box-shadow: 0 0 16px rgba(255, 255, 255, 0.5);
 }
 
+/* =========================================================
+   FRONT
+   ========================================================= */
+
 #front {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media screen and (max-width: 768px) {
+  .head {
+    padding: 32px 24px;
+  }
+
+  .hero-layout {
+    grid-template-columns: minmax(0, 3fr) minmax(160px, 2fr);
+    gap: var(--space-lg);
+  }
+
+  .head-title {
+    font-size: clamp(2rem, 6vw, var(--font-size-hero));
+  }
+
+  .head-punchline {
+    font-size: 1.2rem;
+  }
+
+  .profile-pic {
+    width: min(220px, 100%);
+  }
+}
+
 @media screen and (max-width: 600px) {
   .head {
-    min-height: auto;
-    padding: 72px 20px 56px;
+    padding: 32px 20px;
   }
 
   .hero-layout {
@@ -184,13 +218,13 @@
   }
 
   .head-title {
-    font-size: 3rem;
+    font-size: clamp(2.3rem, 9vw, 3rem);
     text-align: center;
   }
 
   .head-punchline {
-    text-align: center;
     font-size: 1.2rem;
+    text-align: center;
   }
 
   .hero-actions {
@@ -202,14 +236,13 @@
   }
 
   .profile-pic {
-    width: min(220px, 70vw);
+    width: min(180px, 55vw);
   }
 }
 
 @media screen and (max-width: 400px) {
   .head {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 24px 16px;
   }
 
   .head-title {
@@ -222,5 +255,20 @@
 
   .hero-button {
     flex: 1;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-button,
+  .profile-pic {
+    transition: none;
+  }
+
+  .hero-button:hover {
+    transform: none;
   }
 }
