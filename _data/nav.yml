@@ -9,14 +9,20 @@ default_nav:
     href: "/#contact"
 
 home_nav:
-  - title: "PROJECTS"
-    href: "/projects/"
-  - title: "SKILLS"
-    href: "#skills"
-  - title: "ABOUT"
-    href: "#about"
-  - title: "CONTACT"
-    href: "#contact"
+  - title: HOME
+    href: "#console-home"
+
+  - title: PROJECTS
+    href: "#console-projects"
+
+  - title: SKILLS
+    href: "#console-skills"
+
+  - title: ABOUT
+    href: "#console-about"
+
+  - title: CONTACT
+    href: "#console-contact"
 
 project_page_nav:
   - title: "PROJECTS"

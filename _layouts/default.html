@@ -9,12 +9,26 @@
       </header>
 
       <div class="console-screen">
-        <main>
-          {% include front.html %}
-          {% include projects-section.html %}
-          {% include skills.html %}
-          {% include about.html %}
-          {% include contact.html %}
+        <main class="console-pages" id="consolePages">
+          <div class="console-page" id="console-home">
+            {% include front.html %}
+          </div>
+
+          <div class="console-page" id="console-projects">
+            {% include projects-section.html %}
+          </div>
+
+          <div class="console-page" id="console-skills">
+            {% include skills.html %}
+          </div>
+
+          <div class="console-page" id="console-about">
+            {% include about.html %}
+          </div>
+
+          <div class="console-page" id="console-contact">
+            {% include contact.html %}
+          </div>
         </main>
       </div>
 
