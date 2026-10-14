@@ -1,47 +1,59 @@
-- category: Gameplay
+- category: Gameplay Systems
+  direction: top-left
+  icon: gamepad
   items:
-    - Gameplay Systems
-    - Physics
-    - AI
-    - UI Systems
+    - Combat & Movement
+    - AI & Behavior
+    - Physics & Simulation
     - Progression Systems
+    - Multiplayer Gameplay
 
-- category: Engineering
+- category: Software Architecture
+  direction: top-right
+  icon: network
   items:
-    - Software Architecture
     - Design Patterns
     - Dependency Injection
+    - Modular Architecture
     - Async Programming
-    - Performance Optimization
-    - Refactoring
+    - Refactoring & Testing
 
-- category: LiveOps
+- category: LiveOps & Economy
+  direction: left
+  icon: calendar
   items:
-    - Rewards Systems
+    - Rewards & Daily Login
     - Season Passes
-    - Economy & Progression
+    - In-Game Economy
     - Remote Configuration
-    - Live Feature Development
+    - Events & Feature Delivery
 
-- category: Tools
+- category: Development Tools
+  direction: right
+  icon: wrench
   items:
-    - Unity Editor Tools
-    - Build Pipelines
+    - Unity Editor Extensions
+    - Internal Tooling
+    - Build Automation
     - CI/CD
-    - Git
-    - Internal Development Tools
+    - Git & Version Control
 
-- category: SDK & Integration
+- category: SDK & Integrations
+  direction: bottom-left
+  icon: plug
   items:
-    - SDK Integration
+    - SDK Development & Integration
     - REST APIs
-    - Backend Integration
+    - Backend Communication
     - Analytics & Telemetry
-    - Native Android / iOS Integration
+    - Native Mobile Integrations
 
-- category: Platforms
+- category: Optimization
+  direction: bottom-right
+  icon: gauge
   items:
-    - Android
-    - iOS
-    - PC
-    - WebGL
+    - Profiling & Diagnostics
+    - Memory Management
+    - Mobile Performance
+    - Object Pooling
+    - Runtime Optimization

@@ -3,27 +3,55 @@
     <div class="skills-content">
       <h2 class="section-heading" id="skills-title">Skills</h2>
 
-      <div class="skills-core">
-        <span class="skills-core-label">Core</span>
+      <div
+        class="skills-tree-viewport"
+        role="region"
+        aria-label="Interactive skill tree"
+      >
+        <div class="skills-tree-canvas">
+          <svg
+            class="skills-tree-connections"
+            aria-hidden="true"
+          ></svg>
 
-        <div class="skills-core-items ">
-          <span>Unity</span>
-          <span>C#</span>
+          <div
+            class="skills-tree-root"
+            data-node="root"
+          >
+            Skills
+          </div>
+
+          {% for group in site.data.skills %}
+            <div
+              class="skills-tree-branch"
+              data-direction="{{ group.direction }}"
+            >
+              <h3
+                class="skills-tree-category"
+                data-node="category"
+              >
+                <span
+                  class="skills-tree-category-icon"
+                  data-icon="{{ group.icon }}"
+                  aria-hidden="true"
+                ></span>
+
+                <span>{{ group.category }}</span>
+              </h3>
+
+              <ul class="skills-tree-nodes">
+                {% for item in group.items %}
+                  <li
+                    class="skills-tree-node"
+                    data-node="skill"
+                  >
+                    {{ item }}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
         </div>
-      </div>
-
-      <div class="skills-grid">
-        {% for group in site.data.skills %}
-          <section class="skills-group">
-            <h3 class="skills-subsection ">{{ group.category }}</h3>
-
-            <ul class="skills-list ">
-              {% for item in group.items %}
-                <li>{{ item }}</li>
-              {% endfor %}
-            </ul>
-          </section>
-        {% endfor %}
       </div>
     </div>
   </section>
