@@ -21,14 +21,25 @@ const { title, description = "Game Developer portfolio" } = Astro.props;
 
     <script is:inline>
       (() => {
-        const allowed = ["atari-dark", "atari-classic", "retro-purple"];
-        let theme = "atari-dark";
+        const aliases = {
+          "atari-dark": "dark",
+          "atari-classic": "light",
+        };
+
+        const allowed = ["dark", "light"];
+        let theme = "dark";
 
         try {
           const saved = localStorage.getItem("portfolio-theme");
-          if (allowed.includes(saved)) theme = saved;
+          const resolved = aliases[saved] ?? saved;
+
+          if (allowed.includes(resolved)) {
+            theme = resolved;
+          }
+
+          localStorage.setItem("portfolio-theme", theme);
         } catch {
-          // Keep the default theme.
+          // Storage may be unavailable.
         }
 
         document.documentElement.dataset.theme = theme;

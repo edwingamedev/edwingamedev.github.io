@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { Info, CodeXml } from "@lucide/astro";
+import { CodeXml, Info } from "@lucide/astro";
 
 interface Props {
   project: CollectionEntry<"projects">;
@@ -8,59 +8,57 @@ interface Props {
 
 const { project } = Astro.props;
 
-const { summary, description, focus, technical_highlights } = project.data;
+const { description, focus, technical_highlights } = project.data;
 
-const hasContributions = (technical_highlights?.length ?? 0) > 0;
+const hasContributions = technical_highlights.length > 0;
 ---
 
-<section
-  class:list={["project-overview", { "has-contributions": hasContributions }]}
-  aria-label="Project overview"
->
-  <div class="overview-column">
+<div class="project-overview">
+  <!-- About -->
+  <section class="about-project" aria-labelledby="about-project-title">
     <div class="section-heading">
       <Info size={23} aria-hidden="true" />
-      <h2>About</h2>
+      <h2 id="about-project-title">About</h2>
     </div>
 
-    {summary && <p class="project-summary">{summary}</p>}
+    <p class="project-description">{description}</p>
 
-    {description && <p class="project-description">{description}</p>}
-
-    {focus?.length > 0 && (
+    {focus.length > 0 && (
       <ul class="focus-list" aria-label="Areas of focus">
         {focus.map((item) => (
           <li>{item}</li>
         ))}
       </ul>
     )}
-  </div>
+  </section>
 
+  <!-- Technical highlights -->
   {hasContributions && (
-    <div class="overview-column">
+    <section aria-labelledby="technical-highlights-title">
       <div class="section-heading">
         <CodeXml size={23} aria-hidden="true" />
-        <h2>My Contributions</h2>
+        <h2 id="technical-highlights-title">My Contributions</h2>
       </div>
 
-      <ul class="contribution-list">
+      <ul class="highlights-grid">
         {technical_highlights.map((item) => (
           <li>
-            <span class="contribution-marker" aria-hidden="true"></span>
+            <span class="highlight-marker" aria-hidden="true" />
             <span>{item}</span>
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   )}
-</section>
+</div>
 
 <style>
   .project-overview {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
     margin-top: 42px;
+    width: 100%;
   }
 
   .section-heading {
@@ -83,16 +81,10 @@ const hasContributions = (technical_highlights?.length ?? 0) > 0;
     letter-spacing: -0.02em;
   }
 
-  .project-summary {
-    color: var(--color-foreground);
-    font-size: 17px;
-    line-height: 1.6;
-  }
-
   .project-description {
-    margin-top: 12px;
     color: var(--color-muted);
-    line-height: 1.75;
+    font-size: 16px;
+    line-height: 1.8;
     white-space: pre-line;
   }
 
@@ -100,7 +92,7 @@ const hasContributions = (technical_highlights?.length ?? 0) > 0;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 20px;
+    margin-top: 18px;
     padding: 0;
     list-style: none;
   }
@@ -117,40 +109,41 @@ const hasContributions = (technical_highlights?.length ?? 0) > 0;
     color: var(--color-border-strong);
   }
 
-  .contribution-list {
+  .highlights-grid {
     display: grid;
-    gap: 13px;
-    margin: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px 28px;
     padding: 0;
+    margin: 0;
     list-style: none;
   }
 
-  .contribution-list li {
+  .highlights-grid li {
     display: flex;
     align-items: baseline;
     gap: 12px;
     color: var(--color-muted);
-    line-height: 1.65;
+    line-height: 1.6;
   }
 
-  .contribution-marker {
+  .highlight-marker {
     width: 6px;
     height: 6px;
     flex-shrink: 0;
     border-radius: 50%;
-    background: var(--color-accent);
+    background: var(--color-accent-secondary);
   }
 
   @media (min-width: 768px) {
-    .project-overview.has-contributions {
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 64px;
+    .highlights-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   @media (max-width: 639px) {
     .project-overview {
       margin-top: 32px;
+      gap: 40px;
     }
   }
 </style>

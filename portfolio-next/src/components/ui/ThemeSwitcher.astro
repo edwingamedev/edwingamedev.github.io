@@ -1,33 +1,59 @@
-<label class="inline-flex items-center gap-2 text-sm text-muted">
-  <span class="hidden sm:inline">Theme</span>
+---
+import { Moon, Sun } from "@lucide/astro";
+---
 
-  <select
-    data-theme-switcher
-    aria-label="Choose color theme"
-    class="w-24 cursor-pointer rounded-md border border-border bg-surface px-2 py-2 text-xs text-foreground focus-visible:outline-2 focus-visible:outline-accent sm:w-auto sm:px-3 sm:text-sm"
-  >
-    <option value="atari-dark">Atari Dark</option>
-    <option value="atari-classic">Atari Classic</option>
-    <option value="retro-purple">Retro Purple</option>
-  </select>
-</label>
+<button
+  type="button"
+  data-theme-switcher
+  aria-label="Switch color theme"
+  title="Switch color theme"
+  class="inline-flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-border bg-surface text-foreground transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+>
+  <Sun class="theme-sun" size={20} aria-hidden="true" />
+  <Moon class="theme-moon" size={20} aria-hidden="true" />
+</button>
+
+<style>
+  :global(:root[data-theme="dark"]) .theme-sun {
+    display: none;
+  }
+
+  :global(:root[data-theme="light"]) .theme-moon {
+    display: none;
+  }
+
+  :global(:root:not([data-theme])) .theme-sun {
+    display: none;
+  }
+</style>
 
 <script>
-  const selectors = document.querySelectorAll<HTMLSelectElement>("[data-theme-switcher]");
+  const button = document.querySelector<HTMLButtonElement>("[data-theme-switcher]");
 
-  selectors.forEach((selector) => {
-    selector.value = document.documentElement.dataset.theme ?? "atari-dark";
+  if (button) {
+    const updateLabel = () => {
+      const current = document.documentElement.dataset.theme ?? "dark";
+      const next = current === "dark" ? "light" : "dark";
 
-    selector.addEventListener("change", () => {
-      const theme = selector.value;
+      button.setAttribute("aria-label", `Switch to ${next} mode`);
+      button.title = `Switch to ${next} mode`;
+    };
 
-      document.documentElement.dataset.theme = theme;
+    updateLabel();
+
+    button.addEventListener("click", () => {
+      const current = document.documentElement.dataset.theme ?? "dark";
+      const next = current === "dark" ? "light" : "dark";
+
+      document.documentElement.dataset.theme = next;
 
       try {
-        localStorage.setItem("portfolio-theme", theme);
+        localStorage.setItem("portfolio-theme", next);
       } catch {
         // Storage may be unavailable.
       }
+
+      updateLabel();
     });
-  });
+  }
 </script>

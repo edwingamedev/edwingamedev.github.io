@@ -2,7 +2,7 @@
 
 /* Default theme */
 :root,
-:root[data-theme="atari-dark"] {
+:root[data-theme="dark"] {
   --theme-page: #171311;
   --theme-surface: #241c19;
   --theme-surface-raised: #312623;
@@ -25,8 +25,8 @@
   --theme-cartridge-glow: 0 0 20px rgb(242 162 58 / 35%);
 }
 
-/* Classic light Atari */
-:root[data-theme="atari-classic"] {
+/* light */
+:root[data-theme="light"] {
   --theme-page: #f3e5c8;
   --theme-surface: #e9d4b1;
   --theme-surface-raised: #dec39a;
@@ -47,30 +47,6 @@
   --theme-cartridge-label: #302520;
   --theme-cartridge-label-border: #201814;
   --theme-cartridge-glow: 0 0 20px rgb(183 72 38 / 28%);
-}
-
-/* Retro purple */
-:root[data-theme="retro-purple"] {
-  --theme-page: #1e1528;
-  --theme-surface: #2b1d38;
-  --theme-surface-raised: #3d294d;
-
-  --theme-accent: #e89a53;
-  --theme-accent-hover: #ffc078;
-  --theme-accent-secondary: #c39be8;
-  --theme-accent-contrast: #1e1528;
-
-  --theme-foreground: #f8e8d9;
-  --theme-muted: #c7b1d2;
-  --theme-border: #62486f;
-  --theme-border-strong: #9570a9;
-
-  --theme-cartridge-body: #392642;
-  --theme-cartridge-border: #795389;
-  --theme-cartridge-groove: #1a1224;
-  --theme-cartridge-label: #24172c;
-  --theme-cartridge-label-border: #170e1e;
-  --theme-cartridge-glow: 0 0 20px rgb(189 112 226 / 35%);
 }
 
 /* Tailwind utilities point to the active theme */
