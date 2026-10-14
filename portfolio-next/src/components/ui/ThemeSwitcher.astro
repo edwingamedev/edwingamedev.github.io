@@ -28,19 +28,19 @@ import { Moon, Sun } from "@lucide/astro";
 </style>
 
 <script>
-  const button = document.querySelector<HTMLButtonElement>("[data-theme-switcher]");
+  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-theme-switcher]");
 
-  if (button) {
-    const updateLabel = () => {
-      const current = document.documentElement.dataset.theme ?? "dark";
-      const next = current === "dark" ? "light" : "dark";
+  const updateLabels = () => {
+    const current = document.documentElement.dataset.theme ?? "dark";
+    const next = current === "dark" ? "light" : "dark";
 
+    buttons.forEach((button) => {
       button.setAttribute("aria-label", `Switch to ${next} mode`);
       button.title = `Switch to ${next} mode`;
-    };
+    });
+  };
 
-    updateLabel();
-
+  buttons.forEach((button) => {
     button.addEventListener("click", () => {
       const current = document.documentElement.dataset.theme ?? "dark";
       const next = current === "dark" ? "light" : "dark";
@@ -53,7 +53,9 @@ import { Moon, Sun } from "@lucide/astro";
         // Storage may be unavailable.
       }
 
-      updateLabel();
+      updateLabels();
     });
-  }
+  });
+
+  updateLabels();
 </script>
