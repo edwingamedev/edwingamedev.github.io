@@ -1,0 +1,23 @@
+---
+import Container from "./Container.astro";
+
+interface Props {
+  id?: string;
+  class?: string;
+  spacing?: "default" | "compact" | "none";
+}
+
+const { id, class: className = "", spacing = "default" } = Astro.props;
+
+const spacingClasses = {
+  default: "py-16 md:py-24",
+  compact: "py-8 md:py-12",
+  none: "py-0",
+};
+---
+
+<section id={id} class:list={["scroll-mt-20", spacingClasses[spacing], className]}>
+  <Container>
+    <slot />
+  </Container>
+</section>

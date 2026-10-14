@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Header from "../components/layout/Header.astro";
 
 interface Props {
   title: string;
@@ -15,10 +16,28 @@ const { title, description = "Game Developer portfolio" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
     <title>{title} | Edwin Game Dev</title>
+
+    <script is:inline>
+      (() => {
+        const allowed = ["atari-dark", "atari-classic", "retro-purple"];
+        let theme = "atari-dark";
+
+        try {
+          const saved = localStorage.getItem("portfolio-theme");
+          if (allowed.includes(saved)) theme = saved;
+        } catch {
+          // Keep the default theme.
+        }
+
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
   </head>
 
   <body class="min-h-screen bg-page text-foreground antialiased">
+    <Header />
     <slot />
   </body>
 </html>

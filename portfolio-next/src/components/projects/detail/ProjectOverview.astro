@@ -1,0 +1,156 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Info, CodeXml } from "@lucide/astro";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+
+const { summary, description, focus, technical_highlights } = project.data;
+
+const hasContributions = (technical_highlights?.length ?? 0) > 0;
+---
+
+<section
+  class:list={["project-overview", { "has-contributions": hasContributions }]}
+  aria-label="Project overview"
+>
+  <div class="overview-column">
+    <div class="section-heading">
+      <Info size={23} aria-hidden="true" />
+      <h2>About</h2>
+    </div>
+
+    {summary && <p class="project-summary">{summary}</p>}
+
+    {description && <p class="project-description">{description}</p>}
+
+    {focus?.length > 0 && (
+      <ul class="focus-list" aria-label="Areas of focus">
+        {focus.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    )}
+  </div>
+
+  {hasContributions && (
+    <div class="overview-column">
+      <div class="section-heading">
+        <CodeXml size={23} aria-hidden="true" />
+        <h2>My Contributions</h2>
+      </div>
+
+      <ul class="contribution-list">
+        {technical_highlights.map((item) => (
+          <li>
+            <span class="contribution-marker" aria-hidden="true"></span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</section>
+
+<style>
+  .project-overview {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    margin-top: 42px;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .section-heading :global(svg) {
+    flex-shrink: 0;
+    color: var(--color-accent);
+  }
+
+  .section-heading h2 {
+    color: var(--color-foreground);
+    font-size: clamp(21px, 2.5vw, 26px);
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .project-summary {
+    color: var(--color-foreground);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .project-description {
+    margin-top: 12px;
+    color: var(--color-muted);
+    line-height: 1.75;
+    white-space: pre-line;
+  }
+
+  .focus-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .focus-list li {
+    color: var(--color-accent);
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .focus-list li + li::before {
+    content: "·";
+    margin-right: 8px;
+    color: var(--color-border-strong);
+  }
+
+  .contribution-list {
+    display: grid;
+    gap: 13px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .contribution-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    color: var(--color-muted);
+    line-height: 1.65;
+  }
+
+  .contribution-marker {
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+
+  @media (min-width: 768px) {
+    .project-overview.has-contributions {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 64px;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .project-overview {
+      margin-top: 32px;
+    }
+  }
+</style>

@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  href: string;
+  variant?: "primary" | "secondary";
+}
+
+const { href, variant = "primary", class: className = "", ...rest } = Astro.props;
+
+const base =
+  "inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+
+const variants = {
+  primary: "bg-accent text-page hover:bg-amber-300",
+  secondary:
+    "border border-border-strong bg-transparent text-foreground hover:border-accent hover:text-accent",
+};
+---
+
+<a href={href} class:list={[base, variants[variant], className]} {...rest}>
+  <slot />
+</a>

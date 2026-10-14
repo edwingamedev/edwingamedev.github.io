@@ -1,0 +1,35 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  loading?: "lazy" | "eager";
+}
+
+const { src, alt, class: className = "", loading = "lazy" } = Astro.props;
+
+const isVideo = /\.(webm|mp4)(?:[?#]|$)/i.test(src);
+---
+
+{isVideo ? (
+  <video
+    class:list={["block h-full w-full object-cover", className]}
+    autoplay
+    muted
+    loop
+    playsinline
+    preload={loading === "eager" ? "metadata" : "none"}
+    aria-label={alt}
+  >
+    <source src={src} type={src.toLowerCase().includes(".webm") ? "video/webm" : "video/mp4"} />
+    Your browser does not support video playback.
+  </video>
+) : (
+  <img
+    src={src}
+    alt={alt}
+    loading={loading}
+    decoding="async"
+    class:list={["block h-full w-full object-cover", className]}
+  />
+)}

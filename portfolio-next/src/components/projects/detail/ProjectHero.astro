@@ -1,0 +1,198 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ProjectMedia from "../ProjectMedia.astro";
+import { ExternalLink, Gamepad2, Play, CodeXml, Download } from "@lucide/astro";
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+
+const { title, project_type, role, company, technologies, header, thumbnail, primary_action } =
+  project.data;
+
+const cover = header || thumbnail;
+
+const action = primary_action;
+
+const actionIcons = {
+  "external-link": ExternalLink,
+  "gamepad-2": Gamepad2,
+  play: Play,
+  "code-2": CodeXml,
+  download: Download,
+};
+
+const ActionIcon = action ? actionIcons[action.icon] : null;
+---
+
+<header class="project-hero">
+  <div class="project-heading">
+    <div class="project-eyebrow">
+      <span class="accent-line" aria-hidden="true"></span>
+      {project_type || "Game Development"}
+    </div>
+
+    <h1 class="project-title">{title}</h1>
+
+    {(role || company) && <p class="project-meta">{[role, company].filter(Boolean).join(" / ")}</p>}
+  </div>
+
+  {cover && (
+    <div class="cover-frame">
+      <div class="cover-media">
+        <ProjectMedia src={cover} alt={`${title} artwork or gameplay`} loading="eager" />
+      </div>
+    </div>
+  )}
+
+  {(technologies?.length > 0 || action) && (
+    <div class="project-toolbar">
+      {technologies?.length > 0 && (
+        <ul class="technology-list" aria-label="Technologies">
+          {technologies.map((technology) => (
+            <li class="technology-tag">{technology}</li>
+          ))}
+        </ul>
+      )}
+
+      {action && ActionIcon && (
+        <a href={action.url} target="_blank" rel="noopener noreferrer" class="primary-link">
+          <ActionIcon size={17} aria-hidden="true" />
+          <span>{action.label}</span>
+        </a>
+      )}
+    </div>
+  )}
+</header>
+
+<style>
+  .project-heading {
+    margin-bottom: 24px;
+  }
+
+  .project-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: var(--color-accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .accent-line {
+    width: 28px;
+    height: 2px;
+    background: var(--color-accent);
+  }
+
+  .project-title {
+    color: var(--color-foreground);
+    font-size: clamp(36px, 5vw, 66px);
+    line-height: 1.06;
+    letter-spacing: -0.045em;
+    font-weight: 800;
+  }
+
+  .project-meta {
+    margin-top: 12px;
+    color: var(--color-muted);
+    font-size: 15px;
+  }
+
+  .cover-frame {
+    overflow: hidden;
+    border-radius: 14px;
+  }
+
+  .cover-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cover-media :global(img),
+  .cover-media :global(video) {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 66vh;
+    object-fit: contain;
+    border-radius: 14px;
+  }
+
+  .project-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 64px;
+    padding-block: 16px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .technology-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .technology-tag {
+    padding: 6px 12px;
+    border: 1px solid var(--color-accent-secondary);
+    border-radius: 6px;
+    background: var(--color-tag-bg);
+    color: var(--color-tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .primary-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    flex-shrink: 0;
+    padding: 10px 15px;
+    border-radius: 7px;
+    background: var(--color-accent);
+    color: var(--color-accent-contrast);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 180ms ease;
+  }
+
+  .primary-link:hover {
+    background: var(--color-accent-hover);
+    color: var(--color-accent-contrast);
+  }
+
+  .primary-link:focus-visible {
+    outline: 2px solid var(--color-accent-secondary);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .primary-link {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .cover-media :global(img),
+    .cover-media :global(video) {
+      max-height: 48vh;
+    }
+
+    .project-toolbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

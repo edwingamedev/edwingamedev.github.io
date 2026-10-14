@@ -1,18 +1,33 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Container from "../components/ui/Container.astro";
+import Hero from "../components/sections/Hero.astro";
+import Section from "../components/ui/Section.astro";
+import ProjectCarousel from "../components/projects/ProjectCarousel.astro";
+
+const featuredProjects = (await getCollection("projects"))
+  .filter((project) => project.data.categories.includes("featured"))
+  .sort((a, b) => (a.data.featured_order ?? Infinity) - (b.data.featured_order ?? Infinity));
 ---
 
 <BaseLayout title="Home">
   <main>
-    <Container>
-      <div class="flex min-h-screen flex-col justify-center gap-4">
-        <p class="text-sm font-medium tracking-widest text-accent">GAME DEVELOPER</p>
+    <Hero />
 
-        <h1 class="text-5xl font-bold">Hi, I'm Edwin.</h1>
+    <Section id="projects" spacing="compact">
+      <div class="mb-6 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <h2 class="text-2xl font-bold sm:text-3xl">Featured Projects</h2>
 
-        <p class="max-w-xl text-muted">Building gameplay systems, tools and game experiences.</p>
+        <a
+          href="/projects/"
+          class="inline-flex shrink-0 items-center gap-1 whitespace-nowrap text-sm font-medium text-accent hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          <span>View All Projects</span>
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
-    </Container>
+
+      <ProjectCarousel projects={featuredProjects} />
+    </Section>
   </main>
 </BaseLayout>

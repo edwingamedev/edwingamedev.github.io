@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ProjectMedia from "./ProjectMedia.astro";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const { title, thumbnail, company, project_type, focus } = project.data;
+---
+
+<a
+  href={`/projects/${project.id}/`}
+  aria-label={`View project: ${title}`}
+  class="group relative flex h-[340px] w-[280px] shrink-0 flex-col rounded-t-2xl rounded-b-md border-2 border-cartridge-border bg-cartridge-body px-[14px] py-7 text-foreground no-underline transition-all duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-cartridge-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+>
+  <!-- Top cartridge groove -->
+  <div
+    aria-hidden="true"
+    class="absolute top-3 left-1/2 h-1 w-[38%] -translate-x-1/2 rounded-b-sm bg-cartridge-groove"
+  ></div>
+
+  <!-- Cartridge label -->
+  <div class="flex min-h-0 flex-1 flex-col overflow-hidden rounded-md border-2 border-cartridge-label-border bg-cartridge-label p-[6px]">
+    <div class="aspect-video w-full shrink-0 overflow-hidden rounded-sm">
+      <ProjectMedia src={thumbnail} alt={`${title} gameplay`} />
+    </div>
+
+    <div class="flex min-h-0 flex-1 flex-col py-4">
+      <div class="flex flex-col gap-2">
+        <h3 class="line-clamp-2 text-xl leading-[1.15] font-semibold text-foreground">{title}</h3>
+
+        <p class="text-xs leading-5 text-accent">{company || project_type}</p>
+      </div>
+
+      {focus.length > 0 && (
+        <ul class="mt-2 flex flex-col text-left">
+          {focus.slice(0, 3).map((item) => (
+            <li class="text-xs leading-[1.4] text-muted before:mr-2 before:content-['•']">
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </div>
+
+  <!-- Bottom cartridge detail -->
+  <div
+    aria-hidden="true"
+    class="absolute bottom-[9px] left-1/2 h-0 w-0 -translate-x-1/2 border-t-[8px] border-r-[6px] border-l-[6px] border-t-cartridge-groove border-r-transparent border-l-transparent"
+  ></div>
+</a>

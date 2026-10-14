@@ -1,0 +1,113 @@
+---
+import { Clapperboard } from "@lucide/astro";
+
+interface Props {
+  youtube?: string;
+  title: string;
+}
+
+const { youtube, title } = Astro.props;
+
+function getYouTubeEmbed(value?: string): string | undefined {
+  if (!value) return undefined;
+
+  try {
+    const url = new URL(value);
+    let id: string | null = null;
+
+    if (url.hostname === "youtu.be") {
+      id = url.pathname.split("/")[1];
+    } else if (
+      [
+        "youtube.com",
+        "www.youtube.com",
+        "m.youtube.com",
+        "youtube-nocookie.com",
+        "www.youtube-nocookie.com",
+      ].includes(url.hostname)
+    ) {
+      id = url.pathname.startsWith("/embed/")
+        ? url.pathname.split("/")[2]
+        : url.searchParams.get("v");
+    }
+
+    if (!id || !/^[A-Za-z0-9_-]{11}$/.test(id)) {
+      return undefined;
+    }
+
+    return `https://www.youtube-nocookie.com/embed/${id}`;
+  } catch {
+    return undefined;
+  }
+}
+
+const embedUrl = getYouTubeEmbed(youtube);
+---
+
+{embedUrl && (
+  <section class="project-video" aria-labelledby="project-video-title">
+    <div class="section-heading">
+      <Clapperboard size={23} aria-hidden="true" />
+      <h2 id="project-video-title">Video</h2>
+    </div>
+
+    <div class="video-frame">
+      <iframe
+        src={embedUrl}
+        title={`${title} video`}
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin"
+      />
+    </div>
+  </section>
+)}
+
+<style>
+  .project-video {
+    margin-top: 42px;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .section-heading :global(svg) {
+    flex-shrink: 0;
+    color: var(--color-accent);
+  }
+
+  .section-heading h2 {
+    color: var(--color-foreground);
+    font-size: clamp(21px, 2.5vw, 26px);
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .video-frame {
+    width: 100%;
+    max-width: 920px;
+    aspect-ratio: 16 / 9;
+    margin-inline: auto;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .video-frame iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  @media (max-width: 639px) {
+    .project-video {
+      margin-top: 32px;
+    }
+  }
+</style>

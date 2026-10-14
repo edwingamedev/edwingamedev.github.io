@@ -1,9 +1,103 @@
 @import "tailwindcss";
 
-@theme {
-  --color-page: #121317;
-  --color-surface: #24272d;
-  --color-accent: #f0ba46;
-  --color-foreground: #f5f5f4;
-  --color-muted: #bec1c9;
+/* Default theme */
+:root,
+:root[data-theme="atari-dark"] {
+  --theme-page: #171311;
+  --theme-surface: #241c19;
+  --theme-surface-raised: #312623;
+
+  --theme-accent: #f2a23a;
+  --theme-accent-hover: #ffbc5c;
+  --theme-accent-secondary: #a77bd4;
+  --theme-accent-contrast: #171311;
+
+  --theme-foreground: #f4eadf;
+  --theme-muted: #c5b1a1;
+  --theme-border: #4a3a34;
+  --theme-border-strong: #806255;
+
+  --theme-cartridge-body: #332820;
+  --theme-cartridge-border: #775640;
+  --theme-cartridge-groove: #1e1714;
+  --theme-cartridge-label: #21191c;
+  --theme-cartridge-label-border: #171215;
+  --theme-cartridge-glow: 0 0 20px rgb(242 162 58 / 35%);
+}
+
+/* Classic light Atari */
+:root[data-theme="atari-classic"] {
+  --theme-page: #f3e5c8;
+  --theme-surface: #e9d4b1;
+  --theme-surface-raised: #dec39a;
+
+  --theme-accent: #b74826;
+  --theme-accent-hover: #963819;
+  --theme-accent-secondary: #754a91;
+  --theme-accent-contrast: #ffffff;
+
+  --theme-foreground: #252a30;
+  --theme-muted: #655044;
+  --theme-border: #b99b79;
+  --theme-border-strong: #826347;
+
+  --theme-cartridge-body: #46352d;
+  --theme-cartridge-border: #80614d;
+  --theme-cartridge-groove: #241b18;
+  --theme-cartridge-label: #302520;
+  --theme-cartridge-label-border: #201814;
+  --theme-cartridge-glow: 0 0 20px rgb(183 72 38 / 28%);
+}
+
+/* Retro purple */
+:root[data-theme="retro-purple"] {
+  --theme-page: #1e1528;
+  --theme-surface: #2b1d38;
+  --theme-surface-raised: #3d294d;
+
+  --theme-accent: #e89a53;
+  --theme-accent-hover: #ffc078;
+  --theme-accent-secondary: #c39be8;
+  --theme-accent-contrast: #1e1528;
+
+  --theme-foreground: #f8e8d9;
+  --theme-muted: #c7b1d2;
+  --theme-border: #62486f;
+  --theme-border-strong: #9570a9;
+
+  --theme-cartridge-body: #392642;
+  --theme-cartridge-border: #795389;
+  --theme-cartridge-groove: #1a1224;
+  --theme-cartridge-label: #24172c;
+  --theme-cartridge-label-border: #170e1e;
+  --theme-cartridge-glow: 0 0 20px rgb(189 112 226 / 35%);
+}
+
+/* Tailwind utilities point to the active theme */
+@theme inline {
+  --color-page: var(--theme-page);
+  --color-surface: var(--theme-surface);
+  --color-surface-raised: var(--theme-surface-raised);
+
+  --color-accent: var(--theme-accent);
+  --color-accent-hover: var(--theme-accent-hover);
+  --color-accent-secondary: var(--theme-accent-secondary);
+  --color-accent-contrast: var(--theme-accent-contrast);
+
+  --color-foreground: var(--theme-foreground);
+  --color-muted: var(--theme-muted);
+
+  --color-border: var(--theme-border);
+  --color-border-strong: var(--theme-border-strong);
+
+  --color-tag-bg: var(--theme-tag-bg);
+  --color-tag-text: var(--theme-tag-text);
+
+  --color-cartridge-body: var(--theme-cartridge-body);
+  --color-cartridge-border: var(--theme-cartridge-border);
+  --color-cartridge-groove: var(--theme-cartridge-groove);
+  --color-cartridge-label: var(--theme-cartridge-label);
+  --color-cartridge-label-border: var(--theme-cartridge-label-border);
+
+  --shadow-cartridge-hover: var(--theme-cartridge-glow);
 }

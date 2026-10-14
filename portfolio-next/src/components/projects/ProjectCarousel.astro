@@ -1,0 +1,341 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ProjectMedia from "./ProjectMedia.astro";
+
+interface Props {
+  projects: CollectionEntry<"projects">[];
+}
+
+const { projects } = Astro.props;
+
+const infinite = projects.length > 1;
+const loopProjects = infinite ? [...projects, ...projects, ...projects] : projects;
+
+const initialIndex = infinite ? projects.length : 0;
+const initialProject = projects[0];
+---
+
+<div data-carousel data-project-count={projects.length} class="w-full">
+  <!-- Image viewport and navigation -->
+  <div class="relative">
+    <div
+      data-track
+      tabindex="0"
+      aria-label="Featured projects carousel"
+      class="flex snap-x snap-mandatory overflow-x-auto scroll-smooth py-3 [scrollbar-width:none] before:basis-[15%] before:shrink-0 before:content-[''] after:basis-[15%] after:shrink-0 after:content-[''] [&::-webkit-scrollbar]:hidden motion-reduce:scroll-auto"
+    >
+      {loopProjects.map((project, index) => (
+        <div
+          data-slide
+          data-title={project.data.title}
+          data-meta={project.data.company || project.data.project_type}
+          class:list={[
+            "carousel-slide box-border flex-[0_0_70%] shrink-0 snap-center px-2",
+            { "is-selected": index === initialIndex },
+          ]}
+        >
+          <a
+            href={`/projects/${project.id}/`}
+            aria-label={`View project: ${project.data.title}`}
+            class="block rounded-lg focus-visible:outline-2 focus-visible:outline-accent"
+          >
+            <div class="carousel-image aspect-video overflow-hidden rounded-lg border-2 border-border bg-surface">
+              <ProjectMedia
+                src={project.data.thumbnail}
+                alt={`Gameplay of ${project.data.title}`}
+                loading={index === initialIndex ? "eager" : "lazy"}
+              />
+            </div>
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Navigation stays centered inside the image viewport -->
+    <button
+      data-prev
+      type="button"
+      aria-label="Previous featured project"
+      class="absolute inset-y-0 left-0 z-10 flex w-[15%] min-w-11 items-center justify-end pr-3 text-2xl text-foreground transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-accent disabled:pointer-events-none disabled:opacity-0"
+    >
+      <span aria-hidden="true" class="drop-shadow-lg">
+        &#10094;
+      </span>
+    </button>
+
+    <button
+      data-next
+      type="button"
+      aria-label="Next featured project"
+      class="absolute inset-y-0 right-0 z-10 flex w-[15%] min-w-11 items-center justify-start pl-3 text-2xl text-foreground transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-accent disabled:pointer-events-none disabled:opacity-0"
+    >
+      <span aria-hidden="true" class="drop-shadow-lg">
+        &#10095;
+      </span>
+    </button>
+  </div>
+
+  <!-- Information outside image viewport -->
+  <div class="mt-2 px-4 text-center" aria-live="off">
+    <h3 data-title class="truncate text-lg font-semibold text-foreground">
+      {initialProject?.data.title}
+    </h3>
+
+    <p data-meta class="mt-1 truncate text-sm text-muted">
+      {initialProject?.data.company || initialProject?.data.project_type}
+    </p>
+  </div>
+
+  <!-- Indicators -->
+  <div class="mt-5 flex flex-wrap items-center justify-center gap-2">
+    {projects.map((project, index) => (
+      <button
+        data-indicator
+        type="button"
+        aria-label={`Select ${project.data.title}`}
+        aria-current={index === 0 ? "true" : undefined}
+        class="carousel-indicator h-2.5 w-3.5 cursor-pointer rounded-sm border border-border bg-border-strong transition-all hover:bg-surface-raised focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      />
+    ))}
+  </div>
+
+  <p data-count class="mt-3 text-center text-xs text-muted" aria-live="off">
+    {projects.length > 0 ? `1 / ${projects.length}` : "0 / 0"}
+  </p>
+</div>
+
+<style>
+  .carousel-slide {
+    scroll-snap-stop: always;
+  }
+
+  .carousel-image {
+    transition: border-color 200ms ease;
+  }
+
+  .carousel-image :global(img),
+  .carousel-image :global(video) {
+    filter: grayscale(45%);
+    transition: filter 200ms ease;
+  }
+
+  .carousel-slide.is-selected .carousel-image {
+    border-color: var(--color-accent);
+  }
+
+  .carousel-slide.is-selected .carousel-image :global(img),
+  .carousel-slide.is-selected .carousel-image :global(video) {
+    filter: none;
+  }
+
+  .carousel-slide:not(.is-selected) a:hover .carousel-image :global(img),
+  .carousel-slide:not(.is-selected) a:hover .carousel-image :global(video) {
+    filter: grayscale(15%);
+  }
+
+  .carousel-indicator[aria-current="true"] {
+    width: 26px;
+    background: var(--color-accent);
+  }
+
+  .is-repositioning .carousel-image,
+  .is-repositioning .carousel-image :global(img),
+  .is-repositioning .carousel-image :global(video) {
+    transition: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .carousel-slide {
+      scroll-snap-stop: normal;
+    }
+
+    .carousel-image,
+    .carousel-image :global(img),
+    .carousel-image :global(video),
+    .carousel-indicator {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((carousel) => {
+    const track = carousel.querySelector<HTMLElement>("[data-track]");
+    const slides = Array.from(carousel.querySelectorAll<HTMLElement>("[data-slide]"));
+    const indicators = Array.from(carousel.querySelectorAll<HTMLButtonElement>("[data-indicator]"));
+
+    const previous = carousel.querySelector<HTMLButtonElement>("[data-prev]");
+    const next = carousel.querySelector<HTMLButtonElement>("[data-next]");
+
+    const title = carousel.querySelector<HTMLElement>("[data-title]");
+    const meta = carousel.querySelector<HTMLElement>("[data-meta]");
+    const count = carousel.querySelector<HTMLElement>("[data-count]");
+
+    const total = Number(carousel.dataset.projectCount);
+
+    if (!track || !previous || !next || total === 0) return;
+
+    const infinite = total > 1;
+    const startIndex = infinite ? total : 0;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    let currentIndex = startIndex;
+    let scrollFrame = 0;
+    let settleTimer: ReturnType<typeof setTimeout>;
+    let repositioning = false;
+
+    const normalize = (index: number) => ((index % total) + total) % total;
+
+    const centerPosition = (index: number): number => {
+      const slide = slides[index];
+      if (!slide) return track.scrollLeft;
+
+      const trackRect = track.getBoundingClientRect();
+      const slideRect = slide.getBoundingClientRect();
+
+      return (
+        track.scrollLeft +
+        slideRect.left -
+        trackRect.left -
+        (track.clientWidth - slideRect.width) / 2
+      );
+    };
+
+    const updateUI = (index: number) => {
+      currentIndex = index;
+
+      const realIndex = normalize(index);
+      const selectedSlide = slides[index];
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("is-selected", i === index);
+      });
+
+      indicators.forEach((indicator, i) => {
+        if (i === realIndex) {
+          indicator.setAttribute("aria-current", "true");
+        } else {
+          indicator.removeAttribute("aria-current");
+        }
+      });
+
+      if (title && selectedSlide) {
+        title.textContent = selectedSlide.dataset.title ?? "";
+      }
+
+      if (meta && selectedSlide) {
+        meta.textContent = selectedSlide.dataset.meta ?? "";
+      }
+
+      if (count) {
+        count.textContent = `${realIndex + 1} / ${total}`;
+      }
+
+      previous.disabled = !infinite && realIndex === 0;
+      next.disabled = !infinite && realIndex === total - 1;
+    };
+
+    const jumpTo = (index: number) => {
+      repositioning = true;
+      track.classList.add("is-repositioning");
+
+      track.style.scrollSnapType = "none";
+      track.style.scrollBehavior = "auto";
+
+      track.scrollLeft = centerPosition(index);
+      updateUI(index);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          track.style.scrollSnapType = "";
+          track.style.scrollBehavior = "";
+          track.classList.remove("is-repositioning");
+          repositioning = false;
+        });
+      });
+    };
+
+    const finishScroll = () => {
+      if (!infinite || repositioning) return;
+
+      if (currentIndex < total) {
+        jumpTo(currentIndex + total);
+      } else if (currentIndex >= total * 2) {
+        jumpTo(currentIndex - total);
+      }
+    };
+
+    const findClosest = (): number => {
+      const center = track.getBoundingClientRect().left + track.clientWidth / 2;
+
+      let closestIndex = currentIndex;
+      let closestDistance = Infinity;
+
+      slides.forEach((slide, index) => {
+        const rect = slide.getBoundingClientRect();
+        const distance = Math.abs(rect.left + rect.width / 2 - center);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      return closestIndex;
+    };
+
+    const goTo = (index: number) => {
+      if (repositioning || index < 0 || index >= slides.length) return;
+
+      updateUI(index);
+
+      track.scrollTo({
+        left: centerPosition(index),
+        behavior: reducedMotion.matches ? "instant" : "smooth",
+      });
+    };
+
+    track.addEventListener(
+      "scroll",
+      () => {
+        if (repositioning) return;
+
+        cancelAnimationFrame(scrollFrame);
+
+        scrollFrame = requestAnimationFrame(() => {
+          updateUI(findClosest());
+        });
+
+        clearTimeout(settleTimer);
+        settleTimer = setTimeout(finishScroll, 180);
+      },
+      { passive: true }
+    );
+
+    previous.addEventListener("click", () => goTo(currentIndex - 1));
+    next.addEventListener("click", () => goTo(currentIndex + 1));
+
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener("click", () => {
+        const base = Math.floor(currentIndex / total) * total;
+        goTo(base + index);
+      });
+    });
+
+    track.addEventListener("keydown", (event) => {
+      if (event.target !== track) return;
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        goTo(currentIndex - 1);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        goTo(currentIndex + 1);
+      }
+    });
+
+    window.addEventListener("resize", () => jumpTo(currentIndex));
+
+    jumpTo(startIndex);
+  });
+</script>
