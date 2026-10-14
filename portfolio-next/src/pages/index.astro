@@ -1,18 +1,18 @@
-
 ---
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/ui/Container.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edwin | Game Developer</title>
-  </head>
-  <body>
-    <main class="flex min-h-screen items-center justify-center">
-      <h1 class="text-4xl font-bold">Edwin | Game Developer</h1>
-    </main>
-  </body>
-</html>
+<BaseLayout title="Home">
+  <main>
+    <Container>
+      <div class="flex min-h-screen flex-col justify-center gap-4">
+        <p class="text-sm font-medium tracking-widest text-accent">GAME DEVELOPER</p>
+
+        <h1 class="text-5xl font-bold">Hi, I'm Edwin.</h1>
+
+        <p class="max-w-xl text-muted">Building gameplay systems, tools and game experiences.</p>
+      </div>
+    </Container>
+  </main>
+</BaseLayout>
