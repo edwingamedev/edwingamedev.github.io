@@ -6,6 +6,7 @@ import Section from "../components/ui/Section.astro";
 import ProjectCarousel from "../components/projects/ProjectCarousel.astro";
 import About from "../components/sections/About.astro";
 import Skills from "../components/sections/Skills.astro";
+import Contact from "../components/sections/Contact.astro";
 
 const featuredProjects = (await getCollection("projects"))
   .filter((project) => project.data.categories.includes("featured"))
@@ -29,10 +30,11 @@ const featuredProjects = (await getCollection("projects"))
         </a>
       </div>
 
-    <ProjectCarousel projects={featuredProjects} />
+      <ProjectCarousel projects={featuredProjects} />
     </Section>
 
     <About />
     <Skills />
+    <Contact />
   </main>
 </BaseLayout>

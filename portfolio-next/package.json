@@ -17,6 +17,7 @@
     "test": "playwright test"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.3.1",
     "@lucide/astro": "^1.57.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.8",
