@@ -4,6 +4,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/sections/Hero.astro";
 import Section from "../components/ui/Section.astro";
 import ProjectCarousel from "../components/projects/ProjectCarousel.astro";
+import About from "../components/sections/About.astro";
+import Skills from "../components/sections/Skills.astro";
 
 const featuredProjects = (await getCollection("projects"))
   .filter((project) => project.data.categories.includes("featured"))
@@ -22,11 +24,15 @@ const featuredProjects = (await getCollection("projects"))
           href="/projects/"
           class="inline-flex shrink-0 items-center gap-1 whitespace-nowrap text-sm font-medium text-accent hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
-          <span>View All</span>
+          <span>View All Projects</span>
+          <span aria-hidden="true">↗</span>
         </a>
       </div>
 
-      <ProjectCarousel projects={featuredProjects} />
+    <ProjectCarousel projects={featuredProjects} />
     </Section>
+
+    <About />
+    <Skills />
   </main>
 </BaseLayout>

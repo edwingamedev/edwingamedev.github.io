@@ -1,0 +1,68 @@
+---
+import Container from "../ui/Container.astro";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <Container>
+    <div class="footer-content">
+      <span class="footer-accent" aria-hidden="true"></span>
+
+      <p class="footer-copyright">&copy; {year} Edwin Game Dev</p>
+    </div>
+  </Container>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 64px;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 0;
+  }
+
+  .footer-accent {
+    width: 24px;
+    height: 3px;
+    flex-shrink: 0;
+    border-radius: 2px;
+    background: var(--color-accent);
+  }
+
+  .footer-copyright {
+    flex: 1;
+    color: var(--color-foreground);
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 639px) {
+    .site-footer {
+      margin-top: 40px;
+    }
+
+    .footer-content {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 12px;
+      padding: 22px 0;
+    }
+
+    .footer-copyright {
+      flex: 0 1 auto;
+    }
+
+    .footer-signature {
+      flex-basis: 100%;
+      text-align: center;
+    }
+  }
+</style>

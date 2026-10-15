@@ -1,0 +1,188 @@
+---
+import Section from "../ui/Section.astro";
+import { CodeXml, Gamepad2, CalendarDays, Wrench, Gauge } from "@lucide/astro";
+
+import skills from "../../data/skills.yml";
+
+const icons = {
+  gamepad: Gamepad2,
+  calendar: CalendarDays,
+  wrench: Wrench,
+  gauge: Gauge,
+} as const;
+
+type IconName = keyof typeof icons;
+
+interface SkillGroup {
+  category: string;
+  icon: IconName;
+  items: string[];
+}
+
+const skillGroups: SkillGroup[] = skills.map((group) => {
+  if (!(group.icon in icons)) {
+    throw new Error(`Unknown skill icon: ${group.icon}`);
+  }
+
+  return {
+    ...group,
+    icon: group.icon as IconName,
+  };
+});
+---
+
+<Section id="skills" spacing="compact">
+  <div class="skills-section" aria-labelledby="skills-title">
+    <div class="section-heading">
+      <CodeXml size={23} aria-hidden="true" />
+      <h2 id="skills-title">Skills & Expertise</h2>
+    </div>
+
+    <div class="skills-grid">
+      {skillGroups.map((group) => {
+        const Icon = icons[group.icon];
+
+        return (
+          <section class="skill-group" aria-labelledby={`skill-${group.icon}`}>
+            <div class="skill-icon" aria-hidden="true">
+              <Icon size={21} strokeWidth={1.8} />
+            </div>
+
+            <div class="skill-content">
+              <h3 id={`skill-${group.icon}`}>{group.category}</h3>
+
+              <ul class="skill-list">
+                {group.items.map((item) => (
+                  <li>
+                    <span class="skill-marker" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  </div>
+</Section>
+
+<style>
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .section-heading :global(svg) {
+    flex-shrink: 0;
+    color: var(--color-accent);
+  }
+
+  .section-heading h2 {
+    margin: 0;
+    color: var(--color-foreground);
+    font-size: clamp(21px, 2.5vw, 26px);
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .skill-content {
+    min-width: 0;
+  }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.skill-group {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  min-width: 0;
+  padding: 18px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: transparent;
+}
+
+.skill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-top: 1px;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.skill-content h3 {
+  margin: 0 0 9px;
+  color: var(--color-foreground);
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.skill-marker {
+  width: 4px;
+  height: 4px;
+  flex-shrink: 0;
+  border-radius: 1px;
+  background: var(--color-accent-secondary);
+}
+
+  @media (max-width: 767px) {
+    .section-heading {
+      margin-bottom: 28px;
+    }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .skill-group {
+    padding: 16px;
+  }
+
+  .skill-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+    .skill-content h3 {
+      margin-bottom: 10px;
+    }
+
+    .skill-list {
+      gap: 6px 12px;
+    }
+  }
+</style>
