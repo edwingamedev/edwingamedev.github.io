@@ -1,21 +1,29 @@
 ---
 import Section from "../ui/Section.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
 import { UserRound } from "@lucide/astro";
 ---
 
 <Section id="about" spacing="compact">
-  <div class="about-section" aria-labelledby="about-title">
-    <div class="section-heading">
-      <UserRound size={24} aria-hidden="true" />
-      <h2 id="about-title">About Me</h2>
-    </div>
+  <div aria-labelledby="about-title">
+    <SectionHeading title="About Me" id="about-title" spacing="relaxed">
+      <UserRound slot="icon" size={24} strokeWidth={2} />
+    </SectionHeading>
 
-    <div class="about-grid">
-      <div class="profile-picture">
-        <img src="/assets/images/profile.jpg" alt="Edwin Holanda" loading="lazy" />
+    <div class="grid items-center gap-6 sm:grid-cols-[220px_minmax(0,1fr)] sm:gap-10 lg:gap-12">
+      <div class="mx-auto w-48 overflow-hidden rounded-xl border-2 border-border sm:mx-0 sm:w-full">
+        <img
+          src="/assets/images/profile.jpg"
+          alt="Portrait of Edwin Holanda"
+          width="440"
+          height="550"
+          loading="lazy"
+          decoding="async"
+          class="aspect-[4/5] h-auto w-full object-cover"
+        />
       </div>
 
-      <div class="about-content">
+      <div class="flex min-w-0 flex-col gap-5 text-body leading-[1.8] text-muted">
         <p>
           I'm a game developer with a background in software engineering dating back to 2010. I
           enjoy both the creative and technical sides of making games, from designing mechanics to
@@ -33,25 +41,6 @@ import { UserRound } from "@lucide/astro";
 </Section>
 
 <style>
-  .section-heading {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 28px;
-  }
-
-  .section-heading :global(svg) {
-    flex-shrink: 0;
-    color: var(--color-accent);
-  }
-
-  .section-heading h2 {
-    margin: 0;
-    color: var(--color-foreground);
-    font-size: clamp(21px, 2.5vw, 26px);
-    font-weight: 700;
-  }
-
   .about-grid {
     display: grid;
     grid-template-columns: 220px minmax(0, 1fr);
@@ -96,10 +85,6 @@ import { UserRound } from "@lucide/astro";
 
     .profile-picture {
       width: 160px;
-    }
-
-    .section-heading {
-      margin-bottom: 22px;
     }
   }
 </style>

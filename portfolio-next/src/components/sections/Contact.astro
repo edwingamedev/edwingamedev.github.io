@@ -1,6 +1,7 @@
 ---
 import Section from "../ui/Section.astro";
-import { Mail, Gamepad2 } from "@lucide/astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import { Mail } from "@lucide/astro";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -19,10 +20,9 @@ const contactLinks = contacts as ContactLink[];
 
 <Section id="contact" spacing="compact">
   <div class="contact-section" aria-labelledby="contact-title">
-    <div class="section-heading">
-      <Mail size={23} aria-hidden="true" />
-      <h2 id="contact-title">Contact</h2>
-    </div>
+    <SectionHeading title="Contact" id="contact-title" spacing="relaxed">
+      <Mail slot="icon" size={24} strokeWidth={2} />
+    </SectionHeading>
 
     <div class="contact-content">
       <p>
@@ -51,7 +51,11 @@ const contactLinks = contacts as ContactLink[];
               )}
 
               {contact.icon === "gamejolt" && (
-                <Gamepad2 size={18} strokeWidth={1.8} aria-hidden="true" />
+                <span
+                  class="gamejolt-icon"
+                  style={`--icon-url: url("${import.meta.env.BASE_URL}assets/images/gamejolt.png")`}
+                  aria-hidden="true"
+                />
               )}
 
               <span>{contact.label}</span>
@@ -64,27 +68,6 @@ const contactLinks = contacts as ContactLink[];
 </Section>
 
 <style>
-  .section-heading {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 18px;
-  }
-
-  .section-heading :global(svg) {
-    flex-shrink: 0;
-    color: var(--color-accent);
-  }
-
-  .section-heading h2 {
-    margin: 0;
-    color: var(--color-foreground);
-    font-size: clamp(21px, 2.5vw, 26px);
-    line-height: 1.25;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
   .contact-content {
     width: 100%;
   }
@@ -92,7 +75,7 @@ const contactLinks = contacts as ContactLink[];
   .contact-content p {
     margin: 0;
     color: var(--color-muted);
-    font-size: 16px;
+    font-size: var(--text-body);
     line-height: 1.8;
   }
 
@@ -114,7 +97,7 @@ const contactLinks = contacts as ContactLink[];
     border-radius: 6px;
 
     color: var(--color-muted);
-    font-size: 13px;
+    font-size: var(--text-label);
     font-weight: 600;
     line-height: 1;
 
@@ -138,6 +121,14 @@ const contactLinks = contacts as ContactLink[];
     font-size: 17px;
   }
 
+  .contact-links a :global(.contact-icon-image) {
+    display: block;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+
   .contact-links a:hover {
     border-color: var(--color-border-strong);
     background: var(--color-surface);
@@ -147,6 +138,27 @@ const contactLinks = contacts as ContactLink[];
   .contact-links a:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
+  }
+
+  .gamejolt-icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+
+    background-color: var(--color-accent);
+
+    -webkit-mask-image: var(--icon-url);
+    mask-image: var(--icon-url);
+
+    -webkit-mask-size: contain;
+    mask-size: contain;
+
+    -webkit-mask-position: center;
+    mask-position: center;
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
   }
 
   @media (prefers-reduced-motion: reduce) {

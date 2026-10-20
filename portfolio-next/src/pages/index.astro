@@ -1,4 +1,5 @@
 ---
+import SectionHeading from "../components/ui/SectionHeading.astro";
 import { ArrowRight } from "@lucide/astro";
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -19,15 +20,15 @@ const featuredProjects = (await getCollection("projects"))
     <Hero />
 
     <Section id="projects" spacing="compact">
-      <div class="mb-6 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <h2 class="text-2xl font-bold sm:text-3xl">Featured Projects</h2>
+      <div class="mb-7 flex flex-wrap items-center justify-between gap-3">
+        <SectionHeading title="Featured Projects" spacing="none" />
 
         <a
           href="/projects/"
-          class="inline-flex shrink-0 items-center gap-2 whitespace-nowrap text-sm font-medium text-accent transition-colors hover:text-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          class="inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           <span>View All Projects</span>
-          <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
+          <ArrowRight size={16} aria-hidden="true" />
         </a>
       </div>
 

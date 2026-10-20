@@ -3,35 +3,138 @@ import Section from "../ui/Section.astro";
 import Button from "../ui/Button.astro";
 ---
 
-<Section id="home" spacing="compact">
-  <div class="grid items-center gap-10 md:grid-cols-[minmax(0,3fr)_minmax(200px,2fr)]">
-    <div class="flex min-w-0 flex-col items-start">
-      <p class="mb-4 text-sm font-medium tracking-wide text-accent">Senior Game Developer</p>
+<Section id="home" spacing="hero">
+  <div class="hero">
+    <div class="hero-logo">
+      <img
+        src="/assets/images/logo.png"
+        alt="Edwin Holanda pixel art Game Boy logo"
+        width="280"
+        height="280"
+        class="h-auto w-full object-contain [image-rendering:pixelated]"
+      />
+    </div>
 
-      <h1 class="text-4xl leading-tight font-bold tracking-tight sm:text-5xl lg:text-6xl">
-        Edwin Holanda
-      </h1>
+    <div class="hero-content">
+      <div class="hero-heading">
+        <p class="hero-role">Senior Game Developer</p>
 
-      <p class="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-        I build games, develop systems, and solve interesting technical challenges along the way.
+        <h1 class="text-4xl leading-tight font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          Edwin Holanda
+        </h1>
+
+        <p class="hero-specialties">
+          Gameplay Systems
+          <span aria-hidden="true">·</span>
+          LiveOps
+          <span aria-hidden="true">·</span>
+          Development Tools
+        </p>
+      </div>
+
+      <p class="hero-description">
+        I build gameplay systems, LiveOps features, and development tools, combining technical
+        expertise with a passion for creating games.
       </p>
 
-      <div class="mt-8 flex flex-wrap gap-3">
+      <div class="hero-actions">
         <Button href="/projects/">Explore Projects</Button>
         <Button href="#contact" variant="secondary">
           Contact
         </Button>
       </div>
     </div>
-
-    <div class="flex items-center justify-center">
-      <img
-        src="/assets/images/logo.png"
-        alt="Edwin Holanda logo"
-        width="280"
-        height="280"
-        class="h-auto w-full max-w-56 rounded-lg border border-white/20 object-contain md:max-w-70"
-      />
-    </div>
   </div>
 </Section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    gap: 28px;
+  }
+
+  .hero-logo {
+    width: 100%;
+    max-width: 240px;
+    justify-self: center;
+  }
+
+  .hero-content {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .hero-heading {
+    min-width: 0;
+  }
+
+  .hero-role {
+    margin-bottom: 16px;
+    color: var(--color-accent);
+    font-size: var(--text-body);
+    font-weight: 600;
+    letter-spacing: 0.025em;
+  }
+
+  .hero-specialties {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .hero-specialties span {
+    color: var(--color-accent-secondary);
+  }
+
+  .hero-description {
+    max-width: 900px;
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      grid-template-columns: minmax(0, 1.618fr) minmax(0, 1fr);
+      gap: 40px;
+    }
+
+    .hero-content {
+      grid-column: 1;
+      grid-row: 1;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .hero-logo {
+      grid-column: 2;
+      grid-row: 1;
+      max-width: 280px;
+    }
+
+    .hero-specialties,
+    .hero-actions {
+      justify-content: flex-start;
+    }
+  }
+</style>

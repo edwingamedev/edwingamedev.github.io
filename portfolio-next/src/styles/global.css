@@ -58,6 +58,19 @@
 
 /* Tailwind utilities point to the active theme */
 @theme inline {
+  /* Typography */
+  --text-caption: 0.75rem; /* 12px */
+  --text-label: 0.875rem; /* 14px */
+  --text-body-sm: 0.9375rem; /* 15px */
+  --text-body: 1rem; /* 16px */
+  --text-body-lg: 1.125rem; /* 18px */
+
+  --text-heading-sm: 1.25rem; /* 20px */
+  --text-heading-md: 1.5rem; /* 24px  --text-heading-md: clamp(1.3125rem, 2.5vw, 1.625rem); */
+  --text-heading-lg: 2rem; /* 32px */
+  --text-display: 3.5rem; /* 56px */
+
+  /* Colors */
   --color-page: var(--theme-page);
   --color-surface: var(--theme-surface);
   --color-surface-raised: var(--theme-surface-raised);

@@ -1,34 +1,27 @@
 ---
 import Container from "../ui/Container.astro";
 import ThemeSwitcher from "../ui/ThemeSwitcher.astro";
+import Navbar from "./Navbar.astro";
 
-const navigation = [
-  { label: "Projects", href: "/projects/" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
-];
+import { Menu, X } from "@lucide/astro";
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <header class="sticky top-0 z-50 border-b border-border bg-page">
   <Container>
     <div class="flex min-h-16 items-center justify-between gap-4">
       <a
-        href="/"
+        href={base}
         class="shrink-0 font-bold tracking-wide text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
         aria-label="Edwin Game Dev - Home"
       >
-        EDWIN<span class="text-accent">.DEV</span>
+        EDWIN<span class="text-accent">.GAMEDEV</span>
       </a>
 
       <!-- Desktop -->
       <div class="hidden items-center gap-6 md:flex">
-        <nav class="flex items-center gap-6" aria-label="Main navigation">
-          {navigation.map((item) => (
-            <a href={item.href} class="text-sm text-foreground transition-colors hover:text-accent">
-              {item.label}
-            </a>
-          ))}
-        </nav>
+        <Navbar />
 
         <div class="border-l border-border pl-6">
           <ThemeSwitcher />
@@ -41,27 +34,36 @@ const navigation = [
 
         <details class="mobile-menu relative">
           <summary
-            class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-md border border-border text-foreground"
-            aria-label="Open navigation menu"
+            class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-border-strong hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            aria-label="Toggle navigation menu"
           >
-            <span aria-hidden="true">☰</span>
+            <Menu class="menu-open-icon" size={20} aria-hidden="true" />
+            <X class="menu-close-icon" size={20} aria-hidden="true" />
           </summary>
 
-          <nav
-            aria-label="Mobile navigation"
-            class="absolute top-12 right-0 z-50 flex min-w-44 flex-col rounded-lg border border-border bg-surface p-3 shadow-lg"
-          >
-            {navigation.map((item) => (
-              <a
-                href={item.href}
-                class="rounded-md px-3 py-2 text-sm text-foreground hover:bg-surface-raised hover:text-accent"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+          <div class="absolute top-12 right-0 z-50 min-w-44 rounded-lg border border-border bg-surface p-3 shadow-lg">
+            <Navbar variant="mobile" />
+          </div>
         </details>
       </div>
     </div>
   </Container>
 </header>
+
+<style>
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .menu-close-icon {
+    display: none;
+  }
+
+  .mobile-menu[open] .menu-open-icon {
+    display: none;
+  }
+
+  .mobile-menu[open] .menu-close-icon {
+    display: block;
+  }
+</style>
