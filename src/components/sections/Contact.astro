@@ -68,9 +68,10 @@ const contactLinks = contacts as ContactLink[];
 </Section>
 
 <style>
-  .contact-content {
-    width: 100%;
-  }
+.contact-content {
+  width: 100%;
+  max-width: 900px;
+}
 
   .contact-content p {
     margin: 0;
@@ -119,14 +120,6 @@ const contactLinks = contacts as ContactLink[];
     width: 18px;
     text-align: center;
     font-size: 17px;
-  }
-
-  .contact-links a :global(.contact-icon-image) {
-    display: block;
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    object-fit: contain;
   }
 
   .contact-links a:hover {

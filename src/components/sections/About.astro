@@ -1,3 +1,4 @@
+
 ---
 import Section from "../ui/Section.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
@@ -10,7 +11,7 @@ import { UserRound } from "@lucide/astro";
       <UserRound slot="icon" size={24} strokeWidth={2} />
     </SectionHeading>
 
-    <div class="grid items-center gap-6 sm:grid-cols-[220px_minmax(0,1fr)] sm:gap-10 lg:gap-12">
+    <div class="grid items-center gap-6 sm:grid-cols-[220px_minmax(0,1fr)] sm:gap-8">
       <div class="mx-auto w-48 overflow-hidden rounded-xl border-2 border-border sm:mx-0 sm:w-full">
         <img
           src="/assets/images/profile.jpg"
@@ -23,7 +24,7 @@ import { UserRound } from "@lucide/astro";
         />
       </div>
 
-      <div class="flex min-w-0 flex-col gap-5 text-body leading-[1.8] text-muted">
+      <div class="flex min-w-0 max-w-3xl flex-col gap-5 text-body leading-[1.8] text-muted">
         <p>
           I'm a game developer with a background in software engineering dating back to 2010. I
           enjoy both the creative and technical sides of making games, from designing mechanics to
@@ -39,52 +40,3 @@ import { UserRound } from "@lucide/astro";
     </div>
   </div>
 </Section>
-
-<style>
-  .about-grid {
-    display: grid;
-    grid-template-columns: 220px minmax(0, 1fr);
-    align-items: center;
-    gap: 48px;
-  }
-
-  .profile-picture {
-    width: 220px;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    border: 2px solid var(--color-border);
-    border-radius: 12px;
-  }
-
-  .profile-picture img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .about-content {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .about-content p {
-    margin: 0;
-    color: var(--color-muted);
-    font-size: 15px;
-    line-height: 1.8;
-  }
-
-  @media (max-width: 639px) {
-    .about-grid {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-
-    .profile-picture {
-      width: 160px;
-    }
-  }
-</style>
