@@ -7,11 +7,7 @@ interface Props {
   spacing?: "default" | "compact" | "hero" | "none";
 }
 
-const {
-  id,
-  class: className = "",
-  spacing = "default",
-} = Astro.props;
+const { id, class: className = "", spacing = "default" } = Astro.props;
 
 const spacingClasses = {
   default: "py-16 md:py-24",
@@ -21,14 +17,7 @@ const spacingClasses = {
 };
 ---
 
-<section
-  id={id}
-  class:list={[
-    "scroll-mt-20",
-    spacingClasses[spacing],
-    className,
-  ]}
->
+<section id={id} class:list={["scroll-mt-20", spacingClasses[spacing], className]}>
   <Container>
     <slot />
   </Container>

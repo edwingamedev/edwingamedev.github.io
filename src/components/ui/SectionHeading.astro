@@ -7,13 +7,7 @@ interface Props {
   class?: string;
 }
 
-const {
-  title,
-  id,
-  level = 2,
-  spacing = "default",
-  class: className = "",
-} = Astro.props;
+const { title, id, level = 2, spacing = "default", class: className = "" } = Astro.props;
 
 const Tag = `h${level}` as "h2" | "h3";
 
@@ -24,32 +18,17 @@ const spacingClasses = {
 };
 ---
 
-<div
-  class:list={[
-    "flex items-center gap-2.5",
-    spacingClasses[spacing],
-    className,
-  ]}
->
-  {
-    Astro.slots.has("icon") && (
-      <span
-        class="flex shrink-0 items-center justify-center text-accent"
-        aria-hidden="true"
-      >
-        <slot name="icon" />
-      </span>
-    )
-  }
+<div class:list={["flex items-center gap-2.5", spacingClasses[spacing], className]}>
+  {Astro.slots.has("icon") && (
+    <span class="flex shrink-0 items-center justify-center text-accent" aria-hidden="true">
+      <slot name="icon" />
+    </span>
+  )}
 
-  <Tag
-    id={id}
-    class="m-0 text-heading-md leading-tight font-bold tracking-tight text-foreground"
-  >
+  <Tag id={id} class="m-0 text-heading-md leading-tight font-bold tracking-tight text-foreground">
     {title}
   </Tag>
 </div>
-
 
 <style>
   .section-heading {

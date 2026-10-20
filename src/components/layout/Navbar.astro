@@ -26,12 +26,7 @@ const linkClasses = {
 
 <nav
   aria-label={variant === "desktop" ? "Main navigation" : "Mobile navigation"}
-  class:list={[
-    "flex",
-    variant === "desktop"
-      ? "items-center gap-6"
-      : "flex-col",
-  ]}
+  class:list={["flex", variant === "desktop" ? "items-center gap-6" : "flex-col"]}
 >
   {navigation.map((item) => (
     <a href={resolveHref(item.href)} class={linkClasses[variant]}>
