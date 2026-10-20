@@ -1,9 +1,0 @@
-_site
-node_modules
-vendor
-.bundle
-.jekyll-cache
-.sass-cache
-coverage
-
-assets/css/vendor/
