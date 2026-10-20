@@ -14,7 +14,7 @@ const isVideo = /\.(webm|mp4)(?:[?#]|$)/i.test(src);
 {isVideo ? (
   <video
     class:list={["block h-full w-full object-cover", className]}
-    autoplay
+    data-project-video
     muted
     loop
     playsinline
@@ -33,3 +33,30 @@ const isVideo = /\.(webm|mp4)(?:[?#]|$)/i.test(src);
     class:list={["block h-full w-full object-cover", className]}
   />
 )}
+
+<script>
+  const videos = document.querySelectorAll<HTMLVideoElement>("video[data-project-video]");
+
+  if (videos.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const video = entry.target as HTMLVideoElement;
+
+          if (entry.isIntersecting) {
+            video.play().catch(() => {
+              // Playback may be blocked by browser settings.
+            });
+          } else {
+            video.pause();
+          }
+        }
+      },
+      {
+        threshold: 0.25,
+      }
+    );
+
+    videos.forEach((video) => observer.observe(video));
+  }
+</script>

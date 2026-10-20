@@ -28,7 +28,11 @@ const { project } = Astro.props;
 const { title, summary, description } = project.data;
 ---
 
-<BaseLayout title={title} description={summary || description || title}>
+<BaseLayout
+  title={title}
+  description={summary || description || title}
+  image={project.data.header || project.data.thumbnail}
+>
   <main class="pt-5 pb-12 md:pt-7 md:pb-18">
     <Container>
       <article class="mx-auto max-w-6xl">

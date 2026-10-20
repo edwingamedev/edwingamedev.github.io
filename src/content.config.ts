@@ -37,10 +37,6 @@ const projects = defineCollection({
         icon: z.enum(["external-link", "gamepad-2", "play", "code-2", "download"]),
       })
       .optional(),
-
-    // Campos exclusivos do Jekyll, temporariamente aceitos.
-    layout: z.string().optional(),
-    nav_type: z.string().optional(),
   }),
 });
 

@@ -26,7 +26,7 @@ const projects = (await getCollection("projects")).sort((a, b) =>
 
         <div class="projects-grid">
           {projects.map((project) => (
-            <ProjectCartridge project={project} />
+            <ProjectCartridge project={project} headingLevel={2} />
           ))}
         </div>
       </div>

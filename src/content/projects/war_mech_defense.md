@@ -38,7 +38,7 @@ categories:
 header: "/assets/images/projects/wmd/header.jpg"
 thumbnail: "/assets/images/projects/wmd/header.jpg"
 
-images: ["/assets/images/projects/wmd/01.png", "/assets/images/projects/wmd/tutorial.png"]
+images: ["/assets/images/projects/wmd/01.webp", "/assets/images/projects/wmd/tutorial.webp"]
 
 instagram:
   - "BN0BCeNg_cn"

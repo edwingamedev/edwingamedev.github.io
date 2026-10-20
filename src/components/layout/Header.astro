@@ -12,7 +12,6 @@ import { Menu, X } from "@lucide/astro";
       <a
         href={import.meta.env.BASE_URL}
         class="shrink-0 font-bold tracking-wide text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-        aria-label="Edwin Game Dev - Home"
       >
         EDWIN<span class="text-accent">.GAMEDEV</span>
       </a>
@@ -65,3 +64,44 @@ import { Menu, X } from "@lucide/astro";
     display: block;
   }
 </style>
+
+<script>
+  const mobileMenu = document.querySelector<HTMLDetailsElement>(".mobile-menu");
+
+  if (mobileMenu) {
+    const desktopQuery = window.matchMedia("(min-width: 768px)");
+
+    const closeMenu = () => {
+      mobileMenu.open = false;
+    };
+
+    // Close after selecting a navigation link.
+    mobileMenu.querySelectorAll<HTMLAnchorElement>("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    // Close when clicking or tapping outside the menu.
+    document.addEventListener("pointerdown", (event) => {
+      if (!mobileMenu.open) return;
+
+      if (!mobileMenu.contains(event.target as Node)) {
+        closeMenu();
+      }
+    });
+
+    // Close when pressing Escape.
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && mobileMenu.open) {
+        closeMenu();
+        mobileMenu.querySelector("summary")?.focus();
+      }
+    });
+
+    // Prevent the menu from remaining open when switching to desktop.
+    desktopQuery.addEventListener("change", (event) => {
+      if (event.matches) {
+        closeMenu();
+      }
+    });
+  }
+</script>

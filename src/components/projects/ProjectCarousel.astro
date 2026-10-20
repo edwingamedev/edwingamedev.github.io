@@ -71,7 +71,9 @@ const initialPool = projects.length
           type="button"
           aria-label={`Select ${project.data.title}`}
           aria-current={index === 0 ? "true" : undefined}
-        />
+        >
+          <span class="carousel-indicator-dot" aria-hidden="true"></span>
+        </button>
       ))}
     </div>
 
@@ -104,9 +106,9 @@ const initialPool = projects.length
     width: 100%;
 
     /*
-     * Four complete steps give us:
-     * half + full + full + full + half.
-     */
+         * Four complete steps give us:
+         * half + full + full + full + half.
+         */
     max-width: calc(var(--carousel-step) * 4);
     margin-inline: auto;
     overflow: hidden;
@@ -191,11 +193,26 @@ const initialPool = projects.length
     align-items: center;
     justify-content: center;
 
-    gap: 8px;
+    gap: 0;
     margin-top: 12px;
   }
 
   .carousel-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .carousel-indicator-dot {
     width: 14px;
     height: 10px;
 
@@ -203,25 +220,24 @@ const initialPool = projects.length
     border-radius: 2px;
 
     background: var(--color-border-strong);
-    cursor: pointer;
 
     transition:
       width 180ms ease,
       background 180ms ease;
   }
 
-  .carousel-indicator:hover {
+  .carousel-indicator:hover .carousel-indicator-dot {
     background: var(--color-surface-raised);
   }
 
-  .carousel-indicator[aria-current="true"] {
+  .carousel-indicator[aria-current="true"] .carousel-indicator-dot {
     width: 26px;
     background: var(--color-accent);
   }
 
   .carousel-indicator:focus-visible {
     outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
+    outline-offset: -2px;
   }
 
   .carousel-templates {
@@ -242,7 +258,7 @@ const initialPool = projects.length
   @media (prefers-reduced-motion: reduce) {
     .carousel-slot,
     .carousel-arrow,
-    .carousel-indicator {
+    .carousel-indicator-dot {
       transition: none;
     }
   }

@@ -28,16 +28,16 @@ technologies:
 categories:
   - games
 
-header: "/assets/images/projects/bdt/header.png"
-thumbnail: "/assets/images/projects/bdt/header.png"
+header: "/assets/images/projects/bdt/header.webp"
+thumbnail: "/assets/images/projects/bdt/header.webp"
 
 images:
   [
-    "/assets/images/projects/bdt/02.png",
-    "/assets/images/projects/bdt/03.png",
-    "/assets/images/projects/bdt/04.png",
-    "/assets/images/projects/bdt/05.png",
-    "/assets/images/projects/bdt/06.png",
+    "/assets/images/projects/bdt/02.webp",
+    "/assets/images/projects/bdt/03.webp",
+    "/assets/images/projects/bdt/04.webp",
+    "/assets/images/projects/bdt/05.webp",
+    "/assets/images/projects/bdt/06.webp",
   ]
 
 youtube: "https://www.youtube.com/embed/TatzFysfxEE"

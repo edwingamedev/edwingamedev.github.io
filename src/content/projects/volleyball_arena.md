@@ -36,17 +36,17 @@ categories:
   - featured
   - games
 
-header: "/assets/images/projects/mvb/header.png"
-thumbnail: "/assets/images/projects/mvb/02.png"
+header: "/assets/images/projects/mvb/header.webp"
+thumbnail: "/assets/images/projects/mvb/02.webp"
 
 images:
   [
-    "/assets/images/projects/mvb/01.png",
-    "/assets/images/projects/mvb/02.png",
-    "/assets/images/projects/mvb/03.png",
-    "/assets/images/projects/mvb/04.png",
-    "/assets/images/projects/mvb/05.png",
-    "/assets/images/projects/mvb/06.png",
+    "/assets/images/projects/mvb/01.webp",
+    "/assets/images/projects/mvb/02.webp",
+    "/assets/images/projects/mvb/03.webp",
+    "/assets/images/projects/mvb/04.webp",
+    "/assets/images/projects/mvb/05.webp",
+    "/assets/images/projects/mvb/06.webp",
   ]
 
 youtube: "https://www.youtube.com/embed/I5-3lmFbaZs"

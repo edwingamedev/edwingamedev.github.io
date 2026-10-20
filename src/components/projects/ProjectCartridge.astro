@@ -4,15 +4,17 @@ import ProjectMedia from "./ProjectMedia.astro";
 
 interface Props {
   project: CollectionEntry<"projects">;
+  headingLevel?: 2 | 3;
 }
 
-const { project } = Astro.props;
+const { project, headingLevel = 3 } = Astro.props;
 const { title, thumbnail, company, project_type, focus } = project.data;
+
+const Heading = `h${headingLevel}` as const;
 ---
 
 <a
   href={`/projects/${project.id}/`}
-  aria-label={`View project: ${title}`}
   class="group relative flex h-[340px] w-[280px] shrink-0 flex-col rounded-t-2xl rounded-b-md border-2 border-cartridge-border bg-cartridge-body px-[14px] py-7 text-cartridge-foreground no-underline transition-all duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-cartridge-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
 >
   <!-- Top cartridge groove -->
@@ -29,9 +31,9 @@ const { title, thumbnail, company, project_type, focus } = project.data;
 
     <div class="flex min-h-0 flex-1 flex-col py-4">
       <div class="flex flex-col gap-2">
-        <h3 class="line-clamp-2 text-xl leading-[1.15] font-semibold text-cartridge-foreground">
+        <Heading class="line-clamp-2 text-xl leading-[1.15] font-semibold text-cartridge-foreground">
           {title}
-        </h3>
+        </Heading>
 
         <p class="text-xs leading-5 text-cartridge-accent">{company || project_type}</p>
       </div>

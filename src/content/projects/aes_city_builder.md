@@ -34,16 +34,16 @@ categories:
   - featured
   - games
 
-header: "/assets/images/projects/aescb/02.png"
-thumbnail: "/assets/images/projects/aescb/02.png"
+header: "/assets/images/projects/aescb/02.webp"
+thumbnail: "/assets/images/projects/aescb/02.webp"
 
 images:
   [
-    "/assets/images/projects/aescb/01.png",
-    "/assets/images/projects/aescb/03.png",
-    "/assets/images/projects/aescb/tutorial01.png",
-    "/assets/images/projects/aescb/tutorial02.png",
-    "/assets/images/projects/aescb/achievements.png",
+    "/assets/images/projects/aescb/01.webp",
+    "/assets/images/projects/aescb/03.webp",
+    "/assets/images/projects/aescb/tutorial01.webp",
+    "/assets/images/projects/aescb/tutorial02.webp",
+    "/assets/images/projects/aescb/achievements.webp",
   ]
 
 instagram:

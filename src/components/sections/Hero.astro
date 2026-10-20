@@ -5,15 +5,15 @@ import Button from "../ui/Button.astro";
 
 <Section id="home" spacing="hero">
   <div class="hero">
-    <div class="hero-logo">
-      <img
-        src="/assets/images/logo.png"
-        alt="Edwin Holanda pixel art Game Boy logo"
-        width="280"
-        height="280"
-        class="h-auto w-full object-contain [image-rendering:pixelated]"
-      />
-    </div>
+    <img
+      src="/assets/images/logo.png"
+      alt="Edwin Holanda pixel art Game Boy logo"
+      width="280"
+      height="280"
+      loading="eager"
+      fetchpriority="high"
+      class="h-auto w-full object-contain [image-rendering:pixelated]"
+    />
 
     <div class="hero-content">
       <div class="hero-heading">
@@ -22,14 +22,6 @@ import Button from "../ui/Button.astro";
         <h1 class="text-4xl leading-tight font-bold tracking-tight sm:text-5xl lg:text-6xl">
           Edwin Holanda
         </h1>
-
-        <p class="hero-specialties">
-          Gameplay Systems
-          <span aria-hidden="true">·</span>
-          LiveOps
-          <span aria-hidden="true">·</span>
-          Development Tools
-        </p>
       </div>
 
       <p class="hero-description">
