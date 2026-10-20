@@ -4,7 +4,7 @@ test("projects page has the correct vertical spacing", async ({ page }, testInfo
   await page.goto("/projects/");
 
   const layout = page.locator(".projects-layout");
-  const expectedGap = testInfo.project.name === "mobile" ? "64px" : "80px";
+  const expectedGap = testInfo.project.name === "mobile" ? "32px" : "40px";
 
   await expect(layout).toHaveCSS("row-gap", expectedGap);
   await expect(layout).toHaveCSS("flex-direction", "column");

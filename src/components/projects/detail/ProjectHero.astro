@@ -100,7 +100,8 @@ const ActionIcon = action ? actionIcons[action.icon] : null;
   .project-meta {
     margin-top: 12px;
     color: var(--color-muted);
-    font-size: 15px;
+    font-size: var(--text-body-sm);
+    line-height: 1.6;
   }
 
   .cover-frame {
@@ -129,8 +130,8 @@ const ActionIcon = action ? actionIcons[action.icon] : null;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 16px;
-    min-height: 64px;
     padding-block: 16px;
     border-bottom: 1px solid var(--color-border);
   }
@@ -162,7 +163,7 @@ const ActionIcon = action ? actionIcons[action.icon] : null;
     border-radius: 7px;
     background: var(--color-accent);
     color: var(--color-accent-contrast);
-    font-size: 13px;
+    font-size: var(--text-label);
     font-weight: 700;
     text-decoration: none;
     transition: background 180ms ease;
@@ -191,7 +192,6 @@ const ActionIcon = action ? actionIcons[action.icon] : null;
     }
 
     .project-toolbar {
-      flex-direction: column;
       align-items: flex-start;
     }
   }

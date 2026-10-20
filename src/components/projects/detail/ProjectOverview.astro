@@ -1,25 +1,23 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { CodeXml, Info } from "@lucide/astro";
+import SectionHeading from "../../ui/SectionHeading.astro";
 
 interface Props {
   project: CollectionEntry<"projects">;
 }
 
 const { project } = Astro.props;
-
 const { description, focus, technical_highlights } = project.data;
 
 const hasContributions = technical_highlights.length > 0;
 ---
 
 <div class="project-overview">
-  <!-- About -->
-  <section class="about-project" aria-labelledby="about-project-title">
-    <div class="section-heading">
-      <Info size={23} aria-hidden="true" />
-      <h2 id="about-project-title">About</h2>
-    </div>
+  <section aria-labelledby="about-project-title">
+    <SectionHeading title="About" id="about-project-title">
+      <Info slot="icon" size={23} strokeWidth={2} />
+    </SectionHeading>
 
     <p class="project-description">{description}</p>
 
@@ -32,18 +30,16 @@ const hasContributions = technical_highlights.length > 0;
     )}
   </section>
 
-  <!-- Technical highlights -->
   {hasContributions && (
     <section aria-labelledby="technical-highlights-title">
-      <div class="section-heading">
-        <CodeXml size={23} aria-hidden="true" />
-        <h2 id="technical-highlights-title">My Contributions</h2>
-      </div>
+      <SectionHeading title="My Contributions" id="technical-highlights-title">
+        <CodeXml slot="icon" size={23} strokeWidth={2} />
+      </SectionHeading>
 
       <ul class="highlights-grid">
         {technical_highlights.map((item) => (
           <li>
-            <span class="highlight-marker" aria-hidden="true" />
+            <span class="highlight-marker" aria-hidden="true"></span>
             <span>{item}</span>
           </li>
         ))}
@@ -57,33 +53,13 @@ const hasContributions = technical_highlights.length > 0;
     display: flex;
     flex-direction: column;
     gap: 56px;
-    margin-top: 42px;
     width: 100%;
-  }
-
-  .section-heading {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 18px;
-  }
-
-  .section-heading :global(svg) {
-    flex-shrink: 0;
-    color: var(--color-accent);
-  }
-
-  .section-heading h2 {
-    color: var(--color-foreground);
-    font-size: clamp(21px, 2.5vw, 26px);
-    line-height: 1.25;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    margin-top: 42px;
   }
 
   .project-description {
     color: var(--color-muted);
-    font-size: 16px;
+    font-size: var(--text-body);
     line-height: 1.8;
     white-space: pre-line;
   }
@@ -99,7 +75,7 @@ const hasContributions = technical_highlights.length > 0;
 
   .focus-list li {
     color: var(--color-accent);
-    font-size: 12px;
+    font-size: var(--text-caption);
     font-weight: 500;
   }
 
@@ -113,16 +89,17 @@ const hasContributions = technical_highlights.length > 0;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 14px 28px;
-    padding: 0;
     margin: 0;
+    padding: 0;
     list-style: none;
   }
 
   .highlights-grid li {
     display: flex;
-    align-items: baseline;
+    align-items: flex-start;
     gap: 12px;
     color: var(--color-muted);
+    font-size: var(--text-body);
     line-height: 1.6;
   }
 
@@ -130,6 +107,7 @@ const hasContributions = technical_highlights.length > 0;
     width: 6px;
     height: 6px;
     flex-shrink: 0;
+    margin-top: 0.65em;
     border-radius: 50%;
     background: var(--color-accent-secondary);
   }

@@ -1,7 +1,10 @@
 ---
 import Container from "../ui/Container.astro";
 
-const year = new Date().getFullYear();
+const startYear = 2018;
+const currentYear = new Date().getFullYear();
+
+const years = currentYear > startYear ? `${startYear}–${currentYear}` : `${startYear}`;
 ---
 
 <footer class="site-footer">
@@ -9,7 +12,7 @@ const year = new Date().getFullYear();
     <div class="footer-content">
       <span class="footer-accent" aria-hidden="true"></span>
 
-      <p class="footer-copyright">&copy; {year} Edwin Game Dev</p>
+      <p class="footer-copyright">&copy; {years} Edwin Game Dev</p>
     </div>
   </Container>
 </footer>
@@ -24,7 +27,6 @@ const year = new Date().getFullYear();
   .footer-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 16px;
     padding: 24px 0;
   }
@@ -38,10 +40,11 @@ const year = new Date().getFullYear();
   }
 
   .footer-copyright {
-    flex: 1;
+    margin: 0;
     color: var(--color-foreground);
-    font-size: 13px;
+    font-size: var(--text-label);
     font-weight: 500;
+    line-height: 1.5;
   }
 
   @media (max-width: 639px) {
@@ -50,19 +53,8 @@ const year = new Date().getFullYear();
     }
 
     .footer-content {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px 12px;
+      gap: 12px;
       padding: 22px 0;
-    }
-
-    .footer-copyright {
-      flex: 0 1 auto;
-    }
-
-    .footer-signature {
-      flex-basis: 100%;
-      text-align: center;
     }
   }
 </style>

@@ -1,5 +1,6 @@
 ---
 import { Clapperboard } from "@lucide/astro";
+import SectionHeading from "../../ui/SectionHeading.astro";
 
 interface Props {
   youtube?: string;
@@ -46,10 +47,9 @@ const embedUrl = getYouTubeEmbed(youtube);
 
 {embedUrl && (
   <section class="project-video" aria-labelledby="project-video-title">
-    <div class="section-heading">
-      <Clapperboard size={23} aria-hidden="true" />
-      <h2 id="project-video-title">Video</h2>
-    </div>
+    <SectionHeading title="Video" id="project-video-title">
+      <Clapperboard slot="icon" size={23} strokeWidth={2} />
+    </SectionHeading>
 
     <div class="video-frame">
       <iframe
@@ -67,26 +67,6 @@ const embedUrl = getYouTubeEmbed(youtube);
 <style>
   .project-video {
     margin-top: 42px;
-  }
-
-  .section-heading {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 18px;
-  }
-
-  .section-heading :global(svg) {
-    flex-shrink: 0;
-    color: var(--color-accent);
-  }
-
-  .section-heading h2 {
-    color: var(--color-foreground);
-    font-size: clamp(21px, 2.5vw, 26px);
-    line-height: 1.25;
-    font-weight: 700;
-    letter-spacing: -0.02em;
   }
 
   .video-frame {

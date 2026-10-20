@@ -1,5 +1,6 @@
 ---
 import { ExternalLink } from "@lucide/astro";
+import SectionHeading from "../../ui/SectionHeading.astro";
 
 interface Props {
   instagram?: string[];
@@ -41,10 +42,9 @@ const hasLinks = instagramUrls.length > 0 || Boolean(link);
 
 {hasLinks && (
   <section class="project-links" aria-labelledby="project-links-title">
-    <div class="section-heading">
-      <ExternalLink size={23} aria-hidden="true" />
-      <h2 id="project-links-title">More From This Project</h2>
-    </div>
+    <SectionHeading title="More From This Project" id="project-links-title">
+      <ExternalLink slot="icon" size={23} strokeWidth={2} />
+    </SectionHeading>
 
     {instagramUrls.length > 0 && (
       <div class="instagram-grid">
@@ -80,26 +80,6 @@ const hasLinks = instagramUrls.length > 0 || Boolean(link);
     margin-top: 42px;
   }
 
-  .section-heading {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 18px;
-  }
-
-  .section-heading :global(svg) {
-    flex-shrink: 0;
-    color: var(--color-accent);
-  }
-
-  .section-heading h2 {
-    color: var(--color-foreground);
-    font-size: clamp(21px, 2.5vw, 26px);
-    line-height: 1.25;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
   .instagram-grid {
     display: flex;
     flex-wrap: wrap;
@@ -109,10 +89,10 @@ const hasLinks = instagramUrls.length > 0 || Boolean(link);
   }
 
   .instagram-grid :global(.instagram-media) {
-    margin: 0 !important;
-    max-width: 540px;
-    min-width: 0 !important;
     width: min(100%, 400px);
+    min-width: 0 !important;
+    max-width: 540px;
+    margin: 0 !important;
   }
 
   .project-external-link {
@@ -120,12 +100,18 @@ const hasLinks = instagramUrls.length > 0 || Boolean(link);
     align-items: center;
     gap: 8px;
     color: var(--color-accent);
+    font-size: var(--text-label);
     font-weight: 600;
     text-decoration: none;
   }
 
   .project-external-link:hover {
     color: var(--color-accent-hover);
+  }
+
+  .project-external-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
   }
 
   @media (max-width: 639px) {
