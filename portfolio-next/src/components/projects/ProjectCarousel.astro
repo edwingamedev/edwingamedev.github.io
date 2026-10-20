@@ -1,6 +1,8 @@
+
 ---
 import type { CollectionEntry } from "astro:content";
-import ProjectMedia from "./ProjectMedia.astro";
+import { ChevronLeft, ChevronRight } from "@lucide/astro";
+import ProjectCartridge from "./ProjectCartridge.astro";
 
 interface Props {
   projects: CollectionEntry<"projects">[];
@@ -8,129 +10,229 @@ interface Props {
 
 const { projects } = Astro.props;
 
-const infinite = projects.length > 1;
-const loopProjects = infinite ? [...projects, ...projects, ...projects] : projects;
+const POOL_SIZE = 7;
+const CENTER_SLOT = 3;
 
-const initialIndex = infinite ? projects.length : 0;
-const initialProject = projects[0];
+const getProject = (index: number) => {
+  const total = projects.length;
+  const wrapped = ((index % total) + total) % total;
+
+  return projects[wrapped]!;
+};
+
+const initialPool = projects.length
+  ? Array.from({ length: POOL_SIZE }, (_, index) =>
+      getProject(index - CENTER_SLOT),
+    )
+  : [];
 ---
 
-<div data-carousel data-project-count={projects.length} class="w-full">
-  <!-- Image viewport and navigation -->
-  <div class="relative">
-    <div
-      data-track
-      tabindex="0"
-      aria-label="Featured projects carousel"
-      class="flex snap-x snap-mandatory overflow-x-auto scroll-smooth py-3 [scrollbar-width:none] before:basis-[15%] before:shrink-0 before:content-[''] after:basis-[15%] after:shrink-0 after:content-[''] [&::-webkit-scrollbar]:hidden motion-reduce:scroll-auto"
-    >
-      {loopProjects.map((project, index) => (
-        <div
-          data-slide
-          data-title={project.data.title}
-          data-meta={project.data.company || project.data.project_type}
-          class:list={[
-            "carousel-slide box-border flex-[0_0_70%] shrink-0 snap-center px-2",
-            { "is-selected": index === initialIndex },
-          ]}
-        >
-          <a
-            href={`/projects/${project.id}/`}
-            aria-label={`View project: ${project.data.title}`}
-            class="block rounded-lg focus-visible:outline-2 focus-visible:outline-accent"
+{projects.length === 1 ? (
+  <div class="single-project">
+    <ProjectCartridge project={projects[0]!} />
+  </div>
+) : projects.length > 1 ? (
+  <div
+    class="project-carousel"
+    data-carousel
+    data-project-count={projects.length}
+  >
+    <div class="carousel-viewport" data-viewport>
+      <div
+        class="carousel-track"
+        data-track
+        tabindex="0"
+        aria-label="Featured projects carousel"
+      >
+        {initialPool.map((project, index) => (
+          <div
+            class:list={[
+              "carousel-slot",
+              { "is-selected": index === CENTER_SLOT },
+            ]}
+            data-pool-slot
+            inert={index === 0 || index === POOL_SIZE - 1}
+            aria-hidden={
+              index === 0 || index === POOL_SIZE - 1
+                ? "true"
+                : undefined
+            }
           >
-            <div class="carousel-image aspect-video overflow-hidden rounded-lg border-2 border-border bg-surface">
-              <ProjectMedia
-                src={project.data.thumbnail}
-                alt={`Gameplay of ${project.data.title}`}
-                loading={index === initialIndex ? "eager" : "lazy"}
-              />
-            </div>
-          </a>
-        </div>
+            <ProjectCartridge project={project} />
+          </div>
+        ))}
+      </div>
+
+      <button
+        class="carousel-arrow carousel-arrow-prev"
+        data-prev
+        type="button"
+        aria-label="Previous featured project"
+      >
+        <ChevronLeft size={24} aria-hidden="true" />
+      </button>
+
+      <button
+        class="carousel-arrow carousel-arrow-next"
+        data-next
+        type="button"
+        aria-label="Next featured project"
+      >
+        <ChevronRight size={24} aria-hidden="true" />
+      </button>
+    </div>
+
+    <div class="carousel-indicators">
+      {projects.map((project, index) => (
+        <button
+          class="carousel-indicator"
+          data-indicator
+          type="button"
+          aria-label={`Select ${project.data.title}`}
+          aria-current={index === 0 ? "true" : undefined}
+        />
       ))}
     </div>
 
-    <!-- Navigation stays centered inside the image viewport -->
-    <button
-      data-prev
-      type="button"
-      aria-label="Previous featured project"
-      class="absolute inset-y-0 left-0 z-10 flex w-[15%] min-w-11 items-center justify-end pr-3 text-2xl text-foreground transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-accent disabled:pointer-events-none disabled:opacity-0"
-    >
-      <span aria-hidden="true" class="drop-shadow-lg">
-        &#10094;
-      </span>
-    </button>
-
-    <button
-      data-next
-      type="button"
-      aria-label="Next featured project"
-      class="absolute inset-y-0 right-0 z-10 flex w-[15%] min-w-11 items-center justify-start pl-3 text-2xl text-foreground transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-accent disabled:pointer-events-none disabled:opacity-0"
-    >
-      <span aria-hidden="true" class="drop-shadow-lg">
-        &#10095;
-      </span>
-    </button>
+    <div class="carousel-templates" aria-hidden="true">
+      {projects.map((project, index) => (
+        <template data-project-template={index}>
+          <ProjectCartridge project={project} />
+        </template>
+      ))}
+    </div>
   </div>
-
-  <!-- Information outside image viewport -->
-  <div class="mt-2 px-4 text-center" aria-live="off">
-    <h3 data-title class="truncate text-lg font-semibold text-foreground">
-      {initialProject?.data.title}
-    </h3>
-
-    <p data-meta class="mt-1 truncate text-sm text-muted">
-      {initialProject?.data.company || initialProject?.data.project_type}
-    </p>
-  </div>
-
-  <!-- Indicators -->
-  <div class="mt-5 flex flex-wrap items-center justify-center gap-2">
-    {projects.map((project, index) => (
-      <button
-        data-indicator
-        type="button"
-        aria-label={`Select ${project.data.title}`}
-        aria-current={index === 0 ? "true" : undefined}
-        class="carousel-indicator h-2.5 w-3.5 cursor-pointer rounded-sm border border-border bg-border-strong transition-all hover:bg-surface-raised focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-      />
-    ))}
-  </div>
-
-  <p data-count class="mt-3 text-center text-xs text-muted" aria-live="off">
-    {projects.length > 0 ? `1 / ${projects.length}` : "0 / 0"}
-  </p>
-</div>
+) : null}
 
 <style>
-  .carousel-slide {
-    scroll-snap-stop: always;
+  .project-carousel {
+    --carousel-card-width: 280px;
+    --carousel-gap: 24px;
+    --carousel-step: calc(
+      var(--carousel-card-width) + var(--carousel-gap)
+    );
+
+    width: 100%;
   }
 
-  .carousel-image {
-    transition: border-color 200ms ease;
+  .single-project {
+    display: flex;
+    justify-content: center;
   }
 
-  .carousel-image :global(img),
-  .carousel-image :global(video) {
-    filter: grayscale(45%);
-    transition: filter 200ms ease;
+  .carousel-viewport {
+    position: relative;
+    width: 100%;
+
+    /*
+     * Four complete steps give us:
+     * half + full + full + full + half.
+     */
+    max-width: calc(var(--carousel-step) * 4);
+    margin-inline: auto;
+    overflow: hidden;
   }
 
-  .carousel-slide.is-selected .carousel-image {
-    border-color: var(--color-accent);
+  .carousel-track {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    width: max-content;
+    gap: var(--carousel-gap);
+    padding-block: 18px;
+
+    touch-action: pan-y;
+    user-select: none;
+    cursor: grab;
   }
 
-  .carousel-slide.is-selected .carousel-image :global(img),
-  .carousel-slide.is-selected .carousel-image :global(video) {
-    filter: none;
+  .carousel-track:active {
+    cursor: grabbing;
   }
 
-  .carousel-slide:not(.is-selected) a:hover .carousel-image :global(img),
-  .carousel-slide:not(.is-selected) a:hover .carousel-image :global(video) {
-    filter: grayscale(15%);
+  .carousel-slot {
+    flex: 0 0 var(--carousel-card-width);
+    width: var(--carousel-card-width);
+
+    opacity: 0.6;
+    transition: opacity 180ms ease;
+  }
+
+  .carousel-slot.is-selected {
+    opacity: 1;
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    border: 0;
+    border-radius: 6px;
+
+    background: var(--color-page);
+    color: var(--color-foreground);
+
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: color 180ms ease;
+  }
+
+  .carousel-arrow:hover {
+    color: var(--color-accent);
+  }
+
+  .carousel-arrow:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+
+  .carousel-arrow-prev {
+    left: 0;
+  }
+
+  .carousel-arrow-next {
+    right: 0;
+  }
+
+  .carousel-indicators {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .carousel-indicator {
+    width: 14px;
+    height: 10px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+
+    background: var(--color-border-strong);
+    cursor: pointer;
+
+    transition:
+      width 180ms ease,
+      background 180ms ease;
+  }
+
+  .carousel-indicator:hover {
+    background: var(--color-surface-raised);
   }
 
   .carousel-indicator[aria-current="true"] {
@@ -138,20 +240,29 @@ const initialProject = projects[0];
     background: var(--color-accent);
   }
 
-  .is-repositioning .carousel-image,
-  .is-repositioning .carousel-image :global(img),
-  .is-repositioning .carousel-image :global(video) {
-    transition: none;
+  .carousel-indicator:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  .carousel-templates {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    .project-carousel {
+      --carousel-gap: 16px;
+    }
+
+    .carousel-arrow {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .carousel-slide {
-      scroll-snap-stop: normal;
-    }
-
-    .carousel-image,
-    .carousel-image :global(img),
-    .carousel-image :global(video),
+    .carousel-slot,
+    .carousel-arrow,
     .carousel-indicator {
       transition: none;
     }
@@ -159,183 +270,412 @@ const initialProject = projects[0];
 </style>
 
 <script>
+  const CENTER_SLOT = 3;
+  const POOL_SIZE = 7;
+
   document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((carousel) => {
+    const viewport = carousel.querySelector<HTMLElement>("[data-viewport]");
     const track = carousel.querySelector<HTMLElement>("[data-track]");
-    const slides = Array.from(carousel.querySelectorAll<HTMLElement>("[data-slide]"));
-    const indicators = Array.from(carousel.querySelectorAll<HTMLButtonElement>("[data-indicator]"));
+
+    const slots = Array.from(
+      carousel.querySelectorAll<HTMLElement>("[data-pool-slot]"),
+    );
+
+    const templates = Array.from(
+      carousel.querySelectorAll<HTMLTemplateElement>("[data-project-template]"),
+    );
+
+    const indicators = Array.from(
+      carousel.querySelectorAll<HTMLButtonElement>("[data-indicator]"),
+    );
 
     const previous = carousel.querySelector<HTMLButtonElement>("[data-prev]");
     const next = carousel.querySelector<HTMLButtonElement>("[data-next]");
 
-    const title = carousel.querySelector<HTMLElement>("[data-title]");
-    const meta = carousel.querySelector<HTMLElement>("[data-meta]");
-    const count = carousel.querySelector<HTMLElement>("[data-count]");
-
     const total = Number(carousel.dataset.projectCount);
 
-    if (!track || !previous || !next || total === 0) return;
+    if (
+      !viewport ||
+      !track ||
+      total < 2 ||
+      slots.length !== POOL_SIZE ||
+      templates.length !== total
+    ) {
+      return;
+    }
 
-    const infinite = total > 1;
-    const startIndex = infinite ? total : 0;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    type Direction = -1 | 1;
 
-    let currentIndex = startIndex;
-    let scrollFrame = 0;
-    let settleTimer: ReturnType<typeof setTimeout>;
-    let repositioning = false;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
 
-    const normalize = (index: number) => ((index % total) + total) % total;
+    // State
 
-    const centerPosition = (index: number): number => {
-      const slide = slides[index];
-      if (!slide) return track.scrollLeft;
+    let currentIndex = 0;
+    let moving: Direction | 0 = 0;
+    let targetIndex: number | null = null;
 
-      const trackRect = track.getBoundingClientRect();
-      const slideRect = slide.getBoundingClientRect();
+    let activePointer: number | null = null;
+    let startX = 0;
+    let dragX = 0;
+    let dragging = false;
+    let position = 0;
+    let lastDraggedAt = -Infinity;
+
+    // Indexing
+
+    const wrap = (index: number): number =>
+      ((index % total) + total) % total;
+
+    // Geometry
+
+    const xFor = (index: number): number => {
+      const slot = slots[index];
 
       return (
-        track.scrollLeft +
-        slideRect.left -
-        trackRect.left -
-        (track.clientWidth - slideRect.width) / 2
+        viewport.clientWidth / 2 -
+        (slot.offsetLeft + slot.offsetWidth / 2)
       );
     };
 
-    const updateUI = (index: number) => {
-      currentIndex = index;
+    const setX = (x: number) => {
+      position = x;
+      track.style.transform = `translate3d(${x}px, 0, 0)`;
+    };
 
-      const realIndex = normalize(index);
-      const selectedSlide = slides[index];
+    // UI
 
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("is-selected", i === index);
+    const selectSlot = (index: number) => {
+      slots.forEach((slot, i) => {
+        slot.classList.toggle("is-selected", i === index);
       });
+    };
 
-      indicators.forEach((indicator, i) => {
-        if (i === realIndex) {
+    const syncIndicators = () => {
+      indicators.forEach((indicator, index) => {
+        if (index === currentIndex) {
           indicator.setAttribute("aria-current", "true");
         } else {
           indicator.removeAttribute("aria-current");
         }
       });
-
-      if (title && selectedSlide) {
-        title.textContent = selectedSlide.dataset.title ?? "";
-      }
-
-      if (meta && selectedSlide) {
-        meta.textContent = selectedSlide.dataset.meta ?? "";
-      }
-
-      if (count) {
-        count.textContent = `${realIndex + 1} / ${total}`;
-      }
-
-      previous.disabled = !infinite && realIndex === 0;
-      next.disabled = !infinite && realIndex === total - 1;
     };
 
-    const jumpTo = (index: number) => {
-      repositioning = true;
-      track.classList.add("is-repositioning");
+    const syncAccessibility = () => {
+      slots.forEach((slot, index) => {
+        const hidden =
+          index === 0 || index === POOL_SIZE - 1;
 
-      track.style.scrollSnapType = "none";
-      track.style.scrollBehavior = "auto";
+        slot.toggleAttribute("inert", hidden);
 
-      track.scrollLeft = centerPosition(index);
-      updateUI(index);
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          track.style.scrollSnapType = "";
-          track.style.scrollBehavior = "";
-          track.classList.remove("is-repositioning");
-          repositioning = false;
-        });
-      });
-    };
-
-    const finishScroll = () => {
-      if (!infinite || repositioning) return;
-
-      if (currentIndex < total) {
-        jumpTo(currentIndex + total);
-      } else if (currentIndex >= total * 2) {
-        jumpTo(currentIndex - total);
-      }
-    };
-
-    const findClosest = (): number => {
-      const center = track.getBoundingClientRect().left + track.clientWidth / 2;
-
-      let closestIndex = currentIndex;
-      let closestDistance = Infinity;
-
-      slides.forEach((slide, index) => {
-        const rect = slide.getBoundingClientRect();
-        const distance = Math.abs(rect.left + rect.width / 2 - center);
-
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
+        if (hidden) {
+          slot.setAttribute("aria-hidden", "true");
+        } else {
+          slot.removeAttribute("aria-hidden");
         }
       });
-
-      return closestIndex;
     };
+
+    // Pool
+
+    const fillSlot = (slot: HTMLElement, index: number) => {
+      const template = templates[wrap(index)];
+
+      slot.replaceChildren(template.content.cloneNode(true));
+    };
+
+    const setPool = (index: number) => {
+      currentIndex = wrap(index);
+      track.style.transition = "none";
+
+      slots.forEach((slot, i) => {
+        fillSlot(slot, currentIndex + i - CENTER_SLOT);
+      });
+
+      selectSlot(CENTER_SLOT);
+      setX(xFor(CENTER_SLOT));
+
+      syncIndicators();
+      syncAccessibility();
+
+      void track.offsetWidth;
+      track.style.transition = "";
+    };
+
+    // Complete movement and recycle exactly one slot
+
+    const finishStep = () => {
+      if (!moving) return;
+
+      const direction = moving;
+
+      track.style.transition = "none";
+
+      if (direction === 1) {
+        const recycled = slots.shift()!;
+
+        track.append(recycled);
+        slots.push(recycled);
+
+        currentIndex = wrap(currentIndex + 1);
+
+        fillSlot(recycled, currentIndex + CENTER_SLOT);
+      } else {
+        const recycled = slots.pop()!;
+
+        track.prepend(recycled);
+        slots.unshift(recycled);
+
+        currentIndex = wrap(currentIndex - 1);
+
+        fillSlot(recycled, currentIndex - CENTER_SLOT);
+      }
+
+      selectSlot(CENTER_SLOT);
+      setX(xFor(CENTER_SLOT));
+
+      syncIndicators();
+      syncAccessibility();
+
+      moving = 0;
+
+      // Rebase only the transform, without animation.
+      void track.offsetWidth;
+      track.style.transition = "";
+
+      if (targetIndex !== null && currentIndex !== targetIndex) {
+        requestAnimationFrame(advanceToTarget);
+      } else {
+        targetIndex = null;
+      }
+    };
+
+    // Move by one pooled slot
+
+    const step = (direction: Direction) => {
+      if (moving) return;
+
+      moving = direction;
+      selectSlot(CENTER_SLOT + direction);
+
+      const destination = xFor(CENTER_SLOT + direction);
+
+      track.style.transition = reducedMotion.matches
+        ? "none"
+        : "transform 280ms ease";
+
+      if (
+        reducedMotion.matches ||
+        Math.abs(destination - position) < 0.5
+      ) {
+        setX(destination);
+        finishStep();
+        return;
+      }
+
+      setX(destination);
+    };
+
+    // Indicator navigation
+
+    function advanceToTarget() {
+      if (moving || targetIndex === null) return;
+
+      const forward = wrap(targetIndex - currentIndex);
+
+      if (forward === 0) {
+        targetIndex = null;
+        return;
+      }
+
+      const backward = forward - total;
+
+      const difference =
+        Math.abs(forward) <= Math.abs(backward)
+          ? forward
+          : backward;
+
+      // Large jumps do not animate through the whole dataset.
+      if (Math.abs(difference) > CENTER_SLOT) {
+        setPool(targetIndex);
+        targetIndex = null;
+        return;
+      }
+
+      step(difference > 0 ? 1 : -1);
+    }
 
     const goTo = (index: number) => {
-      if (repositioning || index < 0 || index >= slides.length) return;
+      if (dragging || moving) return;
 
-      updateUI(index);
-
-      track.scrollTo({
-        left: centerPosition(index),
-        behavior: reducedMotion.matches ? "instant" : "smooth",
-      });
+      targetIndex = wrap(index);
+      advanceToTarget();
     };
 
-    track.addEventListener(
-      "scroll",
-      () => {
-        if (repositioning) return;
+    // Animation completion
 
-        cancelAnimationFrame(scrollFrame);
+    track.addEventListener("transitionend", (event) => {
+      if (
+        event.target === track &&
+        event.propertyName === "transform"
+      ) {
+        finishStep();
+      }
+    });
 
-        scrollFrame = requestAnimationFrame(() => {
-          updateUI(findClosest());
-        });
+    // Buttons
 
-        clearTimeout(settleTimer);
-        settleTimer = setTimeout(finishScroll, 180);
-      },
-      { passive: true }
-    );
+    previous?.addEventListener("click", () => {
+      if (moving) return;
 
-    previous.addEventListener("click", () => goTo(currentIndex - 1));
-    next.addEventListener("click", () => goTo(currentIndex + 1));
+      targetIndex = null;
+      step(-1);
+    });
+
+    next?.addEventListener("click", () => {
+      if (moving) return;
+
+      targetIndex = null;
+      step(1);
+    });
+
+    // Indicators
 
     indicators.forEach((indicator, index) => {
-      indicator.addEventListener("click", () => {
-        const base = Math.floor(currentIndex / total) * total;
-        goTo(base + index);
-      });
+      indicator.addEventListener("click", () => goTo(index));
     });
+
+    // Pointer interaction
+
+    track.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0 || moving) return;
+
+      activePointer = event.pointerId;
+      startX = event.clientX;
+
+      dragX = 0;
+      dragging = false;
+    });
+
+    track.addEventListener("pointermove", (event) => {
+      if (event.pointerId !== activePointer) return;
+
+      const delta = event.clientX - startX;
+
+      if (!dragging && Math.abs(delta) < 6) return;
+
+      if (!dragging) {
+        dragging = true;
+        track.setPointerCapture(event.pointerId);
+        track.style.transition = "none";
+      }
+
+      if (event.cancelable) {
+        event.preventDefault();
+      }
+
+      const center = xFor(CENTER_SLOT);
+
+      // Never expose empty space beyond the buffer slots.
+      const bounded = Math.max(
+        xFor(CENTER_SLOT + 1),
+        Math.min(xFor(CENTER_SLOT - 1), center + delta),
+      );
+
+      dragX = bounded - center;
+      setX(bounded);
+    });
+
+    const endPointer = (
+      event: PointerEvent,
+      cancelled: boolean,
+    ) => {
+      if (event.pointerId !== activePointer) return;
+
+      activePointer = null;
+
+      if (!dragging) return;
+
+      dragging = false;
+      lastDraggedAt = performance.now();
+
+      if (track.hasPointerCapture(event.pointerId)) {
+        track.releasePointerCapture(event.pointerId);
+      }
+
+      const threshold = slots[CENTER_SLOT].offsetWidth / 4;
+
+      if (!cancelled && Math.abs(dragX) >= threshold) {
+        targetIndex = null;
+        step(dragX < 0 ? 1 : -1);
+      } else {
+        track.style.transition = reducedMotion.matches
+          ? "none"
+          : "transform 280ms ease";
+
+        setX(xFor(CENTER_SLOT));
+      }
+    };
+
+    track.addEventListener("pointerup", (event) => {
+      endPointer(event, false);
+    });
+
+    track.addEventListener("pointercancel", (event) => {
+      endPointer(event, true);
+    });
+
+    track.addEventListener("dragstart", (event) => {
+      event.preventDefault();
+    });
+
+    // Prevent opening a project after dragging.
+
+    track.addEventListener(
+      "click",
+      (event) => {
+        if (performance.now() - lastDraggedAt < 300) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+      },
+      true,
+    );
+
+    // Keyboard
 
     track.addEventListener("keydown", (event) => {
       if (event.target !== track) return;
 
       if (event.key === "ArrowLeft") {
         event.preventDefault();
-        goTo(currentIndex - 1);
+        targetIndex = null;
+        step(-1);
       } else if (event.key === "ArrowRight") {
         event.preventDefault();
-        goTo(currentIndex + 1);
+        targetIndex = null;
+        step(1);
       }
     });
 
-    window.addEventListener("resize", () => jumpTo(currentIndex));
+    // Resize
 
-    jumpTo(startIndex);
+    const resizeObserver = new ResizeObserver(() => {
+      if (moving || dragging) return;
+
+      track.style.transition = "none";
+      setX(xFor(CENTER_SLOT));
+    });
+
+    resizeObserver.observe(viewport);
+
+    // Initialization
+
+    track.style.transition = "none";
+
+    setX(xFor(CENTER_SLOT));
+    syncIndicators();
+    syncAccessibility();
   });
 </script>

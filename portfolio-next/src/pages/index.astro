@@ -1,4 +1,5 @@
 ---
+import { ArrowRight } from "@lucide/astro";
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/sections/Hero.astro";
@@ -23,10 +24,10 @@ const featuredProjects = (await getCollection("projects"))
 
         <a
           href="/projects/"
-          class="inline-flex shrink-0 items-center gap-1 whitespace-nowrap text-sm font-medium text-accent hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          class="inline-flex shrink-0 items-center gap-2 whitespace-nowrap text-sm font-medium text-accent transition-colors hover:text-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           <span>View All Projects</span>
-          <span aria-hidden="true">↗</span>
+          <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
         </a>
       </div>
 

@@ -23,6 +23,9 @@
   --theme-cartridge-label: #21191c;
   --theme-cartridge-label-border: #171215;
   --theme-cartridge-glow: 0 0 20px rgb(242 162 58 / 35%);
+  --theme-cartridge-foreground: #f4eadf;
+  --theme-cartridge-muted: var(--theme-muted);
+  --theme-cartridge-accent: var(--theme-accent);
 }
 
 /* light */
@@ -41,12 +44,16 @@
   --theme-border: #b99b79;
   --theme-border-strong: #826347;
 
-  --theme-cartridge-body: #46352d;
-  --theme-cartridge-border: #80614d;
-  --theme-cartridge-groove: #241b18;
-  --theme-cartridge-label: #302520;
-  --theme-cartridge-label-border: #201814;
-  --theme-cartridge-glow: 0 0 20px rgb(183 72 38 / 28%);
+  --theme-cartridge-body: #594235;
+  --theme-cartridge-border: #a77c58;
+  --theme-cartridge-groove: #30231d;
+  --theme-cartridge-label: #302625;
+  --theme-cartridge-label-border: #241a19;
+  --theme-cartridge-foreground: #f4eadf;
+  --theme-cartridge-glow: 0 0 20px rgb(183 72 38 / 25%);
+  --theme-cartridge-foreground: #f4eadf;
+  --theme-cartridge-muted: #d8c6b7;
+  --theme-cartridge-accent: #ffc078;
 }
 
 /* Tailwind utilities point to the active theme */
@@ -74,6 +81,9 @@
   --color-cartridge-groove: var(--theme-cartridge-groove);
   --color-cartridge-label: var(--theme-cartridge-label);
   --color-cartridge-label-border: var(--theme-cartridge-label-border);
+  --color-cartridge-foreground: var(--theme-cartridge-foreground);
+  --color-cartridge-muted: var(--theme-cartridge-muted);
+  --color-cartridge-accent: var(--theme-cartridge-accent);
 
   --shadow-cartridge-hover: var(--theme-cartridge-glow);
 }
