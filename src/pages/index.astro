@@ -1,0 +1,42 @@
+---
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import { ArrowRight } from "@lucide/astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/sections/Hero.astro";
+import Section from "../components/ui/Section.astro";
+import ProjectCarousel from "../components/projects/ProjectCarousel.astro";
+import About from "../components/sections/About.astro";
+import Skills from "../components/sections/Skills.astro";
+import Contact from "../components/sections/Contact.astro";
+
+const featuredProjects = (await getCollection("projects"))
+  .filter((project) => project.data.categories.includes("featured"))
+  .sort((a, b) => (a.data.featured_order ?? Infinity) - (b.data.featured_order ?? Infinity));
+---
+
+<BaseLayout title="Home">
+  <main>
+    <Hero />
+
+    <Section id="projects" spacing="none" class="pt-4 pb-8 md:pt-6 md:pb-12">
+      <div class="mb-7 flex flex-wrap items-center justify-between gap-3">
+        <SectionHeading title="Featured Projects" spacing="none" />
+
+        <a
+          href="/projects/"
+          class="inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          <span>View All Projects</span>
+          <ArrowRight size={16} aria-hidden="true" />
+        </a>
+      </div>
+
+      <ProjectCarousel projects={featuredProjects} />
+    </Section>
+
+    <About />
+    <Skills />
+    <Contact />
+  </main>
+</BaseLayout>

@@ -1,0 +1,162 @@
+---
+import Section from "../ui/Section.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import { Mail } from "@lucide/astro";
+
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+import contacts from "../../data/contact.yml";
+
+type ContactIcon = "mail" | "github" | "linkedin" | "gamejolt";
+
+interface ContactLink {
+  label: string;
+  icon: ContactIcon;
+  href: string;
+}
+
+const contactLinks = contacts as ContactLink[];
+---
+
+<Section id="contact" spacing="compact">
+  <div class="contact-section" aria-labelledby="contact-title">
+    <SectionHeading title="Contact" id="contact-title" spacing="relaxed">
+      <Mail slot="icon" size={24} stroke-width={2} />
+    </SectionHeading>
+
+    <div class="contact-content">
+      <p>
+        I'm open to opportunities, collaborations, and conversations about game development. The
+        best way to reach me is by email. You can also find my code and technical work on GitHub, my
+        professional background on LinkedIn, and playable prototypes and game jam projects on Game
+        Jolt.
+      </p>
+
+      <nav class="contact-links" aria-label="Contact links">
+        {contactLinks.map((contact) => {
+          const external = !contact.href.startsWith("mailto:");
+
+          return (
+            <a
+              href={contact.href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+            >
+              {contact.icon === "mail" && <Mail size={18} stroke-width={1.8} aria-hidden="true" />}
+
+              {contact.icon === "github" && <i class="fa-brands fa-github" aria-hidden="true"></i>}
+
+              {contact.icon === "linkedin" && (
+                <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+              )}
+
+              {contact.icon === "gamejolt" && (
+                <span
+                  class="gamejolt-icon"
+                  style={`--icon-url: url("${import.meta.env.BASE_URL}assets/images/gamejolt.png")`}
+                  aria-hidden="true"
+                />
+              )}
+
+              <span>{contact.label}</span>
+            </a>
+          );
+        })}
+      </nav>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .contact-content {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .contact-content p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: var(--text-body);
+    line-height: 1.8;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .contact-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 9px 13px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+
+    color: var(--color-muted);
+    font-size: var(--text-label);
+    font-weight: 600;
+    line-height: 1;
+
+    text-decoration: none;
+
+    transition:
+      border-color 180ms ease,
+      color 180ms ease,
+      background 180ms ease;
+  }
+
+  .contact-links a :global(svg),
+  .contact-links a :global(i) {
+    flex-shrink: 0;
+    color: var(--color-accent);
+  }
+
+  .contact-links a :global(i) {
+    width: 18px;
+    text-align: center;
+    font-size: 17px;
+  }
+
+  .contact-links a:hover {
+    border-color: var(--color-border-strong);
+    background: var(--color-surface);
+    color: var(--color-foreground);
+  }
+
+  .contact-links a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  .gamejolt-icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+
+    background-color: var(--color-accent);
+
+    -webkit-mask-image: var(--icon-url);
+    mask-image: var(--icon-url);
+
+    -webkit-mask-size: contain;
+    mask-size: contain;
+
+    -webkit-mask-position: center;
+    mask-position: center;
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-links a {
+      transition: none;
+    }
+  }
+</style>

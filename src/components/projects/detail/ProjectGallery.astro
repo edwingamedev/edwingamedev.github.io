@@ -1,0 +1,122 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Images, Expand, ChevronLeft, ChevronRight, X, Play } from "@lucide/astro";
+
+import SectionHeading from "../../ui/SectionHeading.astro";
+import ProjectMedia from "../ProjectMedia.astro";
+
+import "../../../styles/project-gallery.css";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const { title, header, thumbnail, images } = project.data;
+
+const cover = header || thumbnail;
+const gallery = [...new Set(images ?? [])].filter((src) => src !== cover);
+
+const isVideo = (src: string) => /\.(webm|mp4)(?:[?#]|$)/i.test(src);
+---
+
+{gallery.length > 0 && (
+  <section class="project-gallery" aria-labelledby="gallery-title" data-gallery>
+    <div class="gallery-heading">
+      <SectionHeading title="Gallery" id="gallery-title" spacing="none">
+        <Images slot="icon" size={23} stroke-width={2} />
+      </SectionHeading>
+
+      <span class="gallery-count">{gallery.length} media</span>
+    </div>
+
+    <div class="gallery-carousel">
+      <button
+        type="button"
+        data-strip-prev
+        class="carousel-arrow carousel-arrow-prev"
+        aria-label="Previous gallery items"
+      >
+        <ChevronLeft size={24} aria-hidden="true" />
+      </button>
+
+      <div data-gallery-track class="gallery-track" aria-label="Project media">
+        {gallery.map((src, index) => (
+          <button
+            type="button"
+            class="gallery-item"
+            data-gallery-item
+            data-src={src}
+            data-alt={`${title} media ${index + 1}`}
+            aria-label={`Open ${title} media ${index + 1}`}
+          >
+            <ProjectMedia src={src} alt={`${title} media ${index + 1}`} />
+
+            {isVideo(src) && (
+              <span class="video-indicator" aria-hidden="true">
+                <Play size={18} fill="currentColor" />
+              </span>
+            )}
+
+            <span class="expand-icon" aria-hidden="true">
+              <Expand size={18} />
+            </span>
+          </button>
+        ))}
+      </div>
+
+      <button
+        type="button"
+        data-strip-next
+        class="carousel-arrow carousel-arrow-next"
+        aria-label="Next gallery items"
+      >
+        <ChevronRight size={24} aria-hidden="true" />
+      </button>
+    </div>
+
+    <dialog data-gallery-dialog class="gallery-dialog" aria-label={`${title} media gallery`}>
+      <div class="lightbox">
+        <div class="lightbox-header">
+          <span data-gallery-count aria-live="polite">
+            1 / {gallery.length}
+          </span>
+
+          <button type="button" data-gallery-close class="icon-button" aria-label="Close gallery">
+            <X size={22} aria-hidden="true" />
+          </button>
+        </div>
+
+        <div class="lightbox-stage">
+          <button
+            type="button"
+            data-gallery-prev
+            class="icon-button nav-button"
+            aria-label="Previous media"
+          >
+            <ChevronLeft size={28} aria-hidden="true" />
+          </button>
+
+          <div data-gallery-preview class="lightbox-preview" />
+
+          <button
+            type="button"
+            data-gallery-next
+            class="icon-button nav-button"
+            aria-label="Next media"
+          >
+            <ChevronRight size={28} aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <template data-play-icon>
+      <Play size={48} fill="currentColor" aria-hidden="true" />
+    </template>
+  </section>
+)}
+
+<script>
+  import "../../../scripts/project-gallery.ts";
+</script>

@@ -1,0 +1,122 @@
+---
+import { ExternalLink } from "@lucide/astro";
+import SectionHeading from "../../ui/SectionHeading.astro";
+
+interface Props {
+  instagram?: string[];
+  link?: string;
+}
+
+const { instagram = [], link } = Astro.props;
+
+function getInstagramUrl(value: string): string | undefined {
+  if (/^[A-Za-z0-9_-]+$/.test(value)) {
+    return `https://www.instagram.com/p/${value}/`;
+  }
+
+  try {
+    const url = new URL(value);
+
+    if (!["instagram.com", "www.instagram.com"].includes(url.hostname)) {
+      return undefined;
+    }
+
+    const [type, id] = url.pathname.split("/").filter(Boolean);
+
+    if (!["p", "reel"].includes(type) || !/^[A-Za-z0-9_-]+$/.test(id ?? "")) {
+      return undefined;
+    }
+
+    return `https://www.instagram.com/${type}/${id}/`;
+  } catch {
+    return undefined;
+  }
+}
+
+const instagramUrls = [
+  ...new Set(instagram.map(getInstagramUrl).filter((url): url is string => Boolean(url))),
+];
+
+const hasLinks = instagramUrls.length > 0 || Boolean(link);
+---
+
+{hasLinks && (
+  <section class="project-links" aria-labelledby="project-links-title">
+    <SectionHeading title="More From This Project" id="project-links-title">
+      <ExternalLink slot="icon" size={23} stroke-width={2} />
+    </SectionHeading>
+
+    {instagramUrls.length > 0 && (
+      <div class="instagram-grid">
+        {instagramUrls.map((url) => (
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink={url}
+            data-instgrm-version="14"
+          >
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              View this post on Instagram
+            </a>
+          </blockquote>
+        ))}
+      </div>
+    )}
+
+    {link && (
+      <a class="project-external-link" href={link} target="_blank" rel="noopener noreferrer">
+        <span>Visit Project</span>
+        <ExternalLink size={16} aria-hidden="true" />
+      </a>
+    )}
+  </section>
+)}
+
+{instagramUrls.length > 0 && (
+  <script is:inline async src="https://www.instagram.com/embed.js"></script>
+)}
+
+<style>
+  .project-links {
+    margin-top: 42px;
+  }
+
+  .instagram-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .instagram-grid :global(.instagram-media) {
+    width: min(100%, 400px);
+    min-width: 0 !important;
+    max-width: 540px;
+    margin: 0 !important;
+  }
+
+  .project-external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-accent);
+    font-size: var(--text-label);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .project-external-link:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .project-external-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 639px) {
+    .project-links {
+      margin-top: 32px;
+    }
+  }
+</style>

@@ -1,0 +1,61 @@
+---
+import { Moon, Sun } from "@lucide/astro";
+---
+
+<button
+  type="button"
+  data-theme-switcher
+  aria-label="Switch color theme"
+  title="Switch color theme"
+  class="inline-flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-border bg-surface text-foreground transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+>
+  <Sun class="theme-sun" size={20} aria-hidden="true" />
+  <Moon class="theme-moon" size={20} aria-hidden="true" />
+</button>
+
+<style>
+  :global(:root[data-theme="dark"]) .theme-sun {
+    display: none;
+  }
+
+  :global(:root[data-theme="light"]) .theme-moon {
+    display: none;
+  }
+
+  :global(:root:not([data-theme])) .theme-sun {
+    display: none;
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-theme-switcher]");
+
+  const updateLabels = () => {
+    const current = document.documentElement.dataset.theme ?? "dark";
+    const next = current === "dark" ? "light" : "dark";
+
+    buttons.forEach((button) => {
+      button.setAttribute("aria-label", `Switch to ${next} mode`);
+      button.title = `Switch to ${next} mode`;
+    });
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const current = document.documentElement.dataset.theme ?? "dark";
+      const next = current === "dark" ? "light" : "dark";
+
+      document.documentElement.dataset.theme = next;
+
+      try {
+        localStorage.setItem("portfolio-theme", next);
+      } catch {
+        // Storage may be unavailable.
+      }
+
+      updateLabels();
+    });
+  });
+
+  updateLabels();
+</script>

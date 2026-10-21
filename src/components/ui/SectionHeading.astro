@@ -1,0 +1,71 @@
+---
+interface Props {
+  title: string;
+  id?: string;
+  level?: 2 | 3;
+  spacing?: "default" | "relaxed" | "none";
+  class?: string;
+}
+
+const { title, id, level = 2, spacing = "default", class: className = "" } = Astro.props;
+
+const Tag = `h${level}` as "h2" | "h3";
+
+const spacingClasses = {
+  default: "mb-[18px]",
+  relaxed: "mb-7",
+  none: "mb-0",
+};
+---
+
+<div class:list={["flex items-center gap-2.5", spacingClasses[spacing], className]}>
+  {Astro.slots.has("icon") && (
+    <span class="flex shrink-0 items-center justify-center text-accent" aria-hidden="true">
+      <slot name="icon" />
+    </span>
+  )}
+
+  <Tag id={id} class="m-0 text-heading-md leading-tight font-bold tracking-tight text-foreground">
+    {title}
+  </Tag>
+</div>
+
+<style>
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-heading-default {
+    margin-bottom: 18px;
+  }
+
+  .section-heading-relaxed {
+    margin-bottom: 28px;
+  }
+
+  .section-heading-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+  }
+
+  .section-heading :global(h2),
+  .section-heading :global(h3) {
+    margin: 0;
+    color: var(--color-foreground);
+    font-size: var(--text-heading-md);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  @media (max-width: 639px) {
+    .section-heading {
+      margin-bottom: 18px;
+    }
+  }
+</style>

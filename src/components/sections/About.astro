@@ -1,0 +1,41 @@
+---
+import Section from "../ui/Section.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import { UserRound } from "@lucide/astro";
+---
+
+<Section id="about" spacing="compact">
+  <div aria-labelledby="about-title">
+    <SectionHeading title="About Me" id="about-title" spacing="relaxed">
+      <UserRound slot="icon" size={24} stroke-width={2} />
+    </SectionHeading>
+
+    <div class="grid items-center gap-6 sm:grid-cols-[220px_minmax(0,1fr)] sm:gap-8">
+      <div class="mx-auto w-48 overflow-hidden rounded-xl border-2 border-border sm:mx-0 sm:w-full">
+        <img
+          src="/assets/images/profile.jpg"
+          alt="Portrait of Edwin Holanda"
+          width="440"
+          height="550"
+          loading="lazy"
+          decoding="async"
+          class="aspect-[4/5] h-auto w-full object-cover"
+        />
+      </div>
+
+      <div class="flex min-w-0 max-w-3xl flex-col gap-5 text-body leading-[1.8] text-muted">
+        <p>
+          I'm a game developer with a background in software engineering dating back to 2010. I
+          enjoy both the creative and technical sides of making games, from designing mechanics to
+          building gameplay systems and tools.
+        </p>
+
+        <p>
+          I've worked on shipped games, LiveOps features, and development tools, while also creating
+          independent games and experimenting with pixel art, game design, and new technologies. I
+          enjoy solving problems and being involved in the entire development process.
+        </p>
+      </div>
+    </div>
+  </div>
+</Section>
