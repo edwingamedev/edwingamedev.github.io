@@ -2,10 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test("gallery supports infinite navigation in both directions", async ({ page }) => {
   await page.goto("/projects/");
-
-  const projectLinks = page.locator('a[href^="/projects/"]').filter({
-    has: page.locator("h3"),
-  });
+  const projectLinks = page.locator(".projects-grid a[href^='/projects/']");
 
   const links = await projectLinks.evaluateAll((elements) =>
     elements.map((element) => element.getAttribute("href")).filter(Boolean)

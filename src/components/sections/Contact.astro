@@ -21,7 +21,7 @@ const contactLinks = contacts as ContactLink[];
 <Section id="contact" spacing="compact">
   <div class="contact-section" aria-labelledby="contact-title">
     <SectionHeading title="Contact" id="contact-title" spacing="relaxed">
-      <Mail slot="icon" size={24} strokeWidth={2} />
+      <Mail slot="icon" size={24} stroke-width={2} />
     </SectionHeading>
 
     <div class="contact-content">
@@ -42,7 +42,7 @@ const contactLinks = contacts as ContactLink[];
               target={external ? "_blank" : undefined}
               rel={external ? "noopener noreferrer" : undefined}
             >
-              {contact.icon === "mail" && <Mail size={18} strokeWidth={1.8} aria-hidden="true" />}
+              {contact.icon === "mail" && <Mail size={18} stroke-width={1.8} aria-hidden="true" />}
 
               {contact.icon === "github" && <i class="fa-brands fa-github" aria-hidden="true"></i>}
 

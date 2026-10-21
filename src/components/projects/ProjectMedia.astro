@@ -4,9 +4,10 @@ interface Props {
   alt: string;
   class?: string;
   loading?: "lazy" | "eager";
+  fetchpriority?: "high" | "low" | "auto";
 }
 
-const { src, alt, class: className = "", loading = "lazy" } = Astro.props;
+const { src, alt, class: className = "", loading = "lazy", fetchpriority } = Astro.props;
 
 const isVideo = /\.(webm|mp4)(?:[?#]|$)/i.test(src);
 ---
@@ -31,32 +32,57 @@ const isVideo = /\.(webm|mp4)(?:[?#]|$)/i.test(src);
     loading={loading}
     decoding="async"
     class:list={["block h-full w-full object-cover", className]}
+    fetchpriority={fetchpriority}
   />
 )}
 
 <script>
-  const videos = document.querySelectorAll<HTMLVideoElement>("video[data-project-video]");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        const video = entry.target as HTMLVideoElement;
 
-  if (videos.length > 0) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          const video = entry.target as HTMLVideoElement;
-
-          if (entry.isIntersecting) {
-            video.play().catch(() => {
-              // Playback may be blocked by browser settings.
-            });
-          } else {
-            video.pause();
-          }
+        if (entry.isIntersecting) {
+          video.play().catch(() => {
+            // Playback may be blocked by browser settings.
+          });
+        } else {
+          video.pause();
         }
-      },
-      {
-        threshold: 0.25,
       }
-    );
+    },
+    {
+      threshold: 0.25,
+    }
+  );
 
-    videos.forEach((video) => observer.observe(video));
-  }
+  const observeVideos = (root: ParentNode = document) => {
+    root.querySelectorAll<HTMLVideoElement>("video[data-project-video]").forEach((video) => {
+      if (video.dataset.videoObserved === "true") return;
+
+      video.dataset.videoObserved = "true";
+      observer.observe(video);
+    });
+  };
+
+  observeVideos();
+
+  const mutationObserver = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      for (const node of mutation.addedNodes) {
+        if (!(node instanceof Element)) continue;
+
+        if (node.matches("video[data-project-video]")) {
+          observeVideos(node.parentElement ?? document);
+        } else {
+          observeVideos(node);
+        }
+      }
+    }
+  });
+
+  mutationObserver.observe(document.querySelector("[data-carousel]") ?? document.body, {
+    childList: true,
+    subtree: true,
+  });
 </script>

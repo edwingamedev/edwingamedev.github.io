@@ -24,7 +24,7 @@ const isVideo = (src: string) => /\.(webm|mp4)(?:[?#]|$)/i.test(src);
   <section class="project-gallery" aria-labelledby="gallery-title" data-gallery>
     <div class="gallery-heading">
       <SectionHeading title="Gallery" id="gallery-title" spacing="none">
-        <Images slot="icon" size={23} strokeWidth={2} />
+        <Images slot="icon" size={23} stroke-width={2} />
       </SectionHeading>
 
       <span class="gallery-count">{gallery.length} media</span>
@@ -118,5 +118,5 @@ const isVideo = (src: string) => /\.(webm|mp4)(?:[?#]|$)/i.test(src);
 )}
 
 <script>
-  import "../../../scripts/project-gallery";
+  import "../../../scripts/project-gallery.ts";
 </script>

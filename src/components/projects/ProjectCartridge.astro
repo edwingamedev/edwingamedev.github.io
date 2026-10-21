@@ -11,6 +11,10 @@ const { project, headingLevel = 3 } = Astro.props;
 const { title, thumbnail, company, project_type, focus } = project.data;
 
 const Heading = `h${headingLevel}` as const;
+
+const cardThumbnail = /\.(png|jpe?g|webp)$/i.test(thumbnail)
+  ? thumbnail.replace(/\.[^.]+$/, "-card.webp")
+  : thumbnail;
 ---
 
 <a
@@ -26,7 +30,7 @@ const Heading = `h${headingLevel}` as const;
   <!-- Cartridge label -->
   <div class="flex min-h-0 flex-1 flex-col overflow-hidden rounded-md border-2 border-cartridge-label-border bg-cartridge-label p-[6px]">
     <div class="aspect-video w-full shrink-0 overflow-hidden rounded-sm">
-      <ProjectMedia src={thumbnail} alt={`${title} gameplay`} />
+      <ProjectMedia src={cardThumbnail} alt={`${title} gameplay`} />
     </div>
 
     <div class="flex min-h-0 flex-1 flex-col py-4">

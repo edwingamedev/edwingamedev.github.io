@@ -41,7 +41,12 @@ const ActionIcon = action ? actionIcons[action.icon] : null;
   {cover && (
     <div class="cover-frame">
       <div class="cover-media">
-        <ProjectMedia src={cover} alt={`${title} artwork or gameplay`} loading="eager" />
+        <ProjectMedia
+          src={cover}
+          alt={`${title} artwork or gameplay`}
+          loading="eager"
+          fetchpriority="high"
+        />
       </div>
     </div>
   )}
