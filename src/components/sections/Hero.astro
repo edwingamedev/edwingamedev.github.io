@@ -1,6 +1,10 @@
 ---
 import Section from "../ui/Section.astro";
 import Button from "../ui/Button.astro";
+import { FileText, ExternalLink } from "@lucide/astro";
+import contacts from "../../data/contact.yml";
+
+const resumeUrl = contacts.find((contact) => contact.icon === "resume")?.href;
 ---
 
 <Section id="home" spacing="hero">
@@ -35,6 +39,14 @@ import Button from "../ui/Button.astro";
           Contact
         </Button>
       </div>
+
+      {resumeUrl && (
+        <a href={resumeUrl} target="_blank" rel="noopener noreferrer" class="hero-resume">
+          <FileText size={18} stroke-width={1.8} aria-hidden="true" />
+          <span>View Resume</span>
+          <ExternalLink size={14} stroke-width={1.8} aria-hidden="true" />
+        </a>
+      )}
     </div>
   </div>
 </Section>
@@ -129,4 +141,31 @@ import Button from "../ui/Button.astro";
       justify-content: flex-start;
     }
   }
+
+  .hero-resume {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-muted);
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.hero-resume:hover {
+  color: var(--color-accent);
+}
+
+.hero-resume:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-resume {
+    transition: none;
+  }
+}
 </style>
