@@ -2,13 +2,17 @@
   icon: mail
   href: "mailto:edwinjonesholanda@gmail.com"
 
-- label: GitHub
-  icon: github
-  href: "https://github.com/edwingamedev"
+- label: Resume
+  icon: resume
+  href: "https://drive.google.com/drive/folders/1KpIFc8xjtjYBdAcwARyACr9IPTmDwY2H"
 
 - label: LinkedIn
   icon: linkedin
   href: "https://www.linkedin.com/in/edwinjonesholanda/"
+
+- label: GitHub
+  icon: github
+  href: "https://github.com/edwingamedev"
 
 - label: Game Jolt
   icon: gamejolt
