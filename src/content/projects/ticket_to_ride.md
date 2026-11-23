@@ -3,11 +3,11 @@ title: "Ticket to Ride"
 
 summary: "A digital adaptation of the classic board game. Contributed to Unity codebase maintenance, network reliability, and game stability for the PlayStation 5 version."
 
-description: "Ticket to Ride is a digital adaptation of the classic board game. As a Senior Unity Developer at Marmalade Games, I contributed to maintaining and improving the Unity codebase, developing network reliability features, and resolving technical issues affecting console builds, with a focus on PlayStation 5."
+description: "Ticket to Ride is a digital adaptation of the classic board game. As a Senior Unity Developer at Marmalade Game Studio, I contributed to maintaining and improving the Unity codebase, developing network reliability features, and resolving technical issues affecting console builds, with a focus on PlayStation 5."
 
 project_type: "Professional"
 role: "Senior Unity Developer"
-company: "Marmalade Games"
+company: "Marmalade Game Studio"
 
 focus:
   - Console Development
