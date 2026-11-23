@@ -1,0 +1,55 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Container from "../../components/ui/Container.astro";
+
+import ProjectNavigation from "../../components/projects/detail/ProjectNavigation.astro";
+import ProjectHero from "../../components/projects/detail/ProjectHero.astro";
+import ProjectOverview from "../../components/projects/detail/ProjectOverview.astro";
+import ProjectGallery from "../../components/projects/detail/ProjectGallery.astro";
+import ProjectVideo from "../../components/projects/detail/ProjectVideo.astro";
+import ProjectLinks from "../../components/projects/detail/ProjectLinks.astro";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { title, summary, description } = project.data;
+---
+
+<BaseLayout
+  title={title}
+  description={summary || description || title}
+  image={project.data.header || project.data.thumbnail}
+>
+  <main class="pt-5 pb-12 md:pt-7 md:pb-18">
+    <Container>
+      <article class="mx-auto max-w-6xl">
+        <ProjectNavigation position="top" />
+
+        <ProjectHero project={project} />
+
+        <ProjectOverview project={project} />
+
+        <ProjectGallery project={project} />
+
+        <ProjectVideo youtube={project.data.youtube} title={title} />
+
+        <ProjectLinks instagram={project.data.instagram} />
+
+        <ProjectNavigation position="bottom" />
+      </article>
+    </Container>
+  </main>
+</BaseLayout>

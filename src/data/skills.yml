@@ -1,0 +1,34 @@
+- category: Gameplay Engineering
+  icon: gamepad
+  items:
+    - Combat & Movement
+    - Physics & Simulation
+    - Progression Systems
+    - Multiplayer Gameplay
+
+- category: LiveOps & Game Services
+  icon: calendar
+  items:
+    - Live Events
+    - Rewards & Daily Login
+    - Season Passes
+    - Remote Configuration
+    - Live Game Maintenance
+
+- category: Tools & Integrations
+  icon: wrench
+  items:
+    - Unity Editor Extensions
+    - Internal Tooling
+    - SDK Development & Integration
+    - REST APIs
+    - Build Automation
+
+- category: Architecture & Optimization
+  icon: gauge
+  items:
+    - Design Patterns
+    - Modular Architecture
+    - Async Programming
+    - Profiling & Diagnostics
+    - Runtime Optimization

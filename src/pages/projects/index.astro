@@ -1,0 +1,59 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import ProjectCartridge from "../../components/projects/ProjectCartridge.astro";
+
+const projects = (await getCollection("projects")).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title)
+);
+---
+
+<BaseLayout
+  title="All Projects"
+  description="Explore the games and projects developed by Edwin Holanda."
+>
+  <main>
+    <Section spacing="compact">
+      <div class="projects-layout">
+        <header class="text-center">
+          <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">All Projects</h1>
+
+          <p class="mx-auto mt-5 max-w-xl leading-relaxed text-muted">
+            A collection of games and projects I've worked on.
+          </p>
+        </header>
+
+        <div class="projects-grid">
+          {projects.map((project) => (
+            <ProjectCartridge project={project} headingLevel={2} />
+          ))}
+        </div>
+      </div>
+    </Section>
+  </main>
+</BaseLayout>
+
+<style>
+  .projects-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 280px);
+    justify-content: center;
+    gap: 28px;
+    width: 100%;
+    max-width: 896px;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 768px) {
+    .projects-layout {
+      gap: 40px;
+    }
+  }
+</style>

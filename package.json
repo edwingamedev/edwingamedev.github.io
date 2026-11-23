@@ -1,0 +1,47 @@
+{
+  "name": "edwin-gamedev-portfolio",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev --host 0.0.0.0 --port 4321",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run format && npm run format:check && npm run lint && npm run build",
+    "test": "playwright test",
+    "images:optimize": "node scripts/optimize-images.mjs",
+    "images:cleanup": "node scripts/cleanup-images.mjs",
+    "images:cards": "node scripts/generate-card-thumbnails.mjs",
+    "images:cards:overwrite": "node scripts/generate-card-thumbnails.mjs --overwrite",
+    "images:gallery": "node scripts/generate-gallery-thumbnails.mjs",
+    "images:gallery:overwrite": "node scripts/generate-gallery-thumbnails.mjs --overwrite"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fortawesome/fontawesome-free": "^7.3.1",
+    "@lucide/astro": "^1.57.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.8",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.1",
+    "@rollup/plugin-yaml": "^5.0.0",
+    "eslint": "^10.12.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "^3.2.1",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "sharp": "^0.35.5",
+    "typescript-eslint": "^8.71.2"
+  }
+}
